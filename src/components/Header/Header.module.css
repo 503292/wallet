@@ -7,14 +7,27 @@
 }
 .logoWrap {
   display: flex;
-
   margin: auto 0;
+  text-decoration: none;
+  color: #758397;
 }
+.logoWrap:hover {
+  color: #fff;
+  fill: #fff;
+}
+
 .logo {
   margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+  fill: #758397;
 }
 .logoText {
   /* font-family: ; */
+}
+.logo:hover,
+.logo:focus {
+  fill: #fff;
 }
 
 .logOutWrap {
@@ -23,6 +36,11 @@
 }
 .logoOut {
   margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+}
+.logoOut:hover {
+  fill: #fff;
 }
 .name {
   margin: 0 10px 0;

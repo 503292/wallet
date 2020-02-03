@@ -1,13 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import home from '../../assets/icons/home/baseline-home-24px.svg';
-import diagram from '../../assets/icons/diagrams/baseline-timeline-24px.svg';
-import currency from '../../assets/icons/currency exchange/baseline-attach_money-24px.svg';
+import { ReactComponent as Home } from '../../assets/icons/home/baseline-home-24px.svg';
+import { ReactComponent as Diagram } from '../../assets/icons/diagrams/baseline-timeline-24px.svg';
+import { ReactComponent as Currency } from '../../assets/icons/currency exchange/baseline-attach_money-24px.svg';
+
+// import home from '../../assets/icons/home/baseline-home-24px.svg';
+// import diagram from '../../assets/icons/diagrams/baseline-timeline-24px.svg';
+// import currency from '../../assets/icons/currency exchange/baseline-attach_money-24px.svg';
 
 import css from './Navigation.module.css';
 
 const ativeStyle = {
-  color: 'rgba(0, 0, 0, .3)',
+  color: 'tomato',
+  fill: 'red',
 };
 
 const Navigation = () => {
@@ -15,7 +20,8 @@ const Navigation = () => {
     <ul className={css.wrapNav}>
       <li>
         <NavLink className={css.link} to="/home" exact activeStyle={ativeStyle}>
-          <img className={css.icons} src={home} alt="Главная" />
+          <Home className={css.icons} />
+          {/* <img className={css.icons} src={home} alt="Главная" /> */}
           {/* <div>Главная</div> */}
         </NavLink>
       </li>
@@ -26,7 +32,8 @@ const Navigation = () => {
           exact
           activeStyle={ativeStyle}
         >
-          <img className={css.icons} src={diagram} alt="Статистика" />
+          <Diagram className={css.icons} />
+          {/* <img className={css.icons} src={diagram} alt="Статистика" /> */}
           {/* <div>Статистика</div> */}
         </NavLink>
       </li>
@@ -37,7 +44,8 @@ const Navigation = () => {
           exact
           activeStyle={ativeStyle}
         >
-          <img className={css.icons} src={currency} alt="Курс" />
+          <Currency className={css.icons} />
+          {/* <img className={css.icons} src={currency} alt="Курс" /> */}
           {/* <div>Курс</div> */}
         </NavLink>
       </li>
