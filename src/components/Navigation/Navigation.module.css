@@ -1,0 +1,9 @@
+.wrapNav {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+}
