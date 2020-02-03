@@ -11,12 +11,18 @@ const Navigation = () => {
   return (
     <ul className={css.wrapNav}>
       <li>
-        <NavLink to="/home" exact activeStyle={ativeStyle}>
+        <NavLink className={css.link} to="/home" exact activeStyle={ativeStyle}>
+          {/* <img src="../../assets/" alt="Главная" /> */}
           Главная
         </NavLink>
       </li>
       <li>
-        <NavLink to="/diagram" exact activeStyle={ativeStyle}>
+        <NavLink
+          className={css.link}
+          to="/diagram"
+          exact
+          activeStyle={ativeStyle}
+        >
           Статистика
         </NavLink>
       </li>
