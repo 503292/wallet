@@ -1,5 +1,27 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-const Navigation = () => <div>Navigation</div>;
+import css from './Navigation.module.css';
+
+const ativeStyle = {
+  color: 'rgba(0, 0, 0, .3)',
+};
+
+const Navigation = () => {
+  return (
+    <ul className={css.wrapNav}>
+      <li>
+        <NavLink to="/home" exact activeStyle={ativeStyle}>
+          Главная
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/diagram" exact activeStyle={ativeStyle}>
+          Статистика
+        </NavLink>
+      </li>
+    </ul>
+  );
+};
 
 export default Navigation;
