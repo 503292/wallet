@@ -1,0 +1,22 @@
+.wrapBalance {
+  height: 90px;
+  width: 300px;
+  margin: 0 auto;
+  background-color: #3a5374;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  color: #fff;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+.wrapBalance p {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.balace {
+}
+.pcs {
+}
