@@ -1,0 +1,7 @@
+.chart_main_div {
+  display: flex;
+  flex-flow: column;
+  width: 150px;
+  height: 150px;
+  background-color: goldenrod;
+}

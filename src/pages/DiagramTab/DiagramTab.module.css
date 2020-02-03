@@ -1,0 +1,6 @@
+.diagramTab_main_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 980px;
+}
