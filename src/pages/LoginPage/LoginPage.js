@@ -1,11 +1,24 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import LogPage from '../../components/LoginPage/loginPage';
+import RegistrationPage from '../../components/RegistationPage/registrationPage';
 
-class LoginPage extends Component {
-  state = {};
+const LoginPage = () => {
+  const [registration, setRegistration] = useState(false);
 
-  render() {
-    return <>Login</>;
-  }
-}
+  const goToRegistration = () => setRegistration(true);
+  const returnToLogin = () => setRegistration(false);
+
+  return (
+    <>
+      {registration ? (
+        <RegistrationPage onClick={returnToLogin} />
+      ) : (
+        <LogPage onClick={goToRegistration} />
+      )}
+
+      {/* <RegistrationPage /> */}
+    </>
+  );
+};
 
 export default LoginPage;
