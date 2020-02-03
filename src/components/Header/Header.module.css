@@ -1,3 +1,29 @@
 .wrapHeader {
-  background-color: tomato;
+  background-color: #284060;
+  color: #758397;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+}
+.logoWrap {
+  display: flex;
+
+  margin: auto 0;
+}
+.logo {
+  margin: 0 10px 0;
+}
+.logoText {
+  /* font-family: ; */
+}
+
+.logOutWrap {
+  display: flex;
+  margin: auto 0;
+}
+.logoOut {
+  margin: 0 10px 0;
+}
+.name {
+  margin: 0 10px 0;
 }

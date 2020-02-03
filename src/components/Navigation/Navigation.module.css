@@ -6,4 +6,9 @@
 
 .link {
   text-decoration: none;
+  padding: 10px;
+}
+.icons {
+  border: 1px solid #000;
+  border-radius: 5px;
 }
