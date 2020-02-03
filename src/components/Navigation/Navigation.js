@@ -19,34 +19,39 @@ const Navigation = () => {
   return (
     <ul className={css.wrapNav}>
       <li>
-        <NavLink className={css.link} to="/home" exact activeStyle={ativeStyle}>
-          <Home className={css.icons} />
+        <NavLink
+          className={css.linkHome}
+          to="/home"
+          exact
+          activeStyle={ativeStyle}
+        >
+          <Home className={`${css.iconHome} ${css.icons}`} />
           {/* <img className={css.icons} src={home} alt="Главная" /> */}
           {/* <div>Главная</div> */}
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.link}
+          className={css.linkDiagram}
           to="/diagram"
           exact
           activeStyle={ativeStyle}
         >
-          <Diagram className={css.icons} />
+          <Diagram className={`${css.iconDiagram} ${css.icons}`} />
           {/* <img className={css.icons} src={diagram} alt="Статистика" /> */}
           {/* <div>Статистика</div> */}
         </NavLink>
       </li>
       <li>
         <NavLink
-          className={css.link}
+          className={css.linkCurrency}
           to="/currency"
           exact
           activeStyle={ativeStyle}
         >
-          <Currency className={css.icons} />
+          <Currency className={`${css.iconCurrency} ${css.icons}`} />
           {/* <img className={css.icons} src={currency} alt="Курс" /> */}
-          {/* <div>Курс</div> */}
+          {/* <div>Баланс</div> */}
         </NavLink>
       </li>
     </ul>

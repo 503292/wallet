@@ -2,7 +2,7 @@
   display: flex;
   list-style: none;
   justify-content: center;
-  padding: 8px 0;
+  align-items: center;
   background-color: #3a5374;
   margin-bottom: 20px;
   box-shadow: 0px 4px 10px -4px #3a5374;
@@ -24,4 +24,38 @@
 .icons:active {
   background-color: #66778e;
   fill: #fff;
+}
+@media (min-width: 768px) {
+  .wrapNav {
+    height: 80px;
+    background-color: #f9fafc;
+    margin-bottom: 20px;
+    box-shadow: none;
+    color: #a9b3bf;
+    font-size: 15px;
+  }
+  .icons {
+    margin: 0 7px;
+    background-color: transparent;
+    fill: #a9b3bf;
+  }
+  .icons:hover,
+  .icons:focus,
+  .icons:active {
+    background-color: transparent;
+    fill: #3a5374;
+  }
+
+  .linkHome::after {
+    content: 'Главная |';
+  }
+  .linkDiagram::after {
+    content: 'Статистика  |';
+  }
+  .linkCurrency::after {
+    content: 'Баланс';
+  }
+}
+
+@media (min-width: 1280px) {
 }
