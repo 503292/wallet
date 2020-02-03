@@ -11,7 +11,7 @@ class DashboardPage extends Component {
 
   render() {
     return (
-      <>
+      <div className={css.dashboardWrap}>
         <header>
           <Header />
         </header>
@@ -21,7 +21,7 @@ class DashboardPage extends Component {
             <Balance>Balance</Balance>
           </div>
         </main>
-      </>
+      </div>
     );
   }
 }
