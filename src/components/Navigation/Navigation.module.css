@@ -5,7 +5,6 @@
   align-items: center;
   background-color: #3a5374;
   margin-bottom: 20px;
-  padding: 8px 0;
   box-shadow: 0px 4px 10px -4px #3a5374;
 }
 
@@ -15,16 +14,31 @@
 }
 .icons {
   border-radius: 5px;
-  margin: 0 7px;
-
   background-color: #284060;
-  fill: #a9b3bf;
 }
 .icons:hover,
 .icons:focus,
 .icons:active {
   background-color: #66778e;
   fill: #fff;
+  transition: all 200ms;
+}
+.linkHome,
+.linkDiagram,
+.linkCurrency {
+  fill: #a9b3bf;
+  padding: 0 7px;
+  text-decoration: none;
+}
+.selected {
+  fill: white;
+}
+.iconHome,
+.iconDiagram,
+.iconCurrency {
+  fill: inherit;
+  margin: 0 10px;
+  padding: 0;
 }
 @media (min-width: 768px) {
   .wrapNav {
@@ -46,17 +60,21 @@
     background-color: transparent;
     fill: #3a5374;
   }
-
-  .linkHome::after {
-    content: 'Главная |';
+  .iconHome,
+  .iconDiagram,
+  .iconCurrency {
+    display: inline-block;
   }
-  .linkDiagram::after {
-    content: 'Статистика  |';
+  .wrapIcon {
+    display: flex;
+    align-items: center;
   }
-  .linkCurrency::after {
-    content: 'Баланс';
+  .descr {
+    list-style: none;
+    text-decoration: none;
+    color: #a9b3bf;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
 }
