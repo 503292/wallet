@@ -2,8 +2,95 @@
   display: flex;
   list-style: none;
   justify-content: center;
+  align-items: center;
+  background-color: #3a5374;
+  margin-bottom: 20px;
+  padding: 10px 0;
+  box-shadow: 0px 4px 10px -4px #3a5374;
 }
 
 .link {
+  content: '';
+  display: block;
+}
+.icons {
+  border-radius: 5px;
+  background-color: #284060;
+}
+.icons:hover,
+.icons:focus,
+.icons:active {
+  background-color: #66778e;
+  fill: #fff;
+  transition: all 200ms;
+}
+.linkHome,
+.linkDiagram,
+.linkCurrency {
+  fill: #a9b3bf;
+  padding: 0 7px;
   text-decoration: none;
+}
+.selected {
+  fill: white;
+}
+.iconHome,
+.iconDiagram,
+.iconCurrency {
+  fill: inherit;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .wrapNav {
+    height: 80px;
+    background-color: #f9fafc;
+    margin-bottom: 20px;
+    box-shadow: none;
+    color: #a9b3bf;
+    font-size: 15px;
+  }
+  .icons {
+    margin: 0 7px;
+    background-color: transparent;
+    fill: #a9b3bf;
+  }
+  .icons:hover,
+  .icons:focus,
+  .icons:active {
+    background-color: transparent;
+    fill: #3a5374;
+  }
+  .iconHome,
+  .iconDiagram,
+  .iconCurrency {
+    display: inline-block;
+  }
+  .wrapIcon {
+    display: flex;
+    align-items: center;
+  }
+  .descr {
+    color: #a9b3bf;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapNav {
+    height: 140px;
+    width: 100%;
+    background-color: #3a5374;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+  }
+  .wrapIcon {
+    padding: 20px;
+    width: 100%;
+  }
+  .linkHome,
+  .linkDiagram,
+  .linkCurrency {
+    padding: 0;
+  }
 }
