@@ -15,8 +15,6 @@ const LoginPage = () => {
       ) : (
         <LogPage onClick={goToRegistration} />
       )}
-
-      {/* <RegistrationPage /> */}
     </>
   );
 };
