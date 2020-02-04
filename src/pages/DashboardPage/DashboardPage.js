@@ -27,7 +27,7 @@ class DashboardPage extends Component {
           </div>
           <div className={css.tabsWrap}>
             <Switch>
-              <Route path="/home" component={HomeTab} />
+              <Route path="/" exact component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
               <Route path="/currency" component={CurrencyTab} />
 
