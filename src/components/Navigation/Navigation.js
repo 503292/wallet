@@ -14,7 +14,8 @@ const Navigation = () => {
     <div className={css.wrapNav}>
       <NavLink
         className={css.linkHome}
-        to="/home"
+        to="/"
+        exact
         activeClassName={css.selected}
       >
         <div className={css.wrapIcon}>
