@@ -12,6 +12,7 @@ class DashboardPage extends Component {
   state = {};
 
   render() {
+    const widthDevice = window.screen.width;
     return (
       <div className={css.dashboardWrap}>
         <header>
@@ -31,6 +32,9 @@ class DashboardPage extends Component {
               {/* <Route component={NotFoundPage} /> */}
             </Switch>
           </div>
+          {widthDevice <= 1023 && widthDevice >= 768 && (
+            <Currency>Currency</Currency>
+          )}
         </main>
       </div>
     );
