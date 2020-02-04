@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import styles from './loginP.module.css';
+import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 
 const loginPage = ({ onClick }) => {
   // const [users, setUser] = useState([]);
@@ -20,6 +21,7 @@ const loginPage = ({ onClick }) => {
     <div className="LoginPage">
       <div />
       <div className={styles.loginDiv}>
+        <Logo className={styles.logo} />
         <h1 className={styles.head}> Wallet</h1>
         <form className={styles.loginForm} onSubmit={addUser}>
           <input type="text" value={user.email} placeholder="E-mail" />
@@ -28,7 +30,11 @@ const loginPage = ({ onClick }) => {
             Войти
           </button>
         </form>
-        <button type="button" onClick={onClick}>
+        <button
+          className={styles.registraationButt}
+          type="button"
+          onClick={onClick}
+        >
           Регистрация
         </button>
       </div>
