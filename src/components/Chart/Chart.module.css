@@ -7,7 +7,15 @@
 }
 
 @media (min-width: 768px) {
+  .chart_main_div {
+    width: 768px;
+    /* border: 1px solid black; */
+  }
 }
 
 @media (min-width: 1024px) {
+  .chart_main_div {
+    width: 320px;
+    /* border: 1px solid black; */
+  }
 }

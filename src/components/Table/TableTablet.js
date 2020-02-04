@@ -4,7 +4,7 @@ import React from 'react';
 import Select from 'react-select';
 import s from './Table.module.css';
 
-const Table = () => {
+const TableTablet = () => {
   const optionsMonth = [{ value: 'month', label: 'месяц' }];
   const optionsYear = [{ value: 'year', label: 'год' }];
   const data = [
@@ -89,4 +89,4 @@ const Table = () => {
   );
 };
 
-export default Table;
+export default TableTablet;
