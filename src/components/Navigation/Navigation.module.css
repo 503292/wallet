@@ -15,16 +15,31 @@
 }
 .icons {
   border-radius: 5px;
-  margin: 0 7px;
-
   background-color: #284060;
-  fill: #a9b3bf;
+  /* fill: #a9b3bf; */
 }
 .icons:hover,
 .icons:focus,
 .icons:active {
   background-color: #66778e;
   fill: #fff;
+  transition: all 200ms;
+}
+.linkHome,
+.linkDiagram,
+.linkCurrency {
+  fill: #a9b3bf;
+  padding: 0 7px;
+}
+.selected {
+  fill: white;
+}
+.iconHome,
+.iconDiagram,
+.iconCurrency {
+  fill: inherit;
+  margin: 0;
+  padding: 0;
 }
 @media (min-width: 768px) {
   .wrapNav {
