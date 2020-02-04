@@ -1,0 +1,75 @@
+.table_main_div {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  border: 1px solid blue;
+  font-family: 'Helvetica Roman';
+}
+
+.select_table {
+  display: flex;
+  width: 100wh;
+  justify-content: space-between;
+}
+
+.select_options {
+  width: 100px;
+}
+
+.table_main {
+  width: 100%;
+  /* padding: 0 10px; */
+  text-align: center;
+}
+
+.dataCell_category,
+.headerCell_category {
+  text-align: left;
+}
+
+.headerCell_category {
+  height: 50px;
+}
+.table_thead {
+  background-color: #f3f6f6;
+  /* padding: 0 10px; */
+}
+
+.table_thead,
+.table_tr,
+.table_tbody,
+.table_tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table_tr {
+  font-weight: 300;
+}
+
+.table_total_amount_div {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  border-top: 1px solid #e3e9ee;
+}
+
+.table_expenses_div,
+.table_income_div {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+
+.expenses_amount_p {
+  color: #f7a469;
+}
+
+@media (min-width: 768px) {
+  .table_main_div {
+    width: 768px;
+  }
+}
