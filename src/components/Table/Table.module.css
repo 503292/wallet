@@ -3,14 +3,16 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  width: 320px;
-  border: 1px solid blue;
+  max-width: 320px;
+  /* padding: 5px; */
+  /* border: 1px solid blue; */
   font-family: 'Helvetica Roman';
 }
 
 .select_table {
   display: flex;
-  width: 100wh;
+  width: 80%;
+  padding: 5px;
   justify-content: space-between;
 }
 
@@ -20,13 +22,14 @@
 
 .table_main {
   width: 100%;
-  /* padding: 0 10px; */
+  padding: 10px 0;
   text-align: center;
 }
 
 .dataCell_category,
 .headerCell_category {
   text-align: left;
+  padding: 5px 0 5px 10px;
 }
 
 .headerCell_category {
@@ -34,7 +37,6 @@
 }
 .table_thead {
   background-color: #f3f6f6;
-  /* padding: 0 10px; */
 }
 
 .table_thead,
@@ -50,22 +52,30 @@
   font-weight: 300;
 }
 
-.table_total_amount_div {
-  display: flex;
-  flex-flow: column;
-  width: 100%;
-  border-top: 1px solid #e3e9ee;
+.table_tr:not(:first-child) {
+  border-top: 1px solid rgba(128, 128, 128, 0.158);
+}
+.table_tr:last-child {
+  border-top: none;
 }
 
-.table_expenses_div,
-.table_income_div {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 20px;
-}
-
-.expenses_amount_p {
+.dataCell_expenses_amount {
   color: #f7a469;
+}
+.dataCell_expenses_amount,
+.dataCell_income_amount {
+  font-weight: 700;
+}
+
+.dataCell_expenses,
+.dataCell_income {
+  font-weight: 700;
+  text-align: left;
+  padding: 5px 0 5px 10px;
+  border: none;
+}
+.table_tr:nth-child(10n) {
+  border-top: 1px solid grey;
 }
 
 @media (min-width: 768px) {

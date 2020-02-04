@@ -4,7 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import s from './Chart.module.css';
 
 const ChartItem = () => {
-  const [chartData, setChartData] = useState({
+  const [chartData] = useState({
     labels: [
       'Основные расходы',
       'Продукты',
@@ -33,6 +33,11 @@ const ChartItem = () => {
           'rgba(255, 159, 64, 0.2)',
           'rgba(255, 159, 64, 0.2)',
         ],
+        options: {
+          legend: {
+            display: false,
+          },
+        },
       },
     ],
   });
@@ -41,7 +46,7 @@ const ChartItem = () => {
     <div className={s.chart_main_div}>
       <Pie
         data={chartData}
-        width={320}
+        width={300}
         height={350}
         options={{ maintainAspectRatio: false }}
       />
