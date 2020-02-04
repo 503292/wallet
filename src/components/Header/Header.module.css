@@ -11,9 +11,6 @@
   text-decoration: none;
   color: #758397;
 }
-.logoWrap:hover {
-  color: #fff;
-}
 
 .logo {
   margin: 0 10px 0;
@@ -27,6 +24,7 @@
 .logo:hover,
 .logo:focus {
   fill: #fff;
+  transition: all 200ms;
 }
 
 .logOutWrap {
@@ -38,8 +36,10 @@
   width: 20px;
   height: 20px;
 }
-.logoOut:hover {
+.logoOut:hover,
+.logoOut:focus {
   fill: #fff;
+  transition: all 200ms;
 }
 .name {
   margin: 0 10px 0;
@@ -56,23 +56,24 @@
   .logoWrap {
     color: #758397;
   }
-  .logoWrap:hover {
-    color: #758397;
-  }
+
   .logo {
     fill: #3a5374;
   }
   .logo:hover,
   .logo:focus {
     fill: #758397;
+    transition: all 200ms;
   }
   .logoText {
     color: #000;
   }
-  .logoOut:hover {
+  .logoOut:hover,
+  .logoOut:focus {
     fill: #3a5374;
+    transition: all 200ms;
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
 }
