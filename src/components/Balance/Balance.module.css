@@ -20,7 +20,7 @@
 
 @media (min-width: 768px) {
   .wrapBalance {
-    display: none;
+    /* display: none; */
   }
 }
 
@@ -28,12 +28,12 @@
   .wrapBalance p {
     width: 50%;
     justify-content: flex-start;
-
     margin: auto;
   }
   .wrapBalance {
     margin: 0 0 20px;
     width: 100%;
+    display: flex;
   }
   .balance {
     padding: 0 0 0 26px;
