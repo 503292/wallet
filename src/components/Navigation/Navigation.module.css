@@ -5,6 +5,7 @@
   align-items: center;
   background-color: #3a5374;
   margin-bottom: 20px;
+  padding: 10px 0;
   box-shadow: 0px 4px 10px -4px #3a5374;
 }
 
@@ -37,7 +38,7 @@
 .iconDiagram,
 .iconCurrency {
   fill: inherit;
-  margin: 0 10px;
+  margin: 0;
   padding: 0;
 }
 @media (min-width: 768px) {
@@ -70,11 +71,26 @@
     align-items: center;
   }
   .descr {
-    list-style: none;
-    text-decoration: none;
     color: #a9b3bf;
   }
 }
 
 @media (min-width: 1024px) {
+  .wrapNav {
+    height: 140px;
+    width: 100%;
+    background-color: #3a5374;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+  }
+  .wrapIcon {
+    padding: 20px;
+    width: 100%;
+  }
+  .linkHome,
+  .linkDiagram,
+  .linkCurrency {
+    padding: 0;
+  }
 }

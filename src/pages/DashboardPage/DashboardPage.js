@@ -17,12 +17,12 @@ class DashboardPage extends Component {
         <header>
           <Header />
         </header>
-        <main>
+        <main className={css.main}>
           <div className={css.wrapLeftBar}>
             <Navigation>Nav</Navigation>
             <Balance>Balance</Balance>
           </div>
-          <div>
+          <div className={css.tabsWrap}>
             <Switch>
               <Route path="/home" exact component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
