@@ -1,12 +1,15 @@
 .currencyContainer {
-  min-height: 380px;
+  height: 380px;
+  width: 312px;
   background-image: url('../../assets/icons/bg/bg.png');
   background-repeat: no-repeat;
+  border-radius: 3px;
+  box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
 }
 
 .currencyTable {
   margin: 0 auto; /* центруем по горизонитали внешними отступами */
-  width: 320px;
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -15,19 +18,19 @@
 }
 
 .currencyThead th {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
-}
-
-.currencyTable th {
-  padding: 16px;
   font-family: 'Helvetica Bold';
   color: #282828;
 }
 
+.currencyTable th {
+  padding: 16px;
+}
+
 .currenceTbodyTh th {
   font-family: 'Helvetica Roman';
-  font-size: 14px;
+  font-size: 13px;
   color: #2c353e;
   border-bottom: 2px solid #f3f6f6;
   font-weight: 400;
