@@ -76,4 +76,7 @@
 }
 
 @media (min-width: 1024px) {
+  .wrapHeader {
+    margin-bottom: 25px;
+  }
 }
