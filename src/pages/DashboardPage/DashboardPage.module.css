@@ -3,5 +3,22 @@
   font-weight: 700;
   font-style: bold;
 }
-.wrapLeftBar {
+
+@media (min-width: 1024px) {
+  .dashboardWrap {
+    background-color: #f9fafc;
+  }
+
+  .main {
+    display: flex;
+    padding: 0 40px;
+  }
+  .wrapLeftBar {
+    width: 30%;
+    margin-right: 30px;
+  }
+  .tabsWrap {
+    width: 70%;
+    background-color: rgb(217, 219, 219);
+  }
 }
