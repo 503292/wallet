@@ -4,6 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import s from './Chart.module.css';
 
 const ChartItem = () => {
+  // eslint-disable-next-line no-unused-vars
   const [chartData, setChartData] = useState({
     labels: [
       'Основные расходы',
