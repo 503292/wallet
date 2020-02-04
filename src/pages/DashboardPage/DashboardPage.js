@@ -23,9 +23,6 @@ class DashboardPage extends Component {
             <Balance>Balance</Balance>
             <Currency>Currency</Currency>
           </div>
-          <div>
-            <HomeTab>HomeTab</HomeTab>
-          </div>
           <div className={css.tabsWrap}>
             <Switch>
               <Route path="/home" exact component={HomeTab} />
