@@ -13,7 +13,7 @@ const loginPage = ({ onClick }) => {
 
   const addUser = e => {
     e.preventDefault();
-    console.log(user);
+    // console.log(user);
   };
 
   return (
