@@ -1,6 +1,12 @@
 .diagramTab_main_div {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
   align-items: center;
-  max-width: 980px;
+  width: 320px;
+}
+
+@media (min-width: 768px) {
+  .diagramTab_main_div {
+    width: 768px;
+  }
 }

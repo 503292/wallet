@@ -1,7 +1,19 @@
 .chart_main_div {
   display: flex;
   flex-flow: column;
-  width: 150px;
-  height: 150px;
-  background-color: goldenrod;
+  width: 320px;
+  padding: 20px;
+  border: 2px solid goldenrod;
+}
+
+.diagram_sample {
+  width: 265px;
+  height: 265px;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
 }
