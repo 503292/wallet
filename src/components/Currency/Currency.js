@@ -5,14 +5,14 @@ const Currency = () => {
   return (
     <div className={css.currencyContainer}>
       <table className={css.currencyTable}>
-        <thead>
-          <tr className={css.currencyTr}>
-            <th className={css.currencyTh}>Валюта</th>
+        <thead className={css.currencyThead}>
+          <tr>
+            <th className={css.currencyTheadTh}>Валюта</th>
             <th>Покупка</th>
             <th>Продажа</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={css.currenceTbodyTh}>
           <tr>
             <th>USD</th>
             <th>24.95</th>

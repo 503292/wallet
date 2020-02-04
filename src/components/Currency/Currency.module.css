@@ -1,21 +1,34 @@
 .currencyContainer {
-  width: 320px;
-  height: 380px;
+  min-height: 380px;
   background-image: url('../../assets/icons/bg/bg.png');
   background-repeat: no-repeat;
 }
 
-table {
+.currencyTable {
   margin: 0 auto; /* центруем по горизонитали внешними отступами */
   width: 320px;
+  border-collapse: collapse;
 }
 
-td,
-th {
-  border: 1px solid #f50; /* задаем сплошную границу размером 1 пиксель цвета #F50 */
-  padding: 10px; /* устанавливаем внутренние отступы для всех сторон */
+.currencyThead {
+  background-color: #f0f3f3;
 }
 
-/* caption {
-  padding-bottom: 19px;	/* устанавливаем внутренние отступы снизу для всех сторон */
-/* } */
+.currencyThead th {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.currencyTable th {
+  padding: 16px;
+  font-family: 'Helvetica Bold';
+  color: #282828;
+}
+
+.currenceTbodyTh th {
+  font-family: 'Helvetica Roman';
+  font-size: 14px;
+  color: #2c353e;
+  border-bottom: 2px solid #f3f6f6;
+  font-weight: 400;
+}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-
+import { Route, Switch } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
 import Currency from '../../components/Currency/Currency';
 import HomeTab from '../../components/HomeTab/HomeTab';
+import DiagramTab from '../DiagramTab/DiagramTab';
 import css from './DashboardPage.module.css';
 
 class DashboardPage extends Component {
@@ -24,6 +25,14 @@ class DashboardPage extends Component {
           </div>
           <div>
             <HomeTab>HomeTab</HomeTab>
+          </div>
+          <div>
+            <Switch>
+              <Route path="/home" exact component={HomeTab} />
+              <Route path="/diagram" component={DiagramTab} />
+
+              {/* <Route component={NotFoundPage} /> */}
+            </Switch>
           </div>
         </main>
       </div>
