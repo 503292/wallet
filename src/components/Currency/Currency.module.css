@@ -1,0 +1,21 @@
+.currencyContainer {
+  width: 320px;
+  height: 380px;
+  background-image: url('../../assets/icons/bg/bg.png');
+  background-repeat: no-repeat;
+}
+
+table {
+  margin: 0 auto; /* центруем по горизонитали внешними отступами */
+  width: 320px;
+}
+
+td,
+th {
+  border: 1px solid #f50; /* задаем сплошную границу размером 1 пиксель цвета #F50 */
+  padding: 10px; /* устанавливаем внутренние отступы для всех сторон */
+}
+
+/* caption {
+  padding-bottom: 19px;	/* устанавливаем внутренние отступы снизу для всех сторон */
+/* } */

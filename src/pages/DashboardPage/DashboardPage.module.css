@@ -2,7 +2,5 @@
   font-family: 'Helvetica Bold';
   font-weight: 700;
   font-style: bold;
-
-.wrapLeftBar {
-
+  display: flex;
 }
