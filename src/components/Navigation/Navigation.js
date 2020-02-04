@@ -7,6 +7,9 @@ import { ReactComponent as Currency } from '../../assets/icons/currency exchange
 import css from './Navigation.module.css';
 
 const Navigation = () => {
+  const widthDevice = window.screen.width;
+
+  // console.log(, 'window.screen.width');
   return (
     <ul className={css.wrapNav}>
       <li>
@@ -16,9 +19,10 @@ const Navigation = () => {
           exact
           activeClassName={css.selected}
         >
-          <Home className={`${css.iconHome} ${css.icons}`} />
-
-          {/* <div>Главная</div> */}
+          <div className={css.wrapIcon}>
+            <Home className={`${css.iconHome} ${css.icons}`} />
+            {widthDevice >= 768 && <div className={css.descr}>Главная</div>}
+          </div>
         </NavLink>
       </li>
       <li>
@@ -27,24 +31,31 @@ const Navigation = () => {
           to="/diagram"
           exact
           activeClassName={css.selected}
-          // activeStyle={ativeStyle}
         >
-          <Diagram className={`${css.iconDiagram} ${css.icons}`} />
-          {/* <div>Статистика</div> */}
+          <div className={css.wrapIcon}>
+            <Diagram className={`${css.iconDiagram} ${css.icons}`} />
+            {widthDevice >= 768 && <div className={css.descr}>Статистика</div>}
+          </div>
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          className={css.linkCurrency}
-          to="/currency"
-          exact
-          activeClassName={css.selected}
-          // activeStyle={ativeStyle}
-        >
-          <Currency className={`${css.iconCurrency} ${css.icons}`} />
-          {/* <div>Баланс</div> */}
-        </NavLink>
-      </li>
+      {widthDevice <= 1023 && (
+        <li>
+          <NavLink
+            className={css.linkCurrency}
+            to="/currency"
+            exact
+            activeClassName={css.selected}
+          >
+            <div className={css.wrapIcon}>
+              <Currency className={`${css.iconCurrency} ${css.icons}`} />
+
+              {widthDevice >= 768 && (
+                <div className={css.descr}>Баланс: 24 000.00грн</div>
+              )}
+            </div>
+          </NavLink>
+        </li>
+      )}
     </ul>
   );
 };

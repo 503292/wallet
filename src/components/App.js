@@ -33,12 +33,3 @@ class App extends Component {
 }
 
 export default App;
-// function App() {
-//   return (
-//     <div className={css.app}>
-//       <header className="App-header">App</header>
-//     </div>
-//   );
-// }
-
-// export default App;
