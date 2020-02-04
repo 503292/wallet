@@ -18,11 +18,13 @@ const loginPage = ({ onClick }) => {
   };
 
   return (
-    <div className="LoginPage">
+    <div className={styles.LoginPage}>
       <div />
       <div className={styles.loginDiv}>
-        <Logo className={styles.logo} />
-        <h1 className={styles.head}> Wallet</h1>
+        <div className={styles.divForLogo}>
+          <Logo className={styles.logo} />
+          <h1 className={styles.head}> Wallet</h1>
+        </div>
         <form className={styles.loginForm} onSubmit={addUser}>
           <input type="text" value={user.email} placeholder="E-mail" />
           <input type="text" value={user.pass} placeholder="Пароль" />
