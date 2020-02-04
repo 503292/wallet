@@ -1,5 +1,7 @@
 import React from 'react';
 
-const HomeTab = () => <>HomeTab</>;
+const HomeTab = () => {
+  return <>HomeTab</>;
+};
 
 export default HomeTab;
