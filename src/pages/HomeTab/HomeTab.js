@@ -1,5 +1,11 @@
 import React from 'react';
 
-const HomeTab = () => <>HomeTab</>;
+import Balance from '../../components/Balance/Balance';
+
+const HomeTab = () => (
+  <>
+    <Balance />
+  </>
+);
 
 export default HomeTab;
