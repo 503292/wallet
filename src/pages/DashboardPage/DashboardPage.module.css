@@ -1,4 +1,6 @@
 .dashboardWrap {
+  display: flex;
+  flex-flow: column;
   font-family: 'Helvetica Bold';
   font-weight: 700;
   font-style: bold;

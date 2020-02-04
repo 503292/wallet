@@ -1,0 +1,12 @@
+.diagramTab_main_div {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 320px;
+}
+
+@media (min-width: 768px) {
+  .diagramTab_main_div {
+    width: 768px;
+  }
+}
