@@ -8,7 +8,7 @@
 }
 
 .currencyTable {
-  margin: 0 auto; /* центруем по горизонитали внешними отступами */
+  text-align: center;
   width: 100%;
   border-collapse: collapse;
 }
