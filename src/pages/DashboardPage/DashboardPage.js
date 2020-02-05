@@ -22,15 +22,14 @@ class DashboardPage extends Component {
         <main className={`${css.main}`}>
           <div className={css.wrapLeftBar}>
             <Navigation />
-            {(widthDevice <= 767 || widthDevice >= 1024) && <Balance />}
-            {widthDevice >= 1024 && <Currency />}
+            {(widthDevice <= 767 || widthDevice >= 1279) && <Balance />}
+            {widthDevice >= 1279 && <Currency />}
           </div>
           <div className={css.tabsWrap}>
             <Switch>
               <Route path="/home" exact component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
               <Route path="/currency" component={CurrencyTab} />
-
               <Redirect to="/home" />
             </Switch>
           </div>
