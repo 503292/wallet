@@ -1,19 +1,21 @@
 .chart_main_div {
   display: flex;
   flex-flow: column;
-  width: 320px;
+  max-width: 320px;
   padding: 20px;
-  border: 2px solid goldenrod;
-}
-
-.diagram_sample {
-  width: 265px;
-  height: 265px;
-  align-self: center;
+  /* border: 2px solid goldenrod; */
 }
 
 @media (min-width: 768px) {
+  .chart_main_div {
+    width: 768px;
+    /* border: 1px solid black; */
+  }
 }
 
 @media (min-width: 1024px) {
+  .chart_main_div {
+    width: 320px;
+    /* border: 1px solid black; */
+  }
 }
