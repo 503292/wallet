@@ -6,9 +6,9 @@ import { ReactComponent as Currency } from '../../assets/icons/currency exchange
 
 import css from './Navigation.module.css';
 
-const activeStyle = {
-  backgroundColor: '#415b7d',
-};
+// const activeStyle = {
+//   backgroundColor: '#415b7d',
+// };
 
 const Navigation = () => {
   const widthDevice = window.screen.width;
@@ -19,7 +19,6 @@ const Navigation = () => {
         to="/home"
         exact
         activeClassName={css.selected}
-        activeStyle={activeStyle}
       >
         <div className={css.wrapIcon}>
           <Home className={`${css.iconHome} ${css.icons}`} />
@@ -30,7 +29,6 @@ const Navigation = () => {
         className={css.linkDiagram}
         to="/diagram"
         activeClassName={css.selected}
-        activeStyle={activeStyle}
       >
         <div className={css.wrapIcon}>
           <Diagram className={`${css.iconDiagram} ${css.icons}`} />

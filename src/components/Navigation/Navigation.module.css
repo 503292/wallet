@@ -108,4 +108,21 @@
   .selected {
     fill: white;
   }
+  .linkHome:active,
+  .linkHome:hover,
+  .linkHome:focus {
+    background-color: #415b7d;
+    color: #fff;
+  }
+
+  .linkDiagram:active,
+  .linkDiagram:hover,
+  .linkDiagram:focus {
+    background-color: #415b7d;
+  }
+  .icons:hover,
+  .icons:focus,
+  .icons:active {
+    background-color: transparent;
+  }
 }
