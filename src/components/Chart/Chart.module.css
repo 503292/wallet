@@ -1,21 +1,31 @@
 .chart_main_div {
   display: flex;
   flex-flow: column;
-  max-width: 320px;
+  justify-content: center;
+  width: 320px;
   padding: 20px;
   /* border: 2px solid goldenrod; */
 }
 
 @media (min-width: 768px) {
   .chart_main_div {
-    width: 768px;
+    width: 700px;
+    padding: 200px;
+    height: 500px;
+    box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
     /* border: 1px solid black; */
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .chart_main_div {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     width: 320px;
+    height: auto;
+    padding: 20px;
+    box-shadow: none;
     /* border: 1px solid black; */
   }
 }
