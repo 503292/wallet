@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as yup from 'yup';
+import { Link } from 'react-router-dom';
 import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 
-const registrationPage = ({ onClick }) => {
+const registrationPage = () => {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
 
@@ -65,20 +65,12 @@ const registrationPage = ({ onClick }) => {
             Регистрация
           </button>
         </form>
-        <button
-          className={styles.registrationButt}
-          type="button"
-          onClick={onClick}
-        >
+        <Link className={styles.registrationLink} to="./login">
           Войти
-        </button>
+        </Link>
       </section>
     </main>
   );
-};
-
-registrationPage.propTypes = {
-  onClick: PropTypes.func.isRequired,
 };
 
 export default registrationPage;
