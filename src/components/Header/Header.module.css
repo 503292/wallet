@@ -1,16 +1,17 @@
 .wrapHeader {
-  color: #758397;
+  color: var(--color-icon-wallet);
   display: flex;
   justify-content: space-between;
   height: 40px;
   width: 320px;
   margin: 0 auto;
+  font-family: var(--regular-fonts);
 }
 .logoWrap {
   display: flex;
   margin: auto 0;
   text-decoration: none;
-  color: #758397;
+  color: var(--color-icon-wallet);
 }
 
 .logo {
@@ -20,7 +21,7 @@
   fill: #758397;
 }
 .logoText {
-  /* font-family: ; */
+  font-family: var(--logo-fonts);
 }
 .logo:hover,
 .logo:focus {
