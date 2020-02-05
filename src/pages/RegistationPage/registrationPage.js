@@ -1,26 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
-import styles from './loginP.module.css';
+import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
-import photoTel from '../../assets/photos/loginPhoto.png';
+import registerPhoto from '../../assets/photos/registerPhoto.png';
 
-const loginPage = ({ onClick }) => {
-  // const [users, setUser] = useState([]);
+const registrationPage = ({ onClick }) => {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
+
   const user = yup.object().shape({
-    email: yup.string().required(),
-    pass: yup.string().required(),
+    email: yup
+      .string()
+      .email('Invalid email address')
+      .required(),
+    pass: yup
+      .string()
+      .email('Invalid pass')
+      .required(),
+    passConfirm: yup
+      .string()
+      .email('Passwords do not match')
+      .required(),
+    name: yup
+      .string()
+      .email('Please enter your name')
+      .required(),
   });
 
   const addUser = e => {
     e.preventDefault();
     // console.log(user);
   };
-
   return (
-    <main className={styles.LoginPage}>
+    <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
         {devicewidth > tablewidth && (
           <div className={styles.desktopElements}>
@@ -28,38 +41,44 @@ const loginPage = ({ onClick }) => {
               width="299"
               height="599"
               alt="Welcome to Wallet"
-              src={photoTel}
+              src={registerPhoto}
             />
             <p className={styles.financeHeadline}>Finance App </p>
           </div>
         )}
       </section>
-      <section className={styles.loginDiv}>
-        <div className={styles.divForLogo}>
+      <section className={styles.RegisterDiv}>
+        <article className={styles.divForLogo}>
           <Logo className={styles.logo} />
           <h1 className={styles.head}> Wallet</h1>
-        </div>
-        <form className={styles.loginForm} onSubmit={addUser}>
+        </article>
+        <form className={styles.RegisterForm} onSubmit={addUser}>
           <input type="text" value={user.email} placeholder="E-mail" />
           <input type="text" value={user.pass} placeholder="Пароль" />
+          <input
+            type="text"
+            value={user.passConfirm}
+            placeholder="Подтвердите пароль"
+          />
+          <input type="text" value={user.name} placeholder="Ваше имя" />
           <button className={styles.formButton} type="submit">
-            Войти
+            Регистрация
           </button>
         </form>
         <button
-          className={styles.registraationButt}
+          className={styles.registrationButt}
           type="button"
           onClick={onClick}
         >
-          Регистрация
+          Войти
         </button>
       </section>
     </main>
   );
 };
 
-loginPage.propTypes = {
+registrationPage.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default loginPage;
+export default registrationPage;

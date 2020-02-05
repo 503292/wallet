@@ -1,16 +1,17 @@
 .wrapHeader {
-  color: #758397;
+  color: var(--color-icon-wallet);
   display: flex;
   justify-content: space-between;
   height: 40px;
-  max-width: 100%;
+  width: 320px;
   margin: 0 auto;
+  font-family: var(--regular-fonts);
 }
 .logoWrap {
   display: flex;
   margin: auto 0;
   text-decoration: none;
-  color: #758397;
+  color: var(--color-icon-wallet);
 }
 
 .logo {
@@ -20,7 +21,7 @@
   fill: #758397;
 }
 .logoText {
-  /* font-family: ; */
+  font-family: var(--logo-fonts);
 }
 .logo:hover,
 .logo:focus {
@@ -50,7 +51,7 @@
   .wrapHeader {
     padding: 25px 30px;
     height: 80px;
-    max-width: 768px;
+    width: 768px;
   }
   .logoWrap {
     color: #758397;
@@ -77,6 +78,6 @@
 @media (min-width: 1280px) {
   .wrapHeader {
     /* margin-bottom: 25px; */
-    max-width: 1200px;
+    width: 1200px;
   }
 }

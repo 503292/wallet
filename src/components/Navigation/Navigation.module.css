@@ -73,6 +73,12 @@
   .descr {
     color: #a9b3bf;
   }
+  .notActive {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -83,14 +89,40 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
+    /* padding: 0; */
   }
   .wrapIcon {
     padding: 20px;
     width: 100%;
   }
   .linkHome,
-  .linkDiagram,
-  .linkCurrency {
+  .linkDiagram {
     padding: 0;
+    width: 100%;
+  }
+  .iconHome,
+  .iconDiagram,
+  .iconCurrency {
+    fill: inherit;
+  }
+  .selected {
+    fill: white;
+  }
+  .linkHome:active,
+  .linkHome:hover,
+  .linkHome:focus {
+    background-color: #415b7d;
+    color: #fff;
+  }
+
+  .linkDiagram:active,
+  .linkDiagram:hover,
+  .linkDiagram:focus {
+    background-color: #415b7d;
+  }
+  .icons:hover,
+  .icons:focus,
+  .icons:active {
+    background-color: transparent;
   }
 }
