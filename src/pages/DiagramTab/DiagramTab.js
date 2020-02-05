@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import s from './DiagramTab.module.css';
 import Chart from '../../components/Chart/Chart';
-import Table from '../../components/Table/Table';
-// import TableTablet from '../../components/Table/TableTablet';
+// import Table from '../../components/Table/Table';
+import TableTablet from '../../components/Table/TableTablet';
+import 'chartjs-plugin-labels';
 
 const DiagramTab = () => {
   const [chartData] = useState({
@@ -18,9 +19,19 @@ const DiagramTab = () => {
       'Досуг',
       'Другие расходы',
     ],
+
     options: {
+      plugins: {
+        labels: {
+          render: 'label',
+          fontSize: 12,
+          fontColor: '#fff',
+          textShadow: true,
+        },
+      },
       legend: {
         display: false,
+        // display: true,
       },
     },
     datasets: [
@@ -51,16 +62,16 @@ const DiagramTab = () => {
       <p className={s.statistic_p}>статистика</p>
       <div className={s.diagramTab_main_div}>
         <Chart chartData={chartData} />
-        <Table
-          labels={chartData.labels}
-          value={chartData.datasets.map(el => el.data)}
-          color={chartData.datasets.map(el => el.backgroundColor)}
-        />
-        {/* <TableTablet
+        {/* <Table
           labels={chartData.labels}
           value={chartData.datasets.map(el => el.data)}
           color={chartData.datasets.map(el => el.backgroundColor)}
         /> */}
+        <TableTablet
+          labels={chartData.labels}
+          value={chartData.datasets.map(el => el.data)}
+          color={chartData.datasets.map(el => el.backgroundColor)}
+        />
       </div>
     </div>
   );

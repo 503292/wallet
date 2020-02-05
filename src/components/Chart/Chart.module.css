@@ -13,7 +13,7 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .chart_main_div {
     width: 320px;
     /* border: 1px solid black; */
