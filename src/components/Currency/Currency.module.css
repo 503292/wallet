@@ -1,38 +1,70 @@
 .currencyContainer {
-  height: 380px;
-  max-width: 320px;
-  background-image: url('../../assets/icons/bg/bg.png');
-  background-repeat: no-repeat;
+  height: 460px;
+  width: 320px;
+  margin: 0 auto;
+  background-image: url('../../assets/photos/bgDestop.png');
   border-radius: 3px;
-
   box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
 }
 
 .currencyTable {
-  text-align: center;
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
-.currencyThead {
-  background-color: #f0f3f3;
-}
-
-.currencyThead th {
-  font-size: 15px;
+.currencyTable th {
+  background-color: #f3f6f6;
+  padding: 20px;
+  font-size: 14px;
   font-weight: 700;
   font-family: 'Helvetica Bold';
   color: #282828;
 }
 
-.currencyTable th {
-  padding: 16px;
-}
-
-.currenceTbodyTh th {
+.currencyTable td {
+  padding: 12px;
+  font-size: 14px;
   font-family: 'Helvetica Roman';
-  font-size: 13px;
   color: #2c353e;
   border-bottom: 2px solid #f3f6f6;
   font-weight: 400;
 }
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+/* .currencyContainer {
+  height: 380px;
+  width: 310px;
+  margin: 0 auto;
+  background-image: url('../../assets/photos/bg\ destop.png');
+  border-radius: 3px;
+  box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
+}
+
+.currencyTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.currencyTable th {
+  background-color: #f0f3f3;
+  padding: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Helvetica Bold';
+  color: #282828;
+}
+
+.currencyTable td {
+  padding: 16px;
+  font-size: 14px;
+  font-family: 'Helvetica Roman';
+  color: #2c353e;
+  border-bottom: 2px solid #f3f6f6;
+  font-weight: 400;
+} */

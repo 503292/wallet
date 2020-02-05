@@ -5,28 +5,28 @@ const Currency = () => {
   return (
     <div className={css.currencyContainer}>
       <table className={css.currencyTable}>
-        <thead className={css.currencyThead}>
+        <thead>
           <tr>
-            <th className={css.currencyTheadTh}>Валюта</th>
+            <th>Валюта</th>
             <th>Покупка</th>
             <th>Продажа</th>
           </tr>
         </thead>
-        <tbody className={css.currenceTbodyTh}>
+        <tbody>
           <tr>
-            <th>USD</th>
-            <th>24.95</th>
-            <th>25.00</th>
+            <td>USD</td>
+            <td>24.95</td>
+            <td>25.00</td>
           </tr>
           <tr>
-            <th>EUR</th>
-            <th>26.90</th>
-            <th>27.00</th>
+            <td>EUR</td>
+            <td>26.90</td>
+            <td>27.00</td>
           </tr>
           <tr>
-            <th>RUB</th>
-            <th>0.30</th>
-            <th>0.35</th>
+            <td>RUB</td>
+            <td>0.30</td>
+            <td>0.35</td>
           </tr>
         </tbody>
       </table>
