@@ -73,6 +73,12 @@
   .descr {
     color: #a9b3bf;
   }
+  .notActive {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+  }
 }
 
 @media (min-width: 1024px) {
