@@ -1,9 +1,10 @@
 .wrapHeader {
-  background-color: #284060;
   color: #758397;
   display: flex;
   justify-content: space-between;
   height: 40px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 .logoWrap {
   display: flex;
@@ -47,11 +48,10 @@
 
 @media (min-width: 768px) {
   .wrapHeader {
-    background-color: #fff;
     padding: 25px 30px;
     height: 80px;
-    box-shadow: 0px 4px 7px -4px #284060;
-    margin-bottom: 5px;
+
+    max-width: 768px;
   }
   .logoWrap {
     color: #758397;
@@ -75,8 +75,9 @@
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .wrapHeader {
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
+    max-width: 1200px;
   }
 }

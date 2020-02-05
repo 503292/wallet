@@ -5,6 +5,9 @@
   font-weight: 700;
   font-style: bold;
 }
+.header {
+  background-color: #284060;
+}
 
 @media (min-width: 768px) {
   .dashboardWrap {
@@ -13,9 +16,14 @@
   .tabsWrap {
     background-color: #fff;
   }
+  .header {
+    background-color: #fff;
+    box-shadow: 0px 4px 7px -4px #284060;
+    margin-bottom: 5px;
+  }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .dashboardWrap {
     background-color: #f0f0f0;
     height: 100vh;
@@ -33,5 +41,21 @@
   .tabsWrap {
     max-width: 855px;
     background-color: #fff;
+  }
+}
+
+.container {
+  max-width: 300px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 718px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
   }
 }
