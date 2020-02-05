@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
+import CurrencyTab from '../CurrencyTab/CurrencyTab';
 import Currency from '../../components/Currency/Currency';
 import HomeTab from '../HomeTab/HomeTab';
 import DiagramTab from '../DiagramTab/DiagramTab';
@@ -15,26 +16,24 @@ class DashboardPage extends Component {
     const widthDevice = window.screen.width;
     return (
       <div className={css.dashboardWrap}>
-        <header>
+        <header className={css.header}>
           <Header />
         </header>
-        <main className={css.main}>
+        <main className={`${css.main}`}>
           <div className={css.wrapLeftBar}>
-            <Navigation>Nav</Navigation>
-            <Balance>Balance</Balance>
-            <Currency>Currency</Currency>
+            <Navigation />
+            {(widthDevice <= 767 || widthDevice >= 1024) && <Balance />}
+            {widthDevice >= 1024 && <Currency />}
           </div>
           <div className={css.tabsWrap}>
             <Switch>
               <Route path="/home" exact component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
+              <Route path="/currency" component={CurrencyTab} />
 
-              {/* <Route component={NotFoundPage} /> */}
+              <Redirect to="/home" />
             </Switch>
           </div>
-          {widthDevice <= 1023 && widthDevice >= 768 && (
-            <Currency>Currency</Currency>
-          )}
         </main>
       </div>
     );
