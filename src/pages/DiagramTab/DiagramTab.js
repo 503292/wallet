@@ -21,7 +21,6 @@ const DiagramTab = () => {
     options: {
       legend: {
         display: false,
-        position: 'bottom',
       },
     },
     datasets: [
