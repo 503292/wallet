@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import Select from 'react-select';
+// import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
 const Table = () => {
@@ -88,5 +89,9 @@ const Table = () => {
     </div>
   );
 };
+
+// Table.propTypes = {
+//   chartData: PropTypes.shape({}).isRequired,
+// };
 
 export default Table;
