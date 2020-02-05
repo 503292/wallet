@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+// import Loader from './Loader/Loader';
+
 import routes from '../routes/routes';
 // import css from './App.module.css';
 
@@ -10,6 +13,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        {/* <Loader /> */}
         <Switch>
           <Route
             exact

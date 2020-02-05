@@ -4,7 +4,7 @@ import React from 'react';
 import Select from 'react-select';
 import s from './Table.module.css';
 
-const Table = () => {
+const TableTablet = () => {
   const optionsMonth = [{ value: 'month', label: 'месяц' }];
   const optionsYear = [{ value: 'year', label: 'год' }];
   const data = [
@@ -44,49 +44,30 @@ const Table = () => {
           defaultValue={optionsYear[0]}
         />
       </div>
-      <table className={s.table_main}>
-        <thead className={s.table_thead}>
-          <tr className={s.table_tr}>
-            <th className={s.headerCell_category} width="75%">
-              Категория
-            </th>
-            <th className={s.headerCell_amount} width="25%">
-              Сумма
-            </th>
-          </tr>
-        </thead>
-        <tbody className={s.table_tbody}>
-          {data.map(el => (
-            <tr className={s.table_tr} key={el.backgroundColor}>
-              <td className={s.dataCell_category} width="75%">
-                {/* <div className={s.color_block} /> */}
-                {el.labels}
-              </td>
-              <td className={s.dataCell_amount} width="25%">
-                {el.value}
-              </td>
-            </tr>
-          ))}
-          <tr className={s.table_tr}>
-            <td className={s.dataCell_expenses} width="75%">
-              Расходы:
-            </td>
-            <td className={s.dataCell_expenses_amount} width="25%">
-              7150
-            </td>
-          </tr>
-          <tr className={s.table_tr}>
-            <td className={s.dataCell_income} width="75%">
-              Доходы:
-            </td>
-            <td className={s.dataCell_income_amount} width="25%">
-              7150
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <ul className={s.table_main}>
+        <li className={s.table_thead}>
+          <p className={s.headerCell_category}>Категория</p>
+          <p className={s.headerCell_amount}>Сумма</p>
+        </li>
+        {data.map(el => (
+          <li className={s.table_tr}>
+            <p className={s.dataCell_category}>{el.labels}</p>
+            <p className={s.dataCell_amount}>{el.value}</p>
+          </li>
+        ))}
+      </ul>
+      <div className={s.bottom_div}>
+        <div className={s.table_tr_bottom}>
+          <p className={s.dataCell_expenses}>Расходы:</p>
+          <p className={s.dataCell_expenses_amount}>745</p>
+        </div>
+        <div className={s.table_tr_bottom}>
+          <p className={s.dataCell_income}>Доходы:</p>
+          <p className={s.dataCell_income_amount}>745</p>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Table;
+export default TableTablet;

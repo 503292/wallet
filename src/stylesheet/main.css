@@ -1,5 +1,5 @@
 @import './libs/normalize.css';
-@import './fonts.css';
+@import '../assets/fonts/roboto.css';
 @import './vars.css';
 
 html {
@@ -19,7 +19,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   color: rgb(28, 38, 52); */
   line-height: 1.2;
-  min-width: 320px;
+  /* min-width: 320px; */
 }
 
 ​img {

@@ -14,7 +14,7 @@ const Navigation = () => {
     <div className={css.wrapNav}>
       <NavLink
         className={css.linkHome}
-        to="/"
+        to="/home"
         exact
         activeClassName={css.selected}
       >
@@ -35,7 +35,7 @@ const Navigation = () => {
       </NavLink>
 
       <NavLink
-        className={css.linkCurrency}
+        className={widthDevice < 768 ? css.linkCurrency : css.notActive}
         to="/currency"
         activeClassName={css.selected}
       >
@@ -45,7 +45,9 @@ const Navigation = () => {
 
         {widthDevice >= 768 && widthDevice <= 1023 && (
           <div className={css.wrapIcon}>
-            <Currency className={`${css.iconCurrency} ${css.icons}`} />
+            <Currency
+              className={`${css.iconCurrency} ${css.icons} ${css.notActive}`}
+            />
             <div className={css.descr}>Баланс: 24 000.00грн</div>
           </div>
         )}

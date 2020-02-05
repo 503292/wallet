@@ -1,4 +1,4 @@
-/* :root {
+:root {
   --bg-color-white: #ffffff;
   --bg-color-grey: #f3f6f6;
   --bg-colot-darkgrey: #f2ecf4;
@@ -22,9 +22,9 @@
   --bg-color-button-active: #ff6c00;
   --scroll-thumb: #657890;
 
-  --logo-fonts: "BauhausCMediumBold",Tahoma,Geneva,Verdana,sans-serif;
-  --finance-fonts: "BauhausCMediumRegular",Tahoma,Geneva,Verdana,sans-serif;
-  --bold-fonts: "HelveticaNeueCyrBold",Tahoma,Geneva,Verdana,sans-serif;
-  --regular-fonts: "HelveticaNeueCyrRoman",Tahoma,Geneva,Verdana,sans-serif;
-  --light-fonts: "HelveticaNeueCyrLight",Tahoma,Geneva,Verdana,sans-serif;
-} */
+  --logo-fonts: 'Bauhaus Bold', Tahoma, Geneva, Verdana, sans-serif;
+  /* --finance-fonts: "BauhausCMediumRegular",Tahoma,Geneva,Verdana,sans-serif; */
+  --bold-fonts: 'Helvetica Bold', Tahoma, Geneva, Verdana, sans-serif;
+  --regular-fonts: 'Helvetica Roman', Tahoma, Geneva, Verdana, sans-serif;
+  /* --light-fonts: "HelveticaNeueCyrLight",Tahoma,Geneva,Verdana,sans-serif; */
+}
