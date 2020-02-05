@@ -12,7 +12,7 @@ export default {
     component: RegistrationPage,
   },
   DASHBORD_PAGE: {
-    path: '/home',
+    path: '/',
     component: DashboardPage,
   },
 };

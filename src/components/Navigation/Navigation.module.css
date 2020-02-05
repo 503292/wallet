@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   background-color: #3a5374;
-  margin-bottom: 20px;
+  margin: 0 auto 20px;
   padding: 10px 0;
   box-shadow: 0px 4px 10px -4px #3a5374;
 }
@@ -45,10 +45,10 @@
   .wrapNav {
     height: 80px;
     background-color: #f9fafc;
-    margin-bottom: 20px;
     box-shadow: none;
     color: #a9b3bf;
     font-size: 15px;
+    max-width: 768px;
   }
   .icons {
     margin: 0 7px;
@@ -78,7 +78,7 @@
 @media (min-width: 1024px) {
   .wrapNav {
     height: 140px;
-    width: 100%;
+    max-width: 1200px;
     background-color: #3a5374;
     flex-direction: column;
     align-items: flex-start;

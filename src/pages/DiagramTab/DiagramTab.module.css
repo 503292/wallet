@@ -12,7 +12,7 @@
   padding: 10px 0;
   border-radius: 4px;
   color: #fff;
-  width: 95vw;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
