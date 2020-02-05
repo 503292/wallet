@@ -46,6 +46,17 @@ const HomeTab = () => {
                   <button type="button">удалить</button>
                 </td>
               </tr>
+              <tr>
+                <td>03.02.2020</td>
+                <td>+</td>
+                <td>Регулярный доход</td>
+                <td>Бонус за январь</td>
+                <td>1100</td>
+                <td>1100</td>
+                <td>
+                  <button type="button">удалить</button>
+                </td>
+              </tr>
             </tbody>
           </table>
 

@@ -30,6 +30,7 @@ const Currency = () => {
           </tr>
         </tbody>
       </table>
+      <div className={css.imageTablet} />
     </div>
   );
 };
