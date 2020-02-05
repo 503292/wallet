@@ -89,14 +89,23 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
+    /* padding: 0; */
   }
   .wrapIcon {
     padding: 20px;
     width: 100%;
   }
   .linkHome,
-  .linkDiagram,
-  .linkCurrency {
+  .linkDiagram {
     padding: 0;
+    width: 100%;
+  }
+  .iconHome,
+  .iconDiagram,
+  .iconCurrency {
+    fill: inherit;
+  }
+  .selected {
+    fill: white;
   }
 }
