@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
-import CurrencyTabPage from '../CurrencyTabPage.js/CurrencyTabPage';
+import CurrencyTabPage from '../CurrencyTabPage/CurrencyTabPage';
 import Currency from '../../components/Currency/Currency';
 import HomeTabPage from '../HomeTabPage/HomeTabPage';
 import DiagramTab from '../DiagramTab/DiagramTab';
