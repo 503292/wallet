@@ -3,9 +3,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
-import CurrencyTab from '../CurrencyTab/CurrencyTab';
+import CurrencyTabPage from '../CurrencyTabPage.js/CurrencyTabPage';
 import Currency from '../../components/Currency/Currency';
-import HomeTab from '../HomeTab/HomeTab';
+import HomeTabPage from '../HomeTabPage/HomeTabPage';
 import DiagramTab from '../DiagramTab/DiagramTab';
 import css from './DashboardPage.module.css';
 
@@ -23,13 +23,13 @@ class DashboardPage extends Component {
           <div className={css.wrapLeftBar}>
             <Navigation />
             {(widthDevice <= 767 || widthDevice >= 1279) && <Balance />}
-            {widthDevice >= 1279 && <Currency />}
+            {widthDevice > 1279 && <Currency />}
           </div>
           <div className={css.tabsWrap}>
             <Switch>
-              <Route path="/home" exact component={HomeTab} />
+              <Route path="/home" exact component={HomeTabPage} />
               <Route path="/diagram" component={DiagramTab} />
-              <Route path="/currency" component={CurrencyTab} />
+              <Route path="/currency" component={CurrencyTabPage} />
               <Redirect to="/home" />
             </Switch>
           </div>
