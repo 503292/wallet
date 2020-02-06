@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Navigation from '../../components/Navigation/Navigation';
 import Balance from '../../components/Balance/Balance';
-import CurrencyTab from '../CurrencyTab/CurrencyTab';
+import CurrencyTabPage from '../CurrencyTabPage/CurrencyTabPage';
 import Currency from '../../components/Currency/Currency';
 import HomeTab from '../HomeTab/HomeTab';
 import DiagramTab from '../DiagramTab/DiagramTab';
@@ -29,7 +29,7 @@ class DashboardPage extends Component {
             <Switch>
               <Route path="/home" exact component={HomeTab} />
               <Route path="/diagram" component={DiagramTab} />
-              <Route path="/currency" component={CurrencyTab} />
+              <Route path="/currency" component={CurrencyTabPage} />
               <Redirect to="/home" />
             </Switch>
           </div>
