@@ -6,10 +6,12 @@ import { ReactComponent as Currency } from '../../assets/icons/currency exchange
 
 import css from './Navigation.module.css';
 
+// const activeStyle = {
+//   backgroundColor: '#415b7d',
+// };
+
 const Navigation = () => {
   const widthDevice = window.screen.width;
-
-  // console.log(, 'window.screen.width');
   return (
     <div className={css.wrapNav}>
       <NavLink

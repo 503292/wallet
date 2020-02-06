@@ -1,38 +1,82 @@
 .currencyContainer {
-  height: 380px;
-  max-width: 320px;
-  background-image: url('../../assets/icons/bg/bg.png');
-  background-repeat: no-repeat;
-  border-radius: 3px;
+  height: 460px;
+  width: 306px;
   margin: 0 auto;
+  background-image: url('../../assets/photos/bgDestop.png');
+  border-radius: 3px;
   box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
 }
 
 .currencyTable {
-  margin: 0 auto; /* центруем по горизонитали внешними отступами */
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
-.currencyThead {
-  background-color: #f0f3f3;
-}
-
-.currencyThead th {
-  font-size: 15px;
+.currencyTable th {
+  background-color: #f3f6f6;
+  padding: 20px;
+  font-size: 14px;
   font-weight: 700;
   font-family: 'Helvetica Bold';
   color: #282828;
 }
 
-.currencyTable th {
-  padding: 16px;
-}
-
-.currenceTbodyTh th {
+.currencyTable td {
+  padding: 12px;
+  font-size: 14px;
   font-family: 'Helvetica Roman';
-  font-size: 13px;
   color: #2c353e;
   border-bottom: 2px solid #f3f6f6;
   font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .currencyContainer {
+    width: 710px;
+    height: 360px;
+    background-image: url('../../assets/photos/bgTablet.png');
+    background-repeat: no-repeat;
+    margin-left: 80px;
+    position: relative;
+    border-radius: none;
+    box-shadow: none;
+  }
+
+  .currencyTable {
+    width: 50%;
+    box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
+    position: absolute;
+    top: 100px;
+    left: -50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .currencyContainer {
+    height: 380px;
+    width: 312px;
+    margin: 0 auto;
+    background-image: url('../../assets/photos/bgDestop.png');
+    box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
+    position: unset;
+  }
+
+  .currencyTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    position: unset;
+    box-shadow: none;
+  }
+
+  .currencyTable th {
+    background-color: #f0f3f3;
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .currencyTable td {
+    padding: 14px;
+  }
 }
