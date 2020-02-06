@@ -55,10 +55,9 @@
 @media (min-width: 1280px) {
   .currencyContainer {
     height: 380px;
-    width: 310px;
+    width: 312px;
     margin: 0 auto;
     background-image: url('../../assets/photos/bgDestop.png');
-    border-radius: 3px;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
     position: unset;
   }
@@ -75,17 +74,9 @@
     background-color: #f0f3f3;
     padding: 16px;
     font-size: 16px;
-    font-weight: 700;
-    font-family: 'Helvetica Bold';
-    color: #282828;
   }
 
   .currencyTable td {
     padding: 14px;
-    font-size: 14px;
-    font-family: 'Helvetica Roman';
-    color: #2c353e;
-    border-bottom: 2px solid #f3f6f6;
-    font-weight: 400;
   }
 }
