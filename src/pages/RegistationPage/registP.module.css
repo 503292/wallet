@@ -84,19 +84,6 @@
   padding-left: 56px;
 }
 
-/* input::before {
-  display: block;
-  content: 'adasdASD';
-  background-repeat: no-repeat;
-  background-size: cover;
-  margin-right: 15px;
-  margin-top: -30px;
-  width: 20px;
-  height: 16px;
-  z-index: 1;
-  background-image: url('../../assets/icons/e-mail/baseline-email-24px.svg');
-} */
-
 .formButton {
   display: block;
   width: 250px;
@@ -142,6 +129,9 @@
   height: 20px;
   fill: #3a5374;
   margin-top: 100px;
+}
+.errorInput {
+  border: 4px red;
 }
 
 @media (min-width: 768px) {
