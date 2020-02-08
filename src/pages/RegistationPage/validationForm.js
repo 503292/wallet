@@ -34,6 +34,7 @@ function ValidationForm(initialState, validate) {
     const errorValidation = validate(values);
     setErrors(errorValidation);
     setSubmiting(true);
+
     // console.log(values.email, values.pass, values.passConfirm, values.name);
   };
 
