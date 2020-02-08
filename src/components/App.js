@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 // import Loader from './Loader/Loader';
 
 import routes from '../routes/routes';
@@ -25,9 +25,10 @@ class App extends Component {
             path={routes.REGISTER_PAGE.path}
             component={routes.REGISTER_PAGE.component}
           />
-          <Route
+          <ProtectedRoute
             path={routes.DASHBORD_PAGE.path}
             component={routes.DASHBORD_PAGE.component}
+            redirectTo="/login"
           />
           <Redirect to={routes.DASHBORD_PAGE.path} />
         </Switch>
