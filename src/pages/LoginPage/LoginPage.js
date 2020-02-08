@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as yup from 'yup';
+import { Link } from 'react-router-dom';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 
-const loginPage = ({ onClick }) => {
+const loginPage = () => {
   // const [users, setUser] = useState([]);
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
@@ -46,20 +46,12 @@ const loginPage = ({ onClick }) => {
             Войти
           </button>
         </form>
-        <button
-          className={styles.registraationButt}
-          type="button"
-          onClick={onClick}
-        >
+        <Link className={styles.registraationLink} to="/register">
           Регистрация
-        </button>
+        </Link>
       </section>
     </main>
   );
-};
-
-loginPage.propTypes = {
-  onClick: PropTypes.func.isRequired,
 };
 
 export default loginPage;

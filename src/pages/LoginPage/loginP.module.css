@@ -97,7 +97,7 @@
   box-shadow: 0px 0px 10px 2px #ef6537;
 }
 
-.registraationButt {
+.registraationLink {
   border: none;
   font-size: 12px;
   background-color: none;
@@ -154,7 +154,7 @@
   .formButton {
     width: 246px;
   }
-  .registraationButt {
+  .registraationLink {
     padding-bottom: 40px;
   }
 }
