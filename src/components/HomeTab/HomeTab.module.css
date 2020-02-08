@@ -1,0 +1,108 @@
+.homeTabContainer {
+  width: 306px;
+  margin: 0 auto;
+}
+
+.homeTabTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.homeTabTable td {
+  padding: 16px;
+  font-family: 'Helvetica Roman';
+  font-size: 13px;
+  color: #282828;
+  font-weight: 400;
+}
+
+.homeTabTable tbody {
+  border-bottom: 5px solid #284060;
+}
+
+.homeTabTable tr {
+  background-color: #ffffff;
+}
+
+.homeTabTable tr:nth-child(odd) {
+  background-color: #f3f6f6;
+}
+
+.homeTabButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #284060;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  position: fixed;
+  bottom: 10px;
+  right: 44%;
+  outline: none;
+}
+
+.homeTabButton:hover {
+  background-color: #ff6c00;
+}
+
+@media (min-width: 768px) {
+  .homeTabContainer {
+    width: 710px;
+    padding-bottom: 100px;
+  }
+
+  .homeTabTable th {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Helvetica Bold';
+    color: #282828;
+    background-color: #ffffff;
+  }
+
+  .homeTabTable td {
+    color: #2c353e;
+  }
+
+  .homeTabTable tr:nth-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .homeTabTable tbody {
+    border-bottom: none;
+  }
+
+  .homeTabTable tr:nth-child(odd) {
+    background-color: #f9fafc;
+  }
+
+  .homeTabButton {
+    bottom: 30px;
+    right: 50px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .homeTabContainer {
+    width: 860px;
+  }
+
+  .homeTabTable th {
+    padding: 30px;
+  }
+
+  .homeTabTable td {
+    padding: 20px;
+  }
+
+  .homeTabTable tr:nth-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .homeTabButton {
+    bottom: 46px;
+    right: 46px;
+  }
+}
