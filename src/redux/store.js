@@ -4,7 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import Logger from 'redux-logger';
 
 import ReduxThunk from 'redux-thunk';
-import authReducers from './auth/authReducers';
+import authReducers from './session/sessionReducers';
 import financeReducers from './finance/financeReducers';
 import globalReducers from './global/globalReducers';
 

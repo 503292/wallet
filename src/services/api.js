@@ -13,4 +13,8 @@ export const setToken = token => ({
   },
 });
 
+export const register = credentials => axios.post('/register', credentials);
+
+// export const getUserByToken = token => axios.get('/login', setToken(token));
+
 export const getFinances = token => axios.get('/finance', setToken(token));
