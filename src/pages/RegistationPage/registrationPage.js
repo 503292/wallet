@@ -36,7 +36,7 @@ function registrationPage() {
   //     setFirebaseError(err);
   //   }
   // }
-
+  // console.log(isSubmiting);
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -98,6 +98,8 @@ function registrationPage() {
             placeholder="Ваше имя"
           />
           {errors.name && <p>{errors.name}</p>}
+          {/* {errors.firebaseError && <p>{firebaseError}</p>} */}
+
           <button
             disabled={isSubmiting}
             className={styles.formButton}

@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 
 function ValidationForm(initialState, validate) {
   const [values, useValues] = useState(initialState);
-  const [errors, setErrors] = useState({});
-  const [isSubmiting, setSubmiting] = useState(false);
+  const [errors, setErrors] = useState({ email: '' });
+  const [isSubmiting, setSubmiting] = useState(true);
 
   useEffect(() => {
     if (isSubmiting) {
@@ -11,20 +11,23 @@ function ValidationForm(initialState, validate) {
       if (noErrors) {
         setSubmiting(false);
       } else {
-        setSubmiting(false);
+        setSubmiting(true);
       }
     }
   }, [errors, isSubmiting]);
 
-  function handleChange(e) {
+  function onBlur() {
+    const errorValidation = validate(values);
+    setErrors(errorValidation);
+  }
+
+  async function handleChange(e) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    useValues({
+    await useValues({
       ...values,
       [e.target.name]: e.target.value,
     });
-  }
-
-  function onBlur() {
+    // useValues(values => prevValues + 1);
     const errorValidation = validate(values);
     setErrors(errorValidation);
   }
@@ -34,8 +37,7 @@ function ValidationForm(initialState, validate) {
     const errorValidation = validate(values);
     setErrors(errorValidation);
     setSubmiting(true);
-
-    // console.log(values.email, values.pass, values.passConfirm, values.name);
+    // console.log(values);
   };
 
   return { addUser, values, handleChange, onBlur, errors, isSubmiting };
