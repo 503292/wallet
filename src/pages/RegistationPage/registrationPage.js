@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 // import * as yup from 'yup';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -7,12 +7,13 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
+// import { register } from '../../services/api';
 
 import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
-  pass: '',
+  password: '',
   passConfirm: '',
   name: '',
 };
@@ -25,14 +26,16 @@ function registrationPage() {
     onBlur,
     errors,
     isSubmiting,
+    firebaseError,
   } = ValidationForm(INITIAL_STATE, AuthorizationChecker);
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
+  // const [firebaseError, setFirebaseError] = useState(false);
 
-  useEffect(() => {
-    const { onRegistrate } = this.props;
-    return onRegistrate(values);
-  });
+  // useEffect(() => {
+  //   // const { onRegistrate } = this.props;
+  //   // return onRegistrate(values);
+  // });
   // componentDidUpdate(prevProps, prevState) {
   //     const {isRegistration} = this.props;
   // }
@@ -45,8 +48,23 @@ function registrationPage() {
   //     console.error('Auth error', err);
   //     setFirebaseError(err);
   //   }
+
+  // async function authenticateUser() {
+  // const { name, email, pass } = values;
+  // const credenials = {
+  //   name,
+  //   email,
+  //   password,
+  // };
+  // try {
+  //   await register(values);
+  //   console.log();
+  // } catch (error) {
+  //   console.error('Auth error', error);
+  // setFirebaseError(err);
   // }
-  // console.log(isSubmiting);
+
+  // }
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -82,12 +100,12 @@ function registrationPage() {
             type="password"
             onChange={handleChange}
             onBlur={onBlur}
-            value={values.pass}
+            value={values.password}
             // className={errors.pass && styles.errorInput}
             placeholder="Пароль"
-            name="pass"
+            name="password"
           />
-          {errors.pass && <p>{errors.pass}</p>}
+          {errors.password && <p>{errors.password}</p>}
           <input
             type="password"
             onChange={handleChange}
@@ -108,7 +126,7 @@ function registrationPage() {
             placeholder="Ваше имя"
           />
           {errors.name && <p>{errors.name}</p>}
-          {/* {errors.firebaseError && <p>{firebaseError}</p>} */}
+          {firebaseError && <p>User with this E-mail is already exist</p>}
 
           <button
             disabled={isSubmiting}
