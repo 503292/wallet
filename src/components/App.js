@@ -16,26 +16,22 @@ class App extends Component {
   state = {};
 
   static defaultProps = {
-    token: '',
+    // token: '',
   };
 
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    getUserOperation: PropTypes.func.isRequired,
-    token: PropTypes.string,
+    // getUserOperation: PropTypes.func.isRequired,
+    // token: PropTypes.string,
   };
 
   // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps, prevState) {
-    const { token, getUserOperation } = this.props;
-    if (!token) {
-      return;
-    }
-    getUserOperation();
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { token, getUserOperation } = this.props;
+  //   if (!token) {
+  //     return;
+  //   }
   //   getUserOperation();
-  //   // TODO isLoading => false
-  //   //
   // }
 
   render() {
