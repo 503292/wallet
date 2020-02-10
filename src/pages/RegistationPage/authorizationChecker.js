@@ -6,15 +6,15 @@ export default function authorizationChecker(values) {
     errors.email = 'Invalid email address';
   }
 
-  if (!values.pass) {
-    errors.pass = 'Required';
-  } else if (values.pass.length < 7) {
-    errors.pass = 'Password should be at least 7 characters long';
+  if (!values.password) {
+    errors.password = 'Required';
+  } else if (values.password.length < 7) {
+    errors.password = 'Password should be at least 7 characters long';
   }
 
   if (!values.passConfirm) {
     errors.passConfirm = 'Required';
-  } else if (values.passConfirm !== values.pass) {
+  } else if (values.passConfirm !== values.password) {
     errors.passConfirm = 'Passwords do not match';
   }
   if (!values.name) {
