@@ -6,10 +6,11 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
+// import { register } from '../../services/api';
 
 const INITIAL_STATE = {
   email: '',
-  pass: '',
+  password: '',
   passConfirm: '',
   name: '',
 };
@@ -22,21 +23,27 @@ function registrationPage() {
     onBlur,
     errors,
     isSubmiting,
+    firebaseError,
   } = ValidationForm(INITIAL_STATE, AuthorizationChecker);
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
+  // const [firebaseError, setFirebaseError] = useState(false);
 
-  // const [firebaseError, setFirebaseError] = useState(null);
-  // function authenticateUser() {
-  //   const { name, value } = values;
-  //   try {
-  //     await;
-  //   } catch (err) {
-  //     console.error('Auth error', err);
-  //     setFirebaseError(err);
-  //   }
+  // async function authenticateUser() {
+  // const { name, email, pass } = values;
+  // const credenials = {
+  //   name,
+  //   email,
+  //   password,
+  // };
+  // try {
+  //   await register(values);
+  //   console.log();
+  // } catch (error) {
+  //   console.error('Auth error', error);
+  // setFirebaseError(err);
   // }
-  // console.log(isSubmiting);
+  // }
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -72,12 +79,12 @@ function registrationPage() {
             type="password"
             onChange={handleChange}
             onBlur={onBlur}
-            value={values.pass}
+            value={values.password}
             // className={errors.pass && styles.errorInput}
             placeholder="Пароль"
-            name="pass"
+            name="password"
           />
-          {errors.pass && <p>{errors.pass}</p>}
+          {errors.password && <p>{errors.password}</p>}
           <input
             type="password"
             onChange={handleChange}
@@ -98,7 +105,7 @@ function registrationPage() {
             placeholder="Ваше имя"
           />
           {errors.name && <p>{errors.name}</p>}
-          {/* {errors.firebaseError && <p>{firebaseError}</p>} */}
+          {firebaseError && <p>User with this E-mail is already exist</p>}
 
           <button
             disabled={isSubmiting}
