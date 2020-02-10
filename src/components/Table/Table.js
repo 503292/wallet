@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
 // import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
@@ -27,6 +28,16 @@ const Table = () => {
     { value: 1561, backgroundColor: '#73ad57', labels: 'Досуг' },
     { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
   ];
+
+  const ColoredBox = styled.div`
+    display: block;
+    width: 12px;
+    height: 12px;
+    /* color: ${props => props.inputColor || 'palevioletred'}; */
+    background: papayawhip;
+    border: none;
+    border-radius: 3px;
+  `;
 
   // console.log(data.map(el => el.value));
   // console.log(data.map(el => el.labels));
@@ -61,6 +72,7 @@ const Table = () => {
             <tr className={s.table_tr} key={el.backgroundColor}>
               <td className={s.dataCell_category} width="75%">
                 {/* <div className={s.color_block} /> */}
+                <ColoredBox />
                 {el.labels}
               </td>
               <td className={s.dataCell_amount} width="25%">
