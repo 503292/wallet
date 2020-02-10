@@ -11,7 +11,7 @@ export const getUserOperation = () => (dispatch, getStore) => {
     .getFinances(token)
     .then(response =>
       // dispatch(sessionActions.getUserSuccess(response.data.user)),
-      console.log(response),
+      console.log(response.data),
     )
     .catch(error => {
       // dispatch(sessionActions.getUserError(error));
@@ -24,8 +24,9 @@ export const registrateOperation = credentials => dispatch => {
   api
     .register(credentials)
     .then(response => {
-      if (response.data.user) {
-        dispatch(sessionActions.registrationSuccess(response.data.user));
+      if (response.user) {
+        console.log(response, 'data');
+        // dispatch(sessionActions.registrationSuccess(response.data.user));
       } else if (response.data.error) {
         // toast.error(
         //   'Користвач з такою електронною поштою вже зареєстрований.',

@@ -37,6 +37,8 @@ function ValidationForm(initialState, validate) {
     const errorValidation = validate(values);
     setErrors(errorValidation);
     setSubmiting(true);
+    // onRegistrate(values);
+    // console.log(onRegistrate(values), 'url');
     // console.log(values);
   };
 

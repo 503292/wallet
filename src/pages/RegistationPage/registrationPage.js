@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
+
+import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
@@ -26,6 +29,13 @@ function registrationPage() {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
 
+  useEffect(() => {
+    const { onRegistrate } = this.props;
+    return onRegistrate(values);
+  });
+  // componentDidUpdate(prevProps, prevState) {
+  //     const {isRegistration} = this.props;
+  // }
   // const [firebaseError, setFirebaseError] = useState(null);
   // function authenticateUser() {
   //   const { name, value } = values;
@@ -115,8 +125,11 @@ function registrationPage() {
     </main>
   );
 }
+const mapDispatchToProps = {
+  onRegistrate: sessionOperations.registrateOperation(),
+};
 
-export default registrationPage;
+export default connect(null, mapDispatchToProps)(registrationPage);
 
 // const user = yup.object().shape({
 //   email: yup

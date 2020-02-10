@@ -7,6 +7,7 @@ const user = (state = null, { type, payload }) => {
     // case Type.GET_USER_SUCCESS:
     case Type.REGISTRATION_SUCCESS:
       // case Type.LOG_IN_SUCCESS:
+      console.log(payload, 'payload');
       return payload.userData;
     default:
       return state;
