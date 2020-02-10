@@ -11,7 +11,7 @@ function ValidationForm(initialState, validate, authenticateUser) {
     if (isSubmiting) {
       const noErrors = Object.keys(errors).length === 0;
       if (noErrors) {
-        authenticateUser();
+        // authenticateUser();
         setSubmiting(false);
       } else {
         setSubmiting(true);
