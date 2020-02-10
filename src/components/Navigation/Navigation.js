@@ -45,7 +45,7 @@ const Navigation = () => {
           <Currency className={`${css.iconCurrency} ${css.icons}`} />
         )}
 
-        {widthDevice >= 768 && widthDevice <= 1023 && (
+        {widthDevice >= 768 && widthDevice <= 1279 && (
           <div className={css.wrapIcon}>
             <Currency
               className={`${css.iconCurrency} ${css.icons} ${css.notActive}`}

@@ -2,10 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as authSelectors from '../../redux/auth/authSelectors';
+import * as sessionSelectors from '../../redux/session/sessionSelectors';
 
 const ProtectedRoute = ({ component: Component, ...restProps }) => {
-  const isAuthenticated = useSelector(store => authSelectors.getIsAuth(store));
+  const isAuthenticated = useSelector(store =>
+    sessionSelectors.getIsAuth(store),
+  );
   return (
     <Route {...restProps}>
       {isAuthenticated ? (

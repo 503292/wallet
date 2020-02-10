@@ -1,12 +1,15 @@
 import React from 'react';
 // import * as yup from 'yup';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
 // import { register } from '../../services/api';
+
+import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
@@ -29,6 +32,23 @@ function registrationPage() {
   const tablewidth = 1023;
   // const [firebaseError, setFirebaseError] = useState(false);
 
+  // useEffect(() => {
+  //   // const { onRegistrate } = this.props;
+  //   // return onRegistrate(values);
+  // });
+  // componentDidUpdate(prevProps, prevState) {
+  //     const {isRegistration} = this.props;
+  // }
+  // const [firebaseError, setFirebaseError] = useState(null);
+  // function authenticateUser() {
+  //   const { name, value } = values;
+  //   try {
+  //     await;
+  //   } catch (err) {
+  //     console.error('Auth error', err);
+  //     setFirebaseError(err);
+  //   }
+
   // async function authenticateUser() {
   // const { name, email, pass } = values;
   // const credenials = {
@@ -43,6 +63,7 @@ function registrationPage() {
   //   console.error('Auth error', error);
   // setFirebaseError(err);
   // }
+
   // }
   return (
     <main className={styles.RegisterPage}>
@@ -122,8 +143,11 @@ function registrationPage() {
     </main>
   );
 }
+const mapDispatchToProps = {
+  onRegistrate: sessionOperations.registrateOperation(),
+};
 
-export default registrationPage;
+export default connect(null, mapDispatchToProps)(registrationPage);
 
 // const user = yup.object().shape({
 //   email: yup
