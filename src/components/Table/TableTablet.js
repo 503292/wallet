@@ -3,6 +3,7 @@
 import React from 'react';
 import Select from 'react-select';
 import s from './Table.module.css';
+import * as dataSource from './dataSource.json';
 
 const TableTablet = () => {
   const optionsMonth = [{ value: 'month', label: 'месяц' }];
@@ -27,8 +28,7 @@ const TableTablet = () => {
     { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
   ];
 
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
+  console.log(dataSource[0]);
 
   return (
     <div className={s.table_main_div}>
