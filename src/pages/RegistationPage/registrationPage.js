@@ -9,7 +9,7 @@ import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
 // import { register } from '../../services/api';
 
-import * as sessionOperations from '../../redux/session/sessionOperations';
+// import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
@@ -144,7 +144,7 @@ function registrationPage() {
   );
 }
 const mapDispatchToProps = {
-  onRegistrate: sessionOperations.registrateOperation(),
+  // onRegistrate: sessionOperations.registrateOperation(),
 };
 
 export default connect(null, mapDispatchToProps)(registrationPage);
