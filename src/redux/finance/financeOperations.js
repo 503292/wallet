@@ -35,7 +35,7 @@ export const getFinanceAxios = () => (dispatch, getStore) => {
     .getFinances(token)
     .then(response => {
       dispatch(financeActions.getFinanceSuccess(response.data.finance));
-      // console.log('response ', response.data.finance);
+      console.log('response ', response.data.finance);
     })
     .catch(error => {
       dispatch(financeActions.getFinanceError(error));
