@@ -8,4 +8,4 @@ export const getError = state => state.session.error;
 
 export const getIsAuth = state => state.session.isAuth;
 
-// export const getUserName = state => state.session.user.name.fullName;
+export const getUserName = state => state.session.user;
