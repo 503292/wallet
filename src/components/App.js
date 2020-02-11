@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Loader from './Loader/Loader';
 import * as globalSelectors from '../redux/global/globalSelectors';
 import * as sessionSelectors from '../redux/session/sessionSelectors';
-import * as sessionOperations from '../redux/session/sessionOperations';
+// import * as sessionOperations from '../redux/session/sessionOperations';
 
 import routes from '../routes/routes';
 // import css from './App.module.css';
@@ -72,8 +72,8 @@ const mapStateToProps = state => ({
   token: sessionSelectors.getToken(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
-});
+// const mapDispatchToProps = dispatch => ({
+//   getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
