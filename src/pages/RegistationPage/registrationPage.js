@@ -1,5 +1,6 @@
 import React from 'react';
 // import * as yup from 'yup';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styles from './registP.module.css';
@@ -7,7 +8,8 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
-// import { register } from '../../services/api';
+import * as sessionOperations from '../../redux/session/sessionOperations';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 // import * as sessionOperations from '../../redux/session/sessionOperations';
 
@@ -18,9 +20,8 @@ const INITIAL_STATE = {
   name: '',
 };
 
-function registrationPage() {
+function registrationPage({ onRegister }) {
   const {
-    addUser,
     values,
     handleChange,
     onBlur,
@@ -31,40 +32,24 @@ function registrationPage() {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
   // const [firebaseError, setFirebaseError] = useState(false);
+  console.log(values);
+  const addUser = e => {
+    e.preventDefault();
+    // const errorValidation = validate(values);
+    // setErrors(errorValidation);
+    // setSubmiting(true);
+    onRegister(values);
+    // console.log(values);
+    // register(values)
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error.message);
+    //     setFirebaseError(true);
+    //   });
+  };
 
-  // useEffect(() => {
-  //   // const { onRegistrate } = this.props;
-  //   // return onRegistrate(values);
-  // });
-  // componentDidUpdate(prevProps, prevState) {
-  //     const {isRegistration} = this.props;
-  // }
-  // const [firebaseError, setFirebaseError] = useState(null);
-  // function authenticateUser() {
-  //   const { name, value } = values;
-  //   try {
-  //     await;
-  //   } catch (err) {
-  //     console.error('Auth error', err);
-  //     setFirebaseError(err);
-  //   }
-
-  // async function authenticateUser() {
-  // const { name, email, pass } = values;
-  // const credenials = {
-  //   name,
-  //   email,
-  //   password,
-  // };
-  // try {
-  //   await register(values);
-  //   console.log();
-  // } catch (error) {
-  //   console.error('Auth error', error);
-  // setFirebaseError(err);
-  // }
-
-  // }
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -143,27 +128,15 @@ function registrationPage() {
     </main>
   );
 }
-const mapDispatchToProps = {
-  // onRegistrate: sessionOperations.registrateOperation(),
+
+registrationPage.propTypes = {
+  onRegister: PropTypes.func.isRequired,
 };
 
-export default connect(null, mapDispatchToProps)(registrationPage);
+const mapDispatchToProps = {
+  onRegister: sessionOperations.registration,
+};
 
-// const user = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email('Invalid email address')
-//     .required(),
-//   pass: yup
-//     .string()
-//     .email('Invalid pass')
-//     .required(),
-//   passConfirm: yup
-//     .string()
-//     .email('Passwords do not match')
-//     .required(),
-//   name: yup
-//     .string()
-//     .email('Please enter your name')
-//     .required(),
-// });
+export default withAuthRedirect(
+  connect(null, mapDispatchToProps)(registrationPage),
+);

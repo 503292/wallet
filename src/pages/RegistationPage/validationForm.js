@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
-import { register } from '../../services/api';
 
 function ValidationForm(initialState, validate, authenticateUser) {
   const [values, useValues] = useState(initialState);
   const [errors, setErrors] = useState({ email: '' });
   const [isSubmiting, setSubmiting] = useState(true);
-  const [firebaseError, setFirebaseError] = useState(false);
+  // const [firebaseError, setFirebaseError] = useState(false);
 
   useEffect(() => {
     if (isSubmiting) {
@@ -35,33 +34,18 @@ function ValidationForm(initialState, validate, authenticateUser) {
     setErrors(errorValidation);
   }
 
-  const addUser = e => {
-    e.preventDefault();
-    const errorValidation = validate(values);
-    setErrors(errorValidation);
-    setSubmiting(true);
-    // onRegistrate(values);
-    // console.log(onRegistrate(values), 'url');
-    // console.log(values);
-    register(values)
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error.message);
-        setFirebaseError(true);
-      });
-  };
-
   return {
-    addUser,
     values,
     handleChange,
     onBlur,
     errors,
     isSubmiting,
-    firebaseError,
+    // firebaseError,
   };
 }
+
+// const mapDispatchToProps = {
+//   onRegistration: authOperations.registration,
+// };
 
 export default ValidationForm;
