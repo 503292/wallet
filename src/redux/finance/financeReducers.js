@@ -1,9 +1,10 @@
-/* eslint-disable no-unused-vars */
 import { combineReducers } from 'redux';
 import { Type } from './financeActions';
 
-const data = (state = null, { type, payload }) => {
+const data = (state = [], { type, payload }) => {
   switch (type) {
+    case Type.ADD_TRANSACTION_SUCCESS:
+      return payload.data;
     case Type.GET_FINANCE_SUCCESS:
       return payload.data;
     default:
@@ -11,8 +12,10 @@ const data = (state = null, { type, payload }) => {
   }
 };
 
-const totalBalance = (state = null, { type, payload }) => {
+const totalBalance = (state = 0, { type, payload }) => {
   switch (type) {
+    case Type.ADD_TRANSACTION_SUCCESS:
+      return payload.totalBalance;
     case Type.GET_FINANCE_SUCCESS:
       return payload.totalBalance;
     default:
@@ -20,8 +23,10 @@ const totalBalance = (state = null, { type, payload }) => {
   }
 };
 
-const typeTotalBalance = (state = null, { type, payload }) => {
+const typeTotalBalance = (state = '+', { type, payload }) => {
   switch (type) {
+    case Type.ADD_TRANSACTION_SUCCESS:
+      return payload.typeTotalBalance;
     case Type.GET_FINANCE_SUCCESS:
       return payload.typeTotalBalance;
     default:

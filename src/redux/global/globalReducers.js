@@ -1,10 +1,15 @@
 import { combineReducers } from 'redux';
 import { Type } from './globalActions';
+
 import * as SessionType from '../session/sessionActions';
 import * as FinanceType from '../finance/financeActions';
 
 const isModalAddTransactionOpen = (state = false, { type }) => {
   switch (type) {
+    case Type.MODAL_ADD_TRANSACTION_OPEN:
+      return true;
+    case Type.MODAL_ADD_TRANSACTION_CLOSE:
+      return false;
     default:
       return state;
   }
