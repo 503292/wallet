@@ -5,7 +5,7 @@ import { Type } from './financeActions';
 const data = (state = null, { type, payload }) => {
   switch (type) {
     case Type.GET_FINANCE_SUCCESS:
-      return payload;
+      return payload.data;
     default:
       return state;
   }
@@ -14,7 +14,7 @@ const data = (state = null, { type, payload }) => {
 const totalBalance = (state = null, { type, payload }) => {
   switch (type) {
     case Type.GET_FINANCE_SUCCESS:
-      return payload;
+      return payload.totalBalance;
     default:
       return state;
   }
@@ -23,7 +23,7 @@ const totalBalance = (state = null, { type, payload }) => {
 const typeTotalBalance = (state = null, { type, payload }) => {
   switch (type) {
     case Type.GET_FINANCE_SUCCESS:
-      return payload;
+      return payload.typeTotalBalance;
     default:
       return state;
   }
