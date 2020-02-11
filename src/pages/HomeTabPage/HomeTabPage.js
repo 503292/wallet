@@ -1,6 +1,6 @@
 import React from 'react';
 import Currency from '../../components/Currency/Currency';
-import HomeTab from '../../components/HomeTab/HomeTab';
+import HomeTab from '../../components/HomeTab/HomeTab.Container';
 
 const widthDevice = window.screen.width;
 

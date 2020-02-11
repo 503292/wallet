@@ -1,16 +1,25 @@
-// import axios from 'axios';
+import axios from 'axios';
 
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
-// axios.defaults.headers.get['Content-Type'] = 'application/json';
-// axios.defaults.headers.put['Content-Type'] = 'application/json';
-// axios.defaults.headers.patch['Content-Type'] = 'application/json';
+export const getCurrencyPrivatBank = () => {
+  return axios
+    .get('https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11')
+    .then(responce => responce.data)
+    .catch(error => error);
+};
 
-// axios.defaults.baseURL = 'https://kidslike.goit.co.ua/api/v1';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.get['Content-Type'] = 'application/json';
+axios.defaults.headers.put['Content-Type'] = 'application/json';
+axios.defaults.headers.patch['Content-Type'] = 'application/json';
+axios.defaults.headers.delete['Content-Type'] = 'application/json';
 
-// export const setToken = token => ({
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//   },
-// });
+axios.defaults.baseURL = 'https://mywallet.goit.co.ua';
 
-// export const w = () => null;
+export const setToken = token => ({
+  headers: {
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+export const sendTransactionOnServer = (data, token) =>
+  axios.post('/api/finance', data, setToken(token));
