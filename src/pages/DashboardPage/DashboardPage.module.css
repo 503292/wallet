@@ -21,6 +21,7 @@
   }
   .tabsWrap {
     background-color: #fff;
+    border-radius: 5px;
   }
   .header {
     background-color: #fff;
@@ -42,7 +43,7 @@
   .main {
     display: flex;
     justify-content: center;
-    padding: 40px;
+    padding: 40px 0 0 0;
     width: 1200px;
   }
   .wrapLeftBar {

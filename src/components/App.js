@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-// import Loader from './Loader/Loader';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import Loader from './Loader/Loader';
+import * as globalSelectors from '../redux/global/globalSelectors';
+import * as sessionSelectors from '../redux/session/sessionSelectors';
+// import * as sessionOperations from '../redux/session/sessionOperations';
 
 import routes from '../routes/routes';
 // import css from './App.module.css';
@@ -10,10 +15,31 @@ import routes from '../routes/routes';
 class App extends Component {
   state = {};
 
+  static defaultProps = {
+    // token: '',
+  };
+
+  static propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    // getUserOperation: PropTypes.func.isRequired,
+    // token: PropTypes.string,
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  // componentDidUpdate(prevProps, prevState) {
+  //   const { token, getUserOperation } = this.props;
+  //   if (!token) {
+  //     return;
+  //   }
+  //   getUserOperation();
+  // }
+
   render() {
+    const { isLoading } = this.props;
+
     return (
       <BrowserRouter>
-        {/* <Loader /> */}
+        {isLoading && <Loader isLoading={isLoading} />}
         <Switch>
           <Route
             exact
@@ -29,11 +55,25 @@ class App extends Component {
             path={routes.DASHBORD_PAGE.path}
             component={routes.DASHBORD_PAGE.component}
           />
-          <Redirect to={routes.DASHBORD_PAGE.path} />
+          {/* <ProtectedRoute
+            path={routes.DASHBORD_PAGE.path}
+            component={routes.DASHBORD_PAGE.component}
+            redirectTo="/login"
+          /> */}
+          <Redirect to={routes.LOGIN_PAGE.path} />
         </Switch>
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  isLoading: globalSelectors.getIsLoading(state),
+  token: sessionSelectors.getToken(state),
+});
+
+// const mapDispatchToProps = dispatch => ({
+//   // getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
+// });
+
+export default connect(mapStateToProps, null)(App);

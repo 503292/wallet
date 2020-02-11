@@ -8,8 +8,10 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
-import * as authOperations from '../../redux/auth/authOperations';
+import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+
+// import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
@@ -132,28 +134,9 @@ registrationPage.propTypes = {
 };
 
 const mapDispatchToProps = {
-  onRegister: authOperations.registration,
+  onRegister: sessionOperations.registration,
 };
 
 export default withAuthRedirect(
   connect(null, mapDispatchToProps)(registrationPage),
 );
-
-// const user = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email('Invalid email address')
-//     .required(),
-//   pass: yup
-//     .string()
-//     .email('Invalid pass')
-//     .required(),
-//   passConfirm: yup
-//     .string()
-//     .email('Passwords do not match')
-//     .required(),
-//   name: yup
-//     .string()
-//     .email('Please enter your name')
-//     .required(),
-// });

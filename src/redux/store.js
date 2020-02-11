@@ -2,12 +2,12 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import ReduxThunk from 'redux-thunk';
-import authReducers from './auth/authReducers';
+import sessionReducers from './session/sessionReducers';
 import financeReducers from './finance/financeReducers';
 import globalReducers from './global/globalReducers';
 
 const rootReducer = combineReducers({
-  session: authReducers,
+  session: sessionReducers,
   finance: financeReducers,
   global: globalReducers,
 });

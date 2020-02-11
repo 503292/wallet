@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
-import * as authOperations from '../../redux/auth/authOperations';
+import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 // const user = yup.object().shape({
@@ -91,7 +91,7 @@ loginPage.propTypes = {
 };
 
 const mapDispatchToProps = {
-  onLogin: authOperations.login,
+  onLogin: sessionOperations.login,
 };
 
 export default withAuthRedirect(connect(null, mapDispatchToProps)(loginPage));

@@ -5,7 +5,7 @@ import {
   registrationRequest,
   registrationError,
   registrationSuccess,
-} from './authActions';
+} from './sessionActions';
 import * as API from '../../services/api';
 
 export const login = values => dispatch => {
