@@ -3,7 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import * as authSelectors from '../redux/auth/authSelectors';
+import * as sessionSelectors from '../redux/session/sessionSelectors';
 
 const withAuthRedirect = Component => {
   function WithAuthRedirect({ isAuth, ...restProps }) {
@@ -11,7 +11,7 @@ const withAuthRedirect = Component => {
   }
 
   const mapStateToProps = state => ({
-    isAuth: authSelectors.getIsAuth(state),
+    isAuth: sessionSelectors.getIsAuth(state),
   });
 
   return connect(mapStateToProps)(WithAuthRedirect);
