@@ -41,6 +41,7 @@
   bottom: 10px;
   right: 44%;
   outline: none;
+  padding-bottom: 5px;
 }
 
 .homeTabButton:hover {

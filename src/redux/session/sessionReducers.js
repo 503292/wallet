@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { combineReducers } from 'redux';
 import { ActionType } from './sessionActions';
-// import type from '../types';
 
 const user = (state = null, { type, payload }) => {
   switch (type) {
