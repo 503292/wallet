@@ -10,8 +10,7 @@ import Currency from '../../components/Currency/Currency';
 import HomeTabPage from '../HomeTabPage/HomeTabPage';
 import DiagramTab from '../DiagramTab/DiagramTab';
 import * as financeOperations from '../../redux/finance/financeOperations';
-import * as sessionOperations from '../../redux/session/sessionOperations';
-import * as sessionSelectors from '../../redux/session/sessionSelectors';
+// import * as sessionSelectors from '../../redux/session/sessionSelectors';
 
 import css from './DashboardPage.module.css';
 
@@ -20,16 +19,17 @@ class DashboardPage extends Component {
 
   static propTypes = {
     // isLoading: PropTypes.bool.isRequired,
-    // getUserOperation: PropTypes.func.isRequired,
-    token: PropTypes.string.isRequired,
+    getFinanceOperation: PropTypes.func.isRequired,
+    // token: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
-    const { token } = this.props;
-    if (!token) {
-      return;
-    }
-    financeOperations.getFinanceAxios();
+    // const { token, getFinanceOperation } = this.props;
+    const { getFinanceOperation } = this.props;
+    // if (!token) {
+    //   return;
+    // }
+    getFinanceOperation();
   }
 
   render() {
@@ -59,13 +59,13 @@ class DashboardPage extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  // isLoading: globalSelectors.getIsLoading(state),
-  token: sessionSelectors.getToken(state),
-});
+// const mapStateToProps = state => ({
+//   // isLoading: globalSelectors.getIsLoading(state),
+//   // token: sessionSelectors.getToken(state),
+// });
 
 const mapDispatchToProps = dispatch => ({
-  getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
+  getFinanceOperation: () => dispatch(financeOperations.getFinanceAxios()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);
+export default connect(null, mapDispatchToProps)(DashboardPage);

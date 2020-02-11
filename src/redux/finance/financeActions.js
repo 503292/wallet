@@ -12,9 +12,9 @@ export const getFinanceStart = () => ({
   type: Type.GET_FINANCE_START,
 });
 
-export const getFinanceSuccess = data => ({
+export const getFinanceSuccess = response => ({
   type: Type.GET_FINANCE_SUCCESS,
-  payload: data,
+  payload: response,
 });
 
 export const getFinanceError = error => ({
@@ -22,6 +22,6 @@ export const getFinanceError = error => ({
   payload: error,
 });
 
-export const getFinanceData = () => {};
-export const getFinanceTotalBalance = () => {};
-export const getFinanceTypeBalance = () => {};
+// export const getFinanceData = () => {};
+// export const getFinanceTotalBalance = () => {};
+// export const getFinanceTypeBalance = () => {};
