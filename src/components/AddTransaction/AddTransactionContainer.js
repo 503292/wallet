@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AddTransaction from './AddTransaction';
-import { addTransaction } from '../../redux/finance/financeActions';
+import { addTransactionOperation } from '../../redux/finance/financeOperations';
 import {
   getTotalBalance,
   getTypeTotalBalance,
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  addTransaction,
+  addTransactionOperation,
   modalAddTransactionClose,
 };
 

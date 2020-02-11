@@ -34,7 +34,7 @@ class ModalAdd extends Component {
     const { isModalAddTransactionOpen, modalAddTransactionOpen } = this.props;
 
     return (
-      <div>
+      <>
         <button
           type="button"
           className={css.modalButton}
@@ -56,7 +56,7 @@ class ModalAdd extends Component {
             </div>
           </div>
         )}
-      </div>
+      </>
     );
   }
 }

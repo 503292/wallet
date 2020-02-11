@@ -13,11 +13,6 @@ export const Type = {
   GET_FINANCE_TYPE_BALANCE: 'GET_FINANCE_TYPE_BALANCE',
 };
 
-export const addTransaction = data => ({
-  type: Type.ADD_TRANSACTION,
-  payload: data,
-});
-
 export const addTransactionStart = () => ({
   type: Type.ADD_TRANSACTION_START,
 });

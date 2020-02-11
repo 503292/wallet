@@ -5,8 +5,6 @@ const data = (state = [], { type, payload }) => {
   switch (type) {
     case Type.ADD_TRANSACTION_SUCCESS:
       return payload.data;
-    case Type.ADD_TRANSACTION:
-      return [payload, ...state];
     case Type.GET_FINANCE_SUCCESS:
       return payload.data;
     default:
@@ -18,8 +16,6 @@ const totalBalance = (state = 0, { type, payload }) => {
   switch (type) {
     case Type.ADD_TRANSACTION_SUCCESS:
       return payload.totalBalance;
-    case Type.ADD_TRANSACTION:
-      return payload.balanceAfter;
     case Type.GET_FINANCE_SUCCESS:
       return payload.totalBalance;
     default:
@@ -31,8 +27,6 @@ const typeTotalBalance = (state = '+', { type, payload }) => {
   switch (type) {
     case Type.ADD_TRANSACTION_SUCCESS:
       return payload.typeTotalBalance;
-    case Type.ADD_TRANSACTION:
-      return payload.typeBalanceAfter;
     case Type.GET_FINANCE_SUCCESS:
       return payload.typeTotalBalance;
     default:

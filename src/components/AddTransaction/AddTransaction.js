@@ -29,7 +29,7 @@ class AddTransaction extends Component {
   static propTypes = {
     totalBalanceState: PropTypes.number.isRequired,
     typeTotalBalanceState: PropTypes.string.isRequired,
-    addTransaction: PropTypes.func.isRequired,
+    addTransactionOperation: PropTypes.func.isRequired,
     modalAddTransactionClose: PropTypes.func.isRequired,
   };
 
@@ -55,7 +55,7 @@ class AddTransaction extends Component {
     const {
       totalBalanceState,
       typeTotalBalanceState,
-      addTransaction,
+      addTransactionOperation,
       modalAddTransactionClose,
     } = this.props;
     const { date, type, category, amount, comments } = this.state;
@@ -90,7 +90,7 @@ class AddTransaction extends Component {
           comments,
           typeBalanceAfter,
         };
-        addTransaction(data);
+        addTransactionOperation(data);
         modalAddTransactionClose();
       })
       .catch(errors => {
