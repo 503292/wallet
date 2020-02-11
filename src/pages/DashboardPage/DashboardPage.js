@@ -49,7 +49,9 @@ class DashboardPage extends Component {
             <Switch>
               <Route path="/home" exact component={HomeTabPage} />
               <Route path="/diagram" component={DiagramTab} />
-              <Route path="/currency" component={CurrencyTabPage} />
+              {widthDevice < 768 && (
+                <Route path="/currency" component={CurrencyTabPage} />
+              )}
               <Redirect to="/home" />
             </Switch>
           </div>

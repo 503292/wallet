@@ -1,38 +1,61 @@
-import React from 'react';
+import React, { Component } from 'react';
+import shortid from 'shortid';
+import { getCurrencyPrivatBank } from '../../services/api';
+import Preloader from './Preloader';
 import css from './Currency.module.css';
 
-const Currency = () => {
-  return (
-    <div className={css.currencyContainer}>
-      <table className={css.currencyTable}>
-        <thead>
-          <tr>
-            <th>Валюта</th>
-            <th>Покупка</th>
-            <th>Продажа</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>USD</td>
-            <td>24.95</td>
-            <td>25.00</td>
-          </tr>
-          <tr>
-            <td>EUR</td>
-            <td>26.90</td>
-            <td>27.00</td>
-          </tr>
-          <tr>
-            <td>RUB</td>
-            <td>0.30</td>
-            <td>0.35</td>
-          </tr>
-        </tbody>
-      </table>
-      <div className={css.imageTablet} />
-    </div>
-  );
-};
+class Currency extends Component {
+  state = {
+    currency: [],
+    loader: true,
+  };
+
+  componentDidMount() {
+    getCurrencyPrivatBank()
+      .then(data => {
+        this.setState({
+          currency: data.filter(elem => elem.ccy !== 'BTC'),
+          loader: false,
+        });
+      })
+      .catch(error => {
+        this.setState({
+          currency: error,
+          loader: false,
+        });
+      });
+  }
+
+  render() {
+    const { currency, loader } = this.state;
+    return (
+      <>
+        <div className={css.currencyContainer}>
+          {loader && <Preloader />}
+          {currency.length > 0 && (
+            <table className={css.currencyTable}>
+              <thead>
+                <tr>
+                  <th>Валюта</th>
+                  <th>Покупка</th>
+                  <th>Продажа</th>
+                </tr>
+              </thead>
+              <tbody>
+                {currency.map(elem => (
+                  <tr key={shortid.generate()}>
+                    <td>{elem.ccy}</td>
+                    <td>{elem.buy}</td>
+                    <td>{elem.sale}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      </>
+    );
+  }
+}
 
 export default Currency;

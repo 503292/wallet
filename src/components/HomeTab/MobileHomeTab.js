@@ -59,10 +59,6 @@ const MobileHomeTab = () => {
           </tr>
         </tbody>
       </table>
-
-      <button type="button" className={css.homeTabButton}>
-        +
-      </button>
     </section>
   );
 };
