@@ -17,7 +17,7 @@ const Header = ({ name }) => (
       <div className={css.logoText}>Wallet</div>
     </NavLink>
     <div className={css.logOutWrap}>
-      <div className={css.name}>{name ? { name } : 'Имя'}</div>
+      <div className={css.name}>{name}</div>
       <LogOut className={css.logoOut} />
     </div>
   </div>
