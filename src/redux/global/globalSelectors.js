@@ -1,4 +1,4 @@
 export const getIsModalAddTransactionOpen = state =>
   state.global.isModalAddTransactionOpen;
 
-export const example = () => {};
+export const getIsLoading = state => state.global.isLoading;

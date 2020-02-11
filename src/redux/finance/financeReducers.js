@@ -7,6 +7,8 @@ const data = (state = [], { type, payload }) => {
       return payload.data;
     case Type.ADD_TRANSACTION:
       return [payload, ...state];
+    case Type.GET_FINANCE_SUCCESS:
+      return payload.data;
     default:
       return state;
   }
@@ -18,6 +20,8 @@ const totalBalance = (state = 0, { type, payload }) => {
       return payload.totalBalance;
     case Type.ADD_TRANSACTION:
       return payload.balanceAfter;
+    case Type.GET_FINANCE_SUCCESS:
+      return payload.totalBalance;
     default:
       return state;
   }
@@ -29,6 +33,8 @@ const typeTotalBalance = (state = '+', { type, payload }) => {
       return payload.typeTotalBalance;
     case Type.ADD_TRANSACTION:
       return payload.typeBalanceAfter;
+    case Type.GET_FINANCE_SUCCESS:
+      return payload.typeTotalBalance;
     default:
       return state;
   }
