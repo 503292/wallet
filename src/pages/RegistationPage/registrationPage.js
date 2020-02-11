@@ -1,12 +1,15 @@
 import React from 'react';
 // import * as yup from 'yup';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
-// import { register } from '../../services/api';
+import * as authOperations from '../../redux/auth/authOperations';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 const INITIAL_STATE = {
   email: '',
@@ -15,9 +18,8 @@ const INITIAL_STATE = {
   name: '',
 };
 
-function registrationPage() {
+function registrationPage({ onRegister }) {
   const {
-    addUser,
     values,
     handleChange,
     onBlur,
@@ -28,22 +30,24 @@ function registrationPage() {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
   // const [firebaseError, setFirebaseError] = useState(false);
+  console.log(values);
+  const addUser = e => {
+    e.preventDefault();
+    // const errorValidation = validate(values);
+    // setErrors(errorValidation);
+    // setSubmiting(true);
+    onRegister(values);
+    // console.log(values);
+    // register(values)
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error.message);
+    //     setFirebaseError(true);
+    //   });
+  };
 
-  // async function authenticateUser() {
-  // const { name, email, pass } = values;
-  // const credenials = {
-  //   name,
-  //   email,
-  //   password,
-  // };
-  // try {
-  //   await register(values);
-  //   console.log();
-  // } catch (error) {
-  //   console.error('Auth error', error);
-  // setFirebaseError(err);
-  // }
-  // }
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -123,7 +127,17 @@ function registrationPage() {
   );
 }
 
-export default registrationPage;
+registrationPage.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  onRegister: authOperations.registration,
+};
+
+export default withAuthRedirect(
+  connect(null, mapDispatchToProps)(registrationPage),
+);
 
 // const user = yup.object().shape({
 //   email: yup
