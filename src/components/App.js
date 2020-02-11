@@ -36,7 +36,6 @@ class App extends Component {
 
   render() {
     const { isLoading } = this.props;
-    console.log(isLoading, 'isLoading');
     return (
       <>
         {isLoading && <Loader isLoading={isLoading} />}
