@@ -22,10 +22,11 @@ const DiagramTab = () => {
   const typeMinus = financeData.filter(el => el.type === '-');
 
   // функція вертає всі МІНУСОВІ транзакції (фільтрація по Year & Month)
-  const filterYearMonth = (month, year) => {
+  const filterYearMonth = (month, year, mark) => {
     const tmpYear = [];
     const result = [];
-    typeMinus
+    const markArr = mark === '-' ? typeMinus : typePlus;
+    markArr
       .filter(el => {
         const getYear = moment(el.date).format('YYYY');
         if (+getYear === year) {
@@ -44,18 +45,22 @@ const DiagramTab = () => {
     return result;
   };
 
-  const resultFilter = filterYearMonth('март', 2020);
-  console.log(resultFilter, 'resultFilter');
+  //  Розходы
+  const resultFilterMinus = filterYearMonth('март', 2020, '-');
+  console.log(resultFilterMinus, 'resultFilter');
+  // Доходы
+  const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
+  console.log(resultFilterPlus, 'resultFilter');
 
   // Додає всі мінусові витрати за вибраний рік і місяць
-  const plusAllMinusTransactions = resultFilter.reduce(
+  const plusAllMinusTransactions = resultFilterMinus.reduce(
     (acc, { amount }) => acc + amount,
     0,
   );
   console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
 
   // Додає всі доходи за весь період (не баг а фічя)
-  const plusAllPositiveTransactions = typePlus.reduce(
+  const plusAllPositiveTransactions = resultFilterPlus.reduce(
     (acc, { amount }) => acc + amount,
     0,
   );
