@@ -41,29 +41,32 @@ class App extends Component {
 
   render() {
     const { isLoading } = this.props;
-
     return (
-      <BrowserRouter>
+      <>
         {isLoading && <Loader isLoading={isLoading} />}
-        <Switch>
-          <Route
-            exact
-            path={routes.LOGIN_PAGE.path}
-            component={routes.LOGIN_PAGE.component}
-          />
-          <Route
-            exact
-            path={routes.REGISTER_PAGE.path}
-            component={routes.REGISTER_PAGE.component}
-          />
-          <ProtectedRoute
-            path={routes.DASHBORD_PAGE.path}
-            component={routes.DASHBORD_PAGE.component}
-            redirectTo="/login"
-          />
-          <Redirect to={routes.LOGIN_PAGE.path} />
-        </Switch>
-      </BrowserRouter>
+        {!isLoading && (
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact
+                path={routes.LOGIN_PAGE.path}
+                component={routes.LOGIN_PAGE.component}
+              />
+              <Route
+                exact
+                path={routes.REGISTER_PAGE.path}
+                component={routes.REGISTER_PAGE.component}
+              />
+              <ProtectedRoute
+                path={routes.DASHBORD_PAGE.path}
+                component={routes.DASHBORD_PAGE.component}
+                redirectTo="/login"
+              />
+              <Redirect to={routes.LOGIN_PAGE.path} />
+            </Switch>
+          </BrowserRouter>
+        )}
+      </>
     );
   }
 }
