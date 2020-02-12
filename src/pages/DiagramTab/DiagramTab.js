@@ -1,12 +1,59 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+import 'moment/locale/ru';
 import s from './DiagramTab.module.css';
 import Chart from '../../components/Chart/Chart';
-// import Table from '../../components/Table/Table';
+import * as financeSelectors from '../../redux/finance/financeSelectors';
 import TableTablet from '../../components/Table/TableTablet';
 import 'chartjs-plugin-labels';
 
 const DiagramTab = () => {
+  const financeData = useSelector(store =>
+    financeSelectors.getFinanceData(store),
+  );
+
+  console.log('financeData :', financeData);
+
+  const getCategory = financeData.map(el => el.category);
+  console.log('getCategory :', getCategory);
+
+  const getDate = financeData.map(el => el.date);
+  console.log('getDate :', getDate);
+
+  // const getAmount = financeData.map(el => el.amount);
+  // console.log('getAmount :', getAmount);
+
+  const typePlus = financeData.filter(el => el.type === '+');
+  console.log('typePlus :', typePlus);
+
+  const typeMinus = financeData.filter(el => el.type === '-');
+  console.log('typeMinus :', typeMinus);
+
+  const dateFilter = typeMinus.filter(el => {
+    const getMonth = moment(el.date).format('MMMM');
+    console.log('getMonth :', getMonth);
+    if (getMonth === 'март') {
+      return <p>hi</p>;
+    }
+  });
+
+  const getIncomeTotal = typePlus.map(el => el.amount);
+  console.log('getIncomeTotal :', getIncomeTotal);
+
+  const todayMonth = moment().format('MMMM');
+  const todayYear = moment().format('YYYY');
+  console.log('dateFilter :', dateFilter);
+
+  // const filterByDa = moment().toISOString(todayMonth);
+  const filterByDate = moment().startOf('month');
+
+  console.log('filterByDate :', filterByDate);
+
+  const [today] = useState({ month: todayMonth, year: todayYear });
+  console.log('today :', today);
+
   const [chartData] = useState({
     labels: [
       'Основные расходы',
@@ -31,7 +78,6 @@ const DiagramTab = () => {
       },
       legend: {
         display: false,
-        // display: true,
       },
     },
     datasets: [
@@ -53,21 +99,13 @@ const DiagramTab = () => {
     ],
   });
 
-  // console.log(chartData.labels);
-  // console.log(chartData.datasets.map(el => el.data));
-  // console.log(chartData.datasets.map(el => el.backgroundColor));
-
   return (
     <div>
       <p className={s.statistic_p}>статистика</p>
       <div className={s.diagramTab_main_div}>
         <Chart chartData={chartData} />
-        {/* <Table
-          labels={chartData.labels}
-          value={chartData.datasets.map(el => el.data)}
-          color={chartData.datasets.map(el => el.backgroundColor)}
-        /> */}
         <TableTablet
+          today={today}
           labels={chartData.labels}
           value={chartData.datasets.map(el => el.data)}
           color={chartData.datasets.map(el => el.backgroundColor)}

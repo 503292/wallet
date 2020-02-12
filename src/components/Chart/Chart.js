@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
-// import DiagramSample from '../../assets/diagram_sample.png';
+import PropTypes from 'prop-types';
 import s from './Chart.module.css';
 
 const ChartItem = ({ chartData }) => {
@@ -12,10 +12,12 @@ const ChartItem = ({ chartData }) => {
         height={350}
         options={chartData.options}
       />
-      {/* <img className={s.diagram_sample} src={DiagramSample} alt="diagram" /> */}
-      {/* <myChart width="400" height="400" /> */}
     </div>
   );
+};
+
+ChartItem.propTypes = {
+  chartData: PropTypes.shape({}).isRequired,
 };
 
 export default ChartItem;
