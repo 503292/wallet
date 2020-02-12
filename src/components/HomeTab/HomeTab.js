@@ -38,12 +38,12 @@ class HomeTab extends Component {
               </thead>
               <tbody>
                 {data.map(elem => (
-                  <tr key={shortid.generate()}>
+                  <tr key={shortid.generate()} className={css.homeTabTable_tr}>
                     <td>{elem.date}</td>
                     <td>{elem.type}</td>
                     <td>{elem.category}</td>
                     <td>{elem.comments}</td>
-                    <td>{elem.amount}</td>
+                    <td className={css.homeTabTable_amount}>{elem.amount}</td>
                     <td>{elem.balanceAfter}</td>
                   </tr>
                 ))}

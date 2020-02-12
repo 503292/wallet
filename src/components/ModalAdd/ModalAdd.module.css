@@ -26,15 +26,16 @@
   .modal_overlay {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   .modal {
-    width: 66%;
-    padding-bottom: 54px;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
     border-radius: 6px;
+    height: unset;
+    max-height: 100vh;
   }
 }

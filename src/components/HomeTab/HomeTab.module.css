@@ -113,6 +113,14 @@
     background-color: #f9fafc;
   }
 
+  .homeTabTable_tr:nth-child(odd) .homeTabTable_amount {
+    color: #3a5374;
+  }
+
+  .homeTabTable_tr:nth-child(even) .homeTabTable_amount {
+    color: #ff6c00;
+  }
+
   .homeTabButton {
     bottom: 30px;
     right: 50px;
