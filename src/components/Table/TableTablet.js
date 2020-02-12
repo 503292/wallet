@@ -28,7 +28,13 @@ const TableTablet = () => {
     { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
   ];
 
-  console.log(dataSource[0]);
+  console.log(dataSource[0].date);
+
+  const dateJson = JSON.stringify(dataSource);
+  console.log('dateJson :', dateJson);
+
+  // const mapJson = JSON.parse(dateJson);
+  // console.log('mapJson :', mapJson);
 
   return (
     <div className={s.table_main_div}>
