@@ -32,7 +32,6 @@ function registrationPage({ onRegister }) {
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
   // const [firebaseError, setFirebaseError] = useState(false);
-  console.log(values);
   const addUser = e => {
     e.preventDefault();
     // const errorValidation = validate(values);
