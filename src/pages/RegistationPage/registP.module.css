@@ -23,6 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 .RegisterForm input {
@@ -46,7 +47,7 @@
 }
 
 .RegisterForm input:not(:last-child) {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 .RegisterForm input:hover {
   box-shadow: 0px 0px 0px 2px #e27a2b;
@@ -132,6 +133,31 @@
 }
 .errorInput {
   border: 4px red;
+}
+
+.inputFeedback1 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 60px;
+}
+.inputFeedback2 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 144px;
+}
+.inputFeedback3 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 228px;
+}
+.inputFeedback4 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 310px;
 }
 
 @media (min-width: 768px) {

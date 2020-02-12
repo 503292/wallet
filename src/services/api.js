@@ -31,3 +31,5 @@ export const sendTransactionOnServer = (data, token) =>
 // export const getUserByToken = token => axios.get('/login', setToken(token));
 
 export const getFinances = token => axios.get('/finance', setToken(token));
+
+// export const
