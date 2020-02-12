@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Loader from './Loader/Loader';
 import * as globalSelectors from '../redux/global/globalSelectors';
 import * as sessionSelectors from '../redux/session/sessionSelectors';
-import * as sessionOperations from '../redux/session/sessionOperations';
+// import * as sessionOperations from '../redux/session/sessionOperations';
 
 import routes from '../routes/routes';
 // import css from './App.module.css';
@@ -36,33 +36,32 @@ class App extends Component {
 
   render() {
     const { isLoading } = this.props;
-
     return (
-      <BrowserRouter>
+      <>
         {isLoading && <Loader isLoading={isLoading} />}
-        <Switch>
-          <Route
-            exact
-            path={routes.LOGIN_PAGE.path}
-            component={routes.LOGIN_PAGE.component}
-          />
-          <Route
-            exact
-            path={routes.REGISTER_PAGE.path}
-            component={routes.REGISTER_PAGE.component}
-          />
-          <Route
-            path={routes.DASHBORD_PAGE.path}
-            component={routes.DASHBORD_PAGE.component}
-          />
-          {/* <ProtectedRoute
-            path={routes.DASHBORD_PAGE.path}
-            component={routes.DASHBORD_PAGE.component}
-            redirectTo="/login"
-          /> */}
-          <Redirect to={routes.LOGIN_PAGE.path} />
-        </Switch>
-      </BrowserRouter>
+        {!isLoading && (
+          <BrowserRouter>
+            <Switch>
+              <Route
+                exact
+                path={routes.LOGIN_PAGE.path}
+                component={routes.LOGIN_PAGE.component}
+              />
+              <Route
+                exact
+                path={routes.REGISTER_PAGE.path}
+                component={routes.REGISTER_PAGE.component}
+              />
+              <ProtectedRoute
+                path={routes.DASHBORD_PAGE.path}
+                component={routes.DASHBORD_PAGE.component}
+                redirectTo="/login"
+              />
+              <Redirect to={routes.LOGIN_PAGE.path} />
+            </Switch>
+          </BrowserRouter>
+        )}
+      </>
     );
   }
 }
@@ -72,8 +71,8 @@ const mapStateToProps = state => ({
   token: sessionSelectors.getToken(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
-});
+// const mapDispatchToProps = dispatch => ({
+//   // getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);

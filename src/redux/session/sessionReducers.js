@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
 import { combineReducers } from 'redux';
-import { Type } from './sessionActions';
+import { ActionType } from './sessionActions';
 
 const user = (state = null, { type, payload }) => {
   switch (type) {
-    // case Type.GET_USER_SUCCESS:
-    case Type.REGISTRATION_SUCCESS:
-      // case Type.LOG_IN_SUCCESS:
-      console.log(payload, 'payload');
-      return payload.userData;
+    case ActionType.LOGIN_SUCCESS:
+    case ActionType.REGISTRATION_SUCCESS:
+      return payload.data.user;
+
+    case ActionType.LOGOUT:
+    case ActionType.LOGIN_ERROR:
+    case ActionType.REGISTRATION_ERROR:
+      return null;
+
     default:
       return state;
   }
@@ -16,9 +20,15 @@ const user = (state = null, { type, payload }) => {
 
 const token = (state = null, { type, payload }) => {
   switch (type) {
-    case Type.REGISTRATION_SUCCESS:
-      // case Type.LOG_IN_SUCCESS:
-      return payload.token;
+    case ActionType.LOGIN_SUCCESS:
+    case ActionType.REGISTRATION_SUCCESS:
+      return payload.data.token;
+
+    case ActionType.LOGOUT:
+    case ActionType.LOGIN_ERROR:
+    case ActionType.REGISTRATION_ERROR:
+      return null;
+
     default:
       return state;
   }
@@ -26,10 +36,13 @@ const token = (state = null, { type, payload }) => {
 
 const error = (state = null, { type, payload }) => {
   switch (type) {
-    // case Type.GET_USER_ERROR:
-    // case Type.LOG_IN_ERROR:
-    case Type.REGISTRATION_ERROR:
-      return payload;
+    case ActionType.LOGIN_ERROR:
+      return payload.error;
+
+    case ActionType.LOGIN_REQUEST:
+    case ActionType.REGISTRATION_REQUEST:
+      return null;
+
     default:
       return state;
   }
@@ -37,10 +50,15 @@ const error = (state = null, { type, payload }) => {
 
 const isAuth = (state = false, { type }) => {
   switch (type) {
-    // case Type.GET_USER_SUCCESS:
-    case Type.REGISTRATION_SUCCESS:
-      // case Type.LOG_IN_SUCCESS:
+    case ActionType.LOGIN_SUCCESS:
+    case ActionType.REGISTRATION_SUCCESS:
       return true;
+
+    case ActionType.LOGOUT:
+    case ActionType.LOGIN_ERROR:
+    case ActionType.REGISTRATION_ERROR:
+      return false;
+
     default:
       return state;
   }

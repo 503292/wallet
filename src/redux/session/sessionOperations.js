@@ -1,44 +1,34 @@
-import * as sessionActions from './sessionActions';
-import * as api from '../../services/api';
+import {
+  loginRequest,
+  loginError,
+  loginSuccess,
+  registrationRequest,
+  registrationError,
+  registrationSuccess,
+} from './sessionActions';
+import * as API from '../../services/api';
 
-export const getUserOperation = () => (dispatch, getStore) => {
-  const { token } = getStore().session;
-  if (!token) {
-    return;
-  }
-  // dispatch(sessionActions.getUserStart());
-  api
-    .getFinances(token)
-    .then(response =>
-      // dispatch(sessionActions.getUserSuccess(response.data.user)),
-      console.log(response.data),
-    )
-    .catch(error => {
-      // dispatch(sessionActions.getUserError(error));
-      console.log(error);
-    });
-};
+export const login = values => dispatch => {
+  dispatch(loginRequest());
 
-export const registrateOperation = credentials => dispatch => {
-  dispatch(sessionActions.registrationStart());
-  api
-    .register(credentials)
+  API.loginRequest(values)
     .then(response => {
-      if (response.user) {
-        console.log(response, 'data');
-        // dispatch(sessionActions.registrationSuccess(response.data.user));
-      } else if (response.data.error) {
-        // toast.error(
-        //   'Користвач з такою електронною поштою вже зареєстрований.',
-        //   {
-        //     position: toast.POSITION.BOTTOM_RIGHT,
-        //   },
-        // );
-      }
+      dispatch(loginSuccess(response.data));
     })
     .catch(error => {
-      console.log(error);
+      // console.log(error);
+      dispatch(loginError(error));
     });
 };
 
-// export const logOutOperation = () => (dispatch, getStore) => {};
+export const registration = values => dispatch => {
+  dispatch(registrationRequest());
+
+  API.register(values)
+    .then(response => {
+      dispatch(registrationSuccess(response.data));
+    })
+    .catch(error => {
+      dispatch(registrationError(error));
+    });
+};
