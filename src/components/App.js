@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { refreshToken } from '../redux/session/sessionOperations';
 import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Loader from './Loader/Loader';
 import * as globalSelectors from '../redux/global/globalSelectors';
@@ -24,6 +24,11 @@ class App extends Component {
     // getUserOperation: PropTypes.func.isRequired,
     // token: PropTypes.string,
   };
+
+  componentDidMount() {
+    const { refreshCurrentUser } = this.props;
+    refreshCurrentUser();
+  }
 
   // eslint-disable-next-line no-unused-vars
   // componentDidUpdate(prevProps, prevState) {
@@ -63,13 +68,17 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  refreshCurrentUser: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   isLoading: globalSelectors.getIsLoading(state),
   token: sessionSelectors.getToken(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   // getUserOperation: () => dispatch(sessionOperations.getUserOperation()),
-// });
+const mapDispatchToProps = {
+  refreshCurrentUser: refreshToken,
+};
 
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

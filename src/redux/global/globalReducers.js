@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-// import type from '../types';
+import { ActionType } from '../session/sessionActions';
 
 const isModalAddTransactionOpen = (state = false, { type }) => {
   switch (type) {
@@ -17,6 +17,13 @@ const isModalLogOutOpen = (state = false, { type }) => {
 
 const isLoading = (state = false, { type }) => {
   switch (type) {
+    case ActionType.PERSIST_REQUEST:
+      return true;
+
+    case ActionType.PERSIST_SUCCESS:
+    case ActionType.REGISTRATION_ERROR:
+      return false;
+
     default:
       return state;
   }

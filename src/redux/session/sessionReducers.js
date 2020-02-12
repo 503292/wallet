@@ -7,6 +7,7 @@ const user = (state = null, { type, payload }) => {
   switch (type) {
     case ActionType.LOGIN_SUCCESS:
     case ActionType.REGISTRATION_SUCCESS:
+    case ActionType.PERSIST_SUCCESS:
       return payload.data.user;
 
     case ActionType.LOGOUT:
@@ -38,10 +39,13 @@ const token = (state = null, { type, payload }) => {
 const error = (state = null, { type, payload }) => {
   switch (type) {
     case ActionType.LOGIN_ERROR:
+    case ActionType.PERSIST_ERROR:
+    case ActionType.REGISTRATION_ERROR:
       return payload.error;
 
     case ActionType.LOGIN_REQUEST:
     case ActionType.REGISTRATION_REQUEST:
+    case ActionType.PERSIST_SUCCESS:
       return null;
 
     default:
@@ -53,6 +57,7 @@ const isAuth = (state = false, { type }) => {
   switch (type) {
     case ActionType.LOGIN_SUCCESS:
     case ActionType.REGISTRATION_SUCCESS:
+    case ActionType.PERSIST_SUCCESS:
       return true;
 
     case ActionType.LOGOUT:

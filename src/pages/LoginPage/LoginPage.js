@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+// import loginChecker from './LoginChecker';
 
 // const user = yup.object().shape({
 //   email: yup.string().required(),
@@ -17,6 +18,8 @@ class loginPage extends Component {
   state = {
     email: '',
     password: '',
+    disabled: true,
+    errors: {},
   };
 
   addUser = e => {
@@ -27,16 +30,39 @@ class loginPage extends Component {
   };
 
   handleChange = e => {
+    const { errors } = this.state;
     this.setState({
       [e.target.name]: e.target.value,
     });
+
+    // if (!email) {
+    //   this.setState({
+    //      errors.email = 'Required',
+    //   })
+    // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
+    //   this.setState({
+    //     errors.email = 'Invalid email address'
+    //   })
+
+    // }
+
+    // if (!password) {
+    //   this.setState({
+    //   errors.password = 'Required'
+    //   })
+    // } else if (password.length < 7) {
+    //   this.setState({
+    //   errors.password = 'Password should be at least 7 characters long'
+    //     })
+    // }
+    return errors;
   };
 
   render() {
     const devicewidth = document.documentElement.clientWidth;
     const tablewidth = 1023;
     const { email, password } = this.state;
-    console.log(email, password);
+    // console.log(email, password);
     return (
       <main className={styles.LoginPage}>
         <section className={styles.desktopEl}>
@@ -65,6 +91,7 @@ class loginPage extends Component {
               placeholder="E-mail"
               onChange={this.handleChange}
             />
+            {/* {errors.email && <p>{errors.email}</p>} */}
 
             <input
               type="password"
@@ -73,7 +100,13 @@ class loginPage extends Component {
               placeholder="Пароль"
               onChange={this.handleChange}
             />
-            <button className={styles.formButton} type="submit">
+            {/* {errors.password && <p>{errors.password}</p>} */}
+
+            <button
+              // disabled={disabled}
+              className={styles.formButton}
+              type="submit"
+            >
               Войти
             </button>
           </form>
