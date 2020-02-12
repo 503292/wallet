@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 // import DiagramSample from '../../assets/diagram_sample.png';
