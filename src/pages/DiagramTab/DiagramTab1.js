@@ -14,63 +14,49 @@ const DiagramTab = () => {
     financeSelectors.getFinanceData(store),
   );
 
-  console.log(financeData, 'financeData');
+  console.log('financeData :', financeData);
+
+  const getCategory = financeData.map(el => el.category);
+  console.log('getCategory :', getCategory);
+
+  const getDate = financeData.map(el => el.date);
+  console.log('getDate :', getDate);
+
+  // const getAmount = financeData.map(el => el.amount);
+  // console.log('getAmount :', getAmount);
 
   const typePlus = financeData.filter(el => el.type === '+');
-  console.log(typePlus, 'typePlus');
+  console.log('typePlus :', typePlus);
 
   const typeMinus = financeData.filter(el => el.type === '-');
+  console.log('typeMinus :', typeMinus);
 
-  // функція вертає всі МІНУСОВІ транзакції (фільтрація по Year & Month)
-  const filterYearMonth = (month, year, mark) => {
-    const tmpYear = [];
-    const result = [];
-    const markArr = mark === '-' ? typeMinus : typePlus;
-    markArr
-      .filter(el => {
-        const getYear = moment(el.date).format('YYYY');
-        if (+getYear === year) {
-          tmpYear.push(el);
-        }
-        return tmpYear;
-      })
-      .filter(el => {
-        const getMonth = moment(el.date).format('MMMM');
-        if (getMonth === month) {
-          result.push(el);
-        }
-      });
-    console.log(tmpYear, 'tmpYear');
-    console.log(result, 'result');
-    return result;
+  const dateFilter = typeMinus.filter(el => {
+    const getMonth = moment(el.date).format('YYYY');
+    console.log('getYear :', getMonth);
+    if (getMonth === 'март') {
+      return 0;
+    }
+    return 0;
+  });
+  const filterYearMonth = (month, year) => {
+    typeMinus.filter(el => {});
   };
 
-  //  Розходы
-  const resultFilterMinus = filterYearMonth('март', 2020, '-');
-  console.log(resultFilterMinus, 'resultFilter');
-  // Доходы
-  const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
-  console.log(resultFilterPlus, 'resultFilter');
+  const getIncomeTotal = typePlus.map(el => el.amount);
+  console.log('getIncomeTotal :', getIncomeTotal);
 
-  // Додає всі мінусові витрати за вибраний рік і місяць
-  const plusAllMinusTransactions = resultFilterMinus.reduce(
-    (acc, { amount }) => acc + amount,
-    0,
-  );
-  console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
-
-  // Додає всі доходи за весь період (не баг а фічя)
-  const plusAllPositiveTransactions = resultFilterPlus.reduce(
-    (acc, { amount }) => acc + amount,
-    0,
-  );
-  console.log(plusAllPositiveTransactions, 'plusAllPositiveTransactions');
-
-  const todayYear = moment().format('YYYY');
   const todayMonth = moment().format('MMMM');
+  const todayYear = moment().format('YYYY');
+  console.log('dateFilter :', dateFilter);
+
+  // const filterByDa = moment().toISOString(todayMonth);
+  const filterByDate = moment().startOf('month');
+
+  console.log('filterByDate :', filterByDate);
 
   const [today] = useState({ month: todayMonth, year: todayYear });
-  //   console.log('today :', today);
+  console.log('today :', today);
 
   const [chartData] = useState({
     labels: [
