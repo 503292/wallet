@@ -46,15 +46,15 @@
   border-bottom: 1px solid #e5e9e9;
 }
 
-.dataCell_category::before {
+/* .dataCell_category::before {
   content: '';
   position: absolute;
   top: 14px;
   left: 5px;
   width: 12px;
   height: 12px;
-  background-color: aqua;
-}
+  background-color: pink;
+} */
 
 .table_tr_bottom {
   display: flex;
