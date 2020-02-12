@@ -11,6 +11,7 @@ import * as sessionSelectors from '../redux/session/sessionSelectors';
 
 import routes from '../routes/routes';
 // import css from './App.module.css';
+import 'moment/locale/ru';
 
 class App extends Component {
   state = {};
@@ -36,6 +37,7 @@ class App extends Component {
 
   render() {
     const { isLoading } = this.props;
+
     return (
       <>
         {isLoading && <Loader isLoading={isLoading} />}

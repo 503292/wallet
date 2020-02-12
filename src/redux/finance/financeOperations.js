@@ -34,11 +34,15 @@ export const getFinanceAxios = () => (dispatch, getStore) => {
   api
     .getFinances(token)
     .then(response => {
-      dispatch(financeActions.getFinanceSuccess(response.data.finance));
       console.log('response ', response.data.finance);
+      return dispatch(financeActions.getFinanceSuccess(response.data.finance));
     })
     .catch(error => {
-      dispatch(financeActions.getFinanceError(error));
-      // console.log(error);
+      toast.error('Произошла ошибка. Попробуйте, пожалуйста, позже', {
+        position: toast.POSITION.TOP_RIGHT,
+        className: 'foo-bar',
+      });
+
+      return dispatch(financeActions.getFinanceError(error));
     });
 };
