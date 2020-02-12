@@ -45,10 +45,10 @@ const DiagramTab = () => {
     return result;
   };
 
-  //  Розходы
+  // всі транзакції розходив
   const resultFilterMinus = filterYearMonth('март', 2020, '-');
   console.log(resultFilterMinus, 'resultFilter');
-  // Доходы
+  // всі транзакції доходов
   const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
   console.log(resultFilterPlus, 'resultFilter');
 
@@ -59,12 +59,54 @@ const DiagramTab = () => {
   );
   console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
 
-  // Додає всі доходи за весь період (не баг а фічя)
+  // Додає всі доходи  вибраний рік і місяць
   const plusAllPositiveTransactions = resultFilterPlus.reduce(
     (acc, { amount }) => acc + amount,
     0,
   );
   console.log(plusAllPositiveTransactions, 'plusAllPositiveTransactions');
+
+  //-----------------------------------------
+  // УВАГА УВАГА УВАГА тут зара буде КОСТИЛЬ).
+  const getСategory = list => {
+    const arr = [];
+
+    list.forEach(element => {
+      arr.push(element.category);
+    });
+
+    const allCategory = [];
+    arr.forEach(elem => {
+      if (!allCategory.includes(elem)) {
+        allCategory.push(elem);
+      }
+    });
+    return allCategory;
+  };
+
+  const total = (list, category) => {
+    let total = 0;
+    for (const item of list) {
+      if (item.category === category) {
+        total += item.amount;
+      }
+    }
+    return total;
+  };
+
+  const allCategory = getСategory(resultFilterMinus);
+
+  const totalAmount = [];
+
+  allCategory.forEach(element => {
+    totalAmount.push({
+      category: element,
+      amount: total(resultFilterMinus, element),
+    });
+  });
+
+  console.log(totalAmount, 'totalAmount');
+  //-----------------------------------------
 
   const todayYear = moment().format('YYYY');
   const todayMonth = moment().format('MMMM');
