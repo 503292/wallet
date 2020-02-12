@@ -6,7 +6,6 @@ import css from './ModalAdd.module.css';
 class ModalAdd extends Component {
   static propTypes = {
     modalAddTransactionClose: PropTypes.func.isRequired,
-    modalAddTransactionOpen: PropTypes.func.isRequired,
     isModalAddTransactionOpen: PropTypes.bool.isRequired,
   };
 
@@ -31,17 +30,10 @@ class ModalAdd extends Component {
   };
 
   render() {
-    const { isModalAddTransactionOpen, modalAddTransactionOpen } = this.props;
+    const { isModalAddTransactionOpen } = this.props;
 
     return (
       <>
-        <button
-          type="button"
-          className={css.modalButton}
-          onClick={modalAddTransactionOpen}
-        >
-          +
-        </button>
         {isModalAddTransactionOpen && (
           <div
             role="toolbar"

@@ -107,88 +107,103 @@ class AddTransaction extends Component {
   render() {
     const { date, category, amount, comments, errors, type } = this.state;
     const getValue = getCategory(category, options);
+    const { modalAddTransactionClose } = this.props;
     return (
-      <form className={css.formAdd} onSubmit={this.handleSubmit}>
-        <h2 className={css.formAdd_title}>Добавить транзакцию</h2>
-        <div className={css.formAdd_radio}>
-          <label htmlFor="income">
-            <input
-              type="radio"
-              cheked={Type.Income}
-              id="income"
-              name="type"
-              value={Type.Income}
-              onChange={this.handleChange}
-            />
-            <span>Доход</span>
-          </label>
-          <span className={css.formAdd_spanelement}>|</span>
-          <label htmlFor="expense">
-            <input
-              type="radio"
-              defaultChecked
-              cheked={Type.Expense}
-              id="expense"
-              name="type"
-              value={Type.Expense}
-              onChange={this.handleChange}
-            />
-            <span>Расход</span>
-          </label>
+      <>
+        <div className={css.formAdd_divTitle}>
+          <button
+            type="button"
+            className={css.formAdd_backBtn}
+            onClick={modalAddTransactionClose}
+          />
+          <h2 className={css.formAdd_title}>Добавить транзакцию</h2>
         </div>
-        {errors && (
-          <span style={{ color: '#ff0000', display: 'block' }}>
-            {errors.type}
-          </span>
-        )}
-        {type === '-' && (
-          <div className={css.formAdd_select}>
-            <Select
-              className={css.select}
-              value={getValue}
-              onChange={this.handleChangeSelect}
-              options={options}
-              placeholder="Категория"
+        <form className={css.formAdd} onSubmit={this.handleSubmit}>
+          <div className={css.formAdd_radio}>
+            <label htmlFor="income">
+              <input
+                type="radio"
+                cheked={Type.Income}
+                id="income"
+                name="type"
+                value={Type.Income}
+                onChange={this.handleChange}
+              />
+              <span>Доход</span>
+            </label>
+            <span className={css.formAdd_spanelement}>|</span>
+            <label htmlFor="expense">
+              <input
+                type="radio"
+                defaultChecked
+                cheked={Type.Expense}
+                id="expense"
+                name="type"
+                value={Type.Expense}
+                onChange={this.handleChange}
+              />
+              <span>Расход</span>
+            </label>
+          </div>
+          {errors && (
+            <span style={{ color: '#ff0000', display: 'block' }}>
+              {errors.type}
+            </span>
+          )}
+          {type === '-' && (
+            <div className={css.formAdd_select}>
+              <Select
+                className={css.select}
+                value={getValue}
+                onChange={this.handleChangeSelect}
+                options={options}
+                placeholder="Категория"
+                // isClearable
+                isSearchable
+              />
+            </div>
+          )}
+          <div className={css.formAdd_amountAndDate}>
+            <input
+              placeholder="введите сумму..."
+              type="number"
+              min="10"
+              name="amount"
+              value={amount}
+              onChange={this.handleChange}
+            />
+            {errors && (
+              <span className={css.errorsAmount}>{errors.amount}</span>
+            )}
+            <DatePicker
+              name="date"
+              selected={date}
+              onChange={this.handleChangeDate}
+              dateFormat="dd/MM/yyyy"
+              locale="ru"
               isClearable
-              isSearchable
+            />
+            {errors && <span className={css.errorsDate}>{errors.date}</span>}
+          </div>
+          <div className={css.formAdd_comments}>
+            <h3>Коментарий</h3>
+          </div>
+          <div className={css.formAdd_textarea}>
+            <textarea
+              type="text"
+              placeholder="напишите коментарий..."
+              name="comments"
+              value={comments}
+              onChange={this.handleChange}
             />
           </div>
-        )}
-        <div className={css.formAdd_amountAndDate}>
-          <input
-            placeholder="введите сумму..."
-            type="number"
-            min="10"
-            name="amount"
-            value={amount}
-            onChange={this.handleChange}
-          />
-          {errors && <span className={css.errorsAmount}>{errors.amount}</span>}
-          <DatePicker
-            name="date"
-            selected={date}
-            onChange={this.handleChangeDate}
-            dateFormat="dd/MM/yyyy"
-            minDate={new Date()}
-            locale="ru"
-            isClearable
-          />
-          {errors && <span className={css.errorsDate}>{errors.date}</span>}
-        </div>
-        <h3>Коментарий</h3>
-        <div className={css.formAdd_textarea}>
-          <textarea
-            type="text"
-            placeholder="напишите коментарий..."
-            name="comments"
-            value={comments}
-            onChange={this.handleChange}
-          />
-        </div>
-        <button type="submit" className={css.formAdd_btn}>
-          Добавить
-        </button>
-      </form>
+          <div className={css.divButton}>
+            <button type="submit" className={css.formAdd_btn}>
+              Добавить
+            </button>
+          </div>
+        </form>
+      </>
     );
   }
 }
