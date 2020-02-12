@@ -7,6 +7,9 @@ export const ActionType = {
   REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
   REGISTRATION_ERROR: 'REGISTRATION_ERROR',
   LOGOUT: 'LOGOUT',
+  PERSIST_REQUEST: 'PERSIST_REQUEST',
+  PERSIST_SUCCESS: 'PERSIST_SUCCESS',
+  PERSIST_ERROR: 'PERSIST_ERROR',
 };
 
 // login actions
@@ -35,6 +38,20 @@ export const registrationError = error => ({
   type: ActionType.REGISTRATION_ERROR,
   payload: { error },
 });
-// export const logOut = () => ({
-//   type: ActionType.LOGOUT,
-// });
+export const logOut = () => ({
+  type: ActionType.LOGOUT,
+});
+
+export const persistRequest = () => ({
+  type: ActionType.PERSIST_REQUEST,
+});
+
+export const persistSuccess = data => ({
+  type: ActionType.PERSIST_SUCCESS,
+  payload: { data },
+});
+
+export const persistError = error => ({
+  type: ActionType.PERSIST_ERROR,
+  payload: { error },
+});
