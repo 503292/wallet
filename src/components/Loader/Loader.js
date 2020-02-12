@@ -5,16 +5,13 @@ import PropTypes from 'prop-types';
 import css from './Loader.module.css';
 
 class Loader extends Component {
-  state = {
-    // loading: true,
-  };
+  state = {};
 
   static propTypes = {
-    isLoading: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
   };
 
   render() {
-    // const { loading } = this.state;
     const { isLoading } = this.props;
     return (
       <div className={css.spinnerWrap}>

@@ -1,12 +1,36 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-console */
 import React from 'react';
 import Select from 'react-select';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 import s from './Table.module.css';
+import 'moment/locale/ru';
 
-const TableTablet = () => {
-  const optionsMonth = [{ value: 'month', label: 'месяц' }];
-  const optionsYear = [{ value: 'year', label: 'год' }];
+const TableTablet = ({ today }) => {
+  // for (i = 2000; i <= 2050; i++) {
+  //   const selectYear = { value: 'year', label: i };
+  //   console.log('i :', i);
+  // }
+  const optionsMonth = [
+    { value: 'default', label: today.month },
+    { value: 'январь', label: 'январь' },
+    { value: 'февраль', label: 'февраль' },
+    { value: 'март', label: 'март' },
+    { value: 'апрель', label: 'апрель' },
+    { value: 'май', label: 'май' },
+    { value: 'июнь', label: 'июнь' },
+    { value: 'июль', label: 'июль' },
+    { value: 'август', label: 'август' },
+    { value: 'сентябрь', label: 'сентябрь' },
+    { value: 'октябрь', label: 'октябрь' },
+    { value: 'ноябрь', label: 'ноябрь' },
+    { value: 'декабрь', label: 'декабрь' },
+  ];
+  const optionsYear = [{ value: 'year', label: today.year }];
+  moment.locale('ru');
+
   const data = [
     {
       value: 1235,
@@ -26,9 +50,6 @@ const TableTablet = () => {
     { value: 1561, backgroundColor: '#73ad57', labels: 'Досуг' },
     { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
   ];
-
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
 
   return (
     <div className={s.table_main_div}>
