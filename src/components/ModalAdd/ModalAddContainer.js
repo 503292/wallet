@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import ModalAdd from './ModalAdd';
-import {
-  modalAddTransactionOpen,
-  modalAddTransactionClose,
-} from '../../redux/global/globalActions';
+import { modalAddTransactionClose } from '../../redux/global/globalActions';
 import { getIsModalAddTransactionOpen } from '../../redux/global/globalSelectors';
 
 const mapStateToProps = state => ({
@@ -11,7 +8,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  modalAddTransactionOpen,
   modalAddTransactionClose,
 };
 
