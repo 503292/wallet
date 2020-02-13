@@ -105,6 +105,7 @@
   .iconDiagram,
   .iconCurrency {
     fill: inherit;
+    margin-right: 30px;
   }
   .selected {
     fill: white;
