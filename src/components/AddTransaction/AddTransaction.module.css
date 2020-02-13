@@ -68,7 +68,7 @@
   border-radius: 6px;
 }
 
-.formAdd_radio input[type='radio']:checked:before {
+.formAdd_radioExpense input[type='radio']:checked:before {
   content: '';
   display: block;
   position: relative;
@@ -80,8 +80,24 @@
   background: #ff6c00;
 }
 
-.formAdd_radio input[type='radio']:checked + span {
+.formAdd_radioExpense input[type='radio']:checked + span {
   color: #ff6c00;
+}
+
+.formAdd_radioIncome input[type='radio']:checked:before {
+  content: '';
+  display: block;
+  position: relative;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #284060;
+}
+
+.formAdd_radioIncome input[type='radio']:checked + span {
+  color: #284060;
 }
 
 .formAdd_spanelement {

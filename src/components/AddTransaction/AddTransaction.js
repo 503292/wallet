@@ -122,7 +122,7 @@ class AddTransaction extends Component {
         </div>
         <form className={css.formAdd} onSubmit={this.handleSubmit}>
           <div className={css.formAdd_radio}>
-            <label htmlFor="income">
+            <label htmlFor="income" className={css.formAdd_radioIncome}>
               <input
                 type="radio"
                 cheked={Type.Income}
@@ -134,7 +134,7 @@ class AddTransaction extends Component {
               <span>Доход</span>
             </label>
             <span className={css.formAdd_spanelement}>|</span>
-            <label htmlFor="expense">
+            <label htmlFor="expense" className={css.formAdd_radioExpense}>
               <input
                 type="radio"
                 defaultChecked
