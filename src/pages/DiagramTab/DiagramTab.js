@@ -14,11 +14,7 @@ const DiagramTab = () => {
     financeSelectors.getFinanceData(store),
   );
 
-  console.log(financeData, 'financeData');
-
   const typePlus = financeData.filter(el => el.type === '+');
-  console.log(typePlus, 'typePlus');
-
   const typeMinus = financeData.filter(el => el.type === '-');
 
   // функція вертає всі МІНУСОВІ транзакції (фільтрація по Year & Month)
@@ -40,39 +36,75 @@ const DiagramTab = () => {
           result.push(el);
         }
       });
-    console.log(tmpYear, 'tmpYear');
-    console.log(result, 'result');
     return result;
   };
 
-  //  Розходы
-  const resultFilterMinus = filterYearMonth('март', 2020, '-');
-  console.log(resultFilterMinus, 'resultFilter');
-  // Доходы
+  // всі транзакції розходив
+  const resultFilterMinus = filterYearMonth('февраль', 2020, '-');
+  // всі транзакції доходов
   const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
-  console.log(resultFilterPlus, 'resultFilter');
 
   // Додає всі мінусові витрати за вибраний рік і місяць
   const plusAllMinusTransactions = resultFilterMinus.reduce(
     (acc, { amount }) => acc + amount,
     0,
   );
-  console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
 
-  // Додає всі доходи за весь період (не баг а фічя)
+  // Додає всі доходи  вибраний рік і місяць
   const plusAllPositiveTransactions = resultFilterPlus.reduce(
     (acc, { amount }) => acc + amount,
     0,
   );
-  console.log(plusAllPositiveTransactions, 'plusAllPositiveTransactions');
+
+  //-----------------------------------------
+  // УВАГА УВАГА УВАГА тут зара буде КОСТИЛЬ).
+  const getСategory = list => {
+    const arr = [];
+
+    list.forEach(element => {
+      arr.push(element.category);
+    });
+
+    const allCategory = [];
+    arr.forEach(elem => {
+      if (!allCategory.includes(elem)) {
+        allCategory.push(elem);
+      }
+    });
+    return allCategory;
+  };
+
+  const total = (list, category) => {
+    let total = 0;
+    for (const item of list) {
+      if (item.category === category) {
+        total += item.amount;
+      }
+    }
+    return total;
+  };
+
+  const allCategory = getСategory(resultFilterMinus);
+
+  const totalAmount = [];
+
+  allCategory.forEach(element => {
+    totalAmount.push({
+      category: element,
+      amount: total(resultFilterMinus, element),
+    });
+  });
+
+  console.log('totalAmount :', totalAmount);
+
+  //-----------------------------------------
 
   const todayYear = moment().format('YYYY');
   const todayMonth = moment().format('MMMM');
 
   const [today] = useState({ month: todayMonth, year: todayYear });
-  //   console.log('today :', today);
 
-  const [chartData] = useState({
+  const [chartData, setChartData] = useState({
     labels: [
       'Основные расходы',
       'Продукты',
@@ -117,6 +149,12 @@ const DiagramTab = () => {
     ],
   });
 
+  // const changeChartData = (totalAmount, chartData) => {
+  //   for (let i=0; )
+
+  //   chartData.label[0]
+  // }
+
   return (
     <div>
       <p className={s.statistic_p}>статистика</p>
@@ -124,6 +162,8 @@ const DiagramTab = () => {
         <Chart chartData={chartData} />
         <TableTablet
           today={today}
+          expenses={plusAllMinusTransactions}
+          income={plusAllPositiveTransactions}
           labels={chartData.labels}
           value={chartData.datasets.map(el => el.data)}
           color={chartData.datasets.map(el => el.backgroundColor)}

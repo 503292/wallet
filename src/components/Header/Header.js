@@ -18,7 +18,7 @@ const Header = ({ name, onLogOut }) => (
     </NavLink>
     <div className={css.logOutWrap}>
       <div className={css.name}>{name}</div>
-      <button type="submit" onClick={onLogOut}>
+      <button className={css.btnOut} type="submit" onClick={onLogOut}>
         <LogOut className={css.logoOut} />
       </button>
     </div>
