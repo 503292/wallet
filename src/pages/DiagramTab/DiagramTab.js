@@ -1,12 +1,119 @@
-/* eslint-disable no-console */
+/* eslint-disable  */
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import moment from 'moment';
+import 'moment/locale/ru';
 import s from './DiagramTab.module.css';
 import Chart from '../../components/Chart/Chart';
-// import Table from '../../components/Table/Table';
+import * as financeSelectors from '../../redux/finance/financeSelectors';
 import TableTablet from '../../components/Table/TableTablet';
 import 'chartjs-plugin-labels';
 
 const DiagramTab = () => {
+  const financeData = useSelector(store =>
+    financeSelectors.getFinanceData(store),
+  );
+
+  console.log(financeData, 'financeData');
+
+  const typePlus = financeData.filter(el => el.type === '+');
+  console.log(typePlus, 'typePlus');
+
+  const typeMinus = financeData.filter(el => el.type === '-');
+
+  // функція вертає всі МІНУСОВІ транзакції (фільтрація по Year & Month)
+  const filterYearMonth = (month, year, mark) => {
+    const tmpYear = [];
+    const result = [];
+    const markArr = mark === '-' ? typeMinus : typePlus;
+    markArr
+      .filter(el => {
+        const getYear = moment(el.date).format('YYYY');
+        if (+getYear === year) {
+          tmpYear.push(el);
+        }
+        return tmpYear;
+      })
+      .filter(el => {
+        const getMonth = moment(el.date).format('MMMM');
+        if (getMonth === month) {
+          result.push(el);
+        }
+      });
+    console.log(tmpYear, 'tmpYear');
+    console.log(result, 'result');
+    return result;
+  };
+
+  // всі транзакції розходив
+  const resultFilterMinus = filterYearMonth('март', 2020, '-');
+  console.log(resultFilterMinus, 'resultFilter');
+  // всі транзакції доходов
+  const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
+  console.log(resultFilterPlus, 'resultFilter');
+
+  // Додає всі мінусові витрати за вибраний рік і місяць
+  const plusAllMinusTransactions = resultFilterMinus.reduce(
+    (acc, { amount }) => acc + amount,
+    0,
+  );
+  console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
+
+  // Додає всі доходи  вибраний рік і місяць
+  const plusAllPositiveTransactions = resultFilterPlus.reduce(
+    (acc, { amount }) => acc + amount,
+    0,
+  );
+  console.log(plusAllPositiveTransactions, 'plusAllPositiveTransactions');
+
+  //-----------------------------------------
+  // УВАГА УВАГА УВАГА тут зара буде КОСТИЛЬ).
+  const getСategory = list => {
+    const arr = [];
+
+    list.forEach(element => {
+      arr.push(element.category);
+    });
+
+    const allCategory = [];
+    arr.forEach(elem => {
+      if (!allCategory.includes(elem)) {
+        allCategory.push(elem);
+      }
+    });
+    return allCategory;
+  };
+
+  const total = (list, category) => {
+    let total = 0;
+    for (const item of list) {
+      if (item.category === category) {
+        total += item.amount;
+      }
+    }
+    return total;
+  };
+
+  const allCategory = getСategory(resultFilterMinus);
+
+  const totalAmount = [];
+
+  allCategory.forEach(element => {
+    totalAmount.push({
+      category: element,
+      amount: total(resultFilterMinus, element),
+    });
+  });
+
+  console.log(totalAmount, 'totalAmount');
+  //-----------------------------------------
+
+  const todayYear = moment().format('YYYY');
+  const todayMonth = moment().format('MMMM');
+
+  const [today] = useState({ month: todayMonth, year: todayYear });
+  //   console.log('today :', today);
+
   const [chartData] = useState({
     labels: [
       'Основные расходы',
@@ -31,7 +138,6 @@ const DiagramTab = () => {
       },
       legend: {
         display: false,
-        // display: true,
       },
     },
     datasets: [
@@ -53,21 +159,13 @@ const DiagramTab = () => {
     ],
   });
 
-  // console.log(chartData.labels);
-  // console.log(chartData.datasets.map(el => el.data));
-  // console.log(chartData.datasets.map(el => el.backgroundColor));
-
   return (
     <div>
       <p className={s.statistic_p}>статистика</p>
       <div className={s.diagramTab_main_div}>
         <Chart chartData={chartData} />
-        {/* <Table
-          labels={chartData.labels}
-          value={chartData.datasets.map(el => el.data)}
-          color={chartData.datasets.map(el => el.backgroundColor)}
-        /> */}
         <TableTablet
+          today={today}
           labels={chartData.labels}
           value={chartData.datasets.map(el => el.data)}
           color={chartData.datasets.map(el => el.backgroundColor)}

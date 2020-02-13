@@ -2,7 +2,6 @@ export const ActionType = {
   LOGIN_REQUEST: 'LOGIN_REQUEST',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_ERROR: 'LOGIN_ERROR',
-
   REGISTRATION_REQUEST: 'REGISTRATION_REQUEST',
   REGISTRATION_SUCCESS: 'REGISTRATION_SUCCESS',
   REGISTRATION_ERROR: 'REGISTRATION_ERROR',
@@ -21,7 +20,7 @@ export const loginSuccess = data => ({
   payload: { data },
 });
 export const loginError = error => ({
-  type: ActionType.LOGIN_SUCCESS,
+  type: ActionType.LOGIN_ERROR,
   payload: { error },
 });
 
