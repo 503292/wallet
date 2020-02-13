@@ -1,13 +1,16 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import moment from 'moment';
 import css from './HomeTab.module.css';
 
 const MobileHomeTab = ({ modalAddTransactionOpen, data }) => {
   return (
     <section className={css.homeTabContainer}>
+      {data.length === 0 && (
+        <span className={css.spanHello}>Привет))) Введи данные транзакций</span>
+      )}
       <table className={css.homeTabTable}>
-        {data.length === 0 && <h2>Привет))) Введи данные транзакций</h2>}
         {data.length > 0 &&
           data.map(elem => (
             <tbody
@@ -16,7 +19,7 @@ const MobileHomeTab = ({ modalAddTransactionOpen, data }) => {
             >
               <tr>
                 <td>Дата</td>
-                <td>{elem.date}</td>
+                <td>{moment(elem.data).format('DD.MM.YYYY')}</td>
               </tr>
               <tr>
                 <td>Тип</td>
@@ -32,7 +35,12 @@ const MobileHomeTab = ({ modalAddTransactionOpen, data }) => {
               </tr>
               <tr>
                 <td>Сумма</td>
-                <td className={css.homeTabTable_amount}>{elem.amount}</td>
+                {elem.type === '-' && (
+                  <td style={{ color: '#ff6c00' }}>{elem.amount}</td>
+                )}
+                {elem.type === '+' && (
+                  <td style={{ color: '#284060' }}>{elem.amount}</td>
+                )}
               </tr>
               <tr>
                 <td>Баланс</td>
@@ -53,3 +61,8 @@ const MobileHomeTab = ({ modalAddTransactionOpen, data }) => {
 };
 
 export default MobileHomeTab;
+
+MobileHomeTab.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  modalAddTransactionOpen: PropTypes.func.isRequired,
+};
