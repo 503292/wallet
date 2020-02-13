@@ -38,9 +38,6 @@ const Table = () => {
     border-radius: 3px;
   `;
 
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
-
   return (
     <div className={s.table_main_div}>
       <div className={s.select_table}>
@@ -100,9 +97,5 @@ const Table = () => {
     </div>
   );
 };
-
-// Table.propTypes = {
-//   chartData: PropTypes.shape({}).isRequired,
-// };
 
 export default Table;
