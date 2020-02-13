@@ -34,6 +34,21 @@ const labels = [
   'Другие расходы',
 ];
 
+const optionsMonth = [
+  { value: 'январь', label: 'январь' },
+  { value: 'февраль', label: 'февраль' },
+  { value: 'март', label: 'март' },
+  { value: 'апрель', label: 'апрель' },
+  { value: 'май', label: 'май' },
+  { value: 'июнь', label: 'июнь' },
+  { value: 'июль', label: 'июль' },
+  { value: 'август', label: 'август' },
+  { value: 'сентябрь', label: 'сентябрь' },
+  { value: 'октябрь', label: 'октябрь' },
+  { value: 'ноябрь', label: 'ноябрь' },
+  { value: 'декабрь', label: 'декабрь' },
+];
+
 const initialChartData = {
   options: {
     plugins: {
@@ -81,8 +96,12 @@ class DiagramTab extends Component {
       selectedMonth: { value: currentMonth, label: currentMonth },
       selectedYear: { value: currentYear, label: currentYear },
     });
+    this.setState({ availableMonths: optionsMonth });
+    // this.setState({availableYears : optionsMonth});
 
     this.filterTransactionData(allTransactions, currentMonth, currentYear);
+
+    this.filterAllAvailbleYears(allTransactions);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -122,6 +141,15 @@ class DiagramTab extends Component {
     this.setState({ selectedYear: selectedOption });
   };
 
+  filterAllAvailbleYears = allTransactions => {
+    let tmp = moment().format('YYYY') - 1;
+    let arrYear = [];
+    for (let i = tmp; i < tmp + 10; i++) {
+      arrYear.push({ value: String(i), label: i });
+    }
+    this.setState({ availableYears: arrYear });
+  };
+
   filterTransactionData = (allTransactions, currentMonth, currentYear) => {
     this.setState({
       filteredDataForCurrentMonthAndYear: allTransactions
@@ -159,6 +187,7 @@ class DiagramTab extends Component {
       selectedYear,
       filteredDataForCurrentMonthAndYear,
     } = this.state;
+
     const totalMonthIncome = filteredDataForCurrentMonthAndYear.reduce(
       (acc, el) => (el.type === '+' ? acc + el.amount : acc),
       0,
@@ -170,6 +199,7 @@ class DiagramTab extends Component {
     const arrDataForTable = addColorToArr(
       this.filterDataFromTable(filteredDataForCurrentMonthAndYear),
     );
+    // console.log(arrDataForTable, 'arrDataForTable');
 
     const chartData = arrDataForTable.reduce((acc, el) => {
       const newAcc = {
@@ -185,7 +215,7 @@ class DiagramTab extends Component {
       };
       return newAcc;
     }, initialChartData);
-    console.log(chartData);
+    // console.log(chartData);
 
     return (
       <div>

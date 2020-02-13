@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-console */
+/* eslint-disable */
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
@@ -33,7 +32,7 @@ const Table = () => {
     display: block;
     width: 12px;
     height: 12px;
-    /* color: ${props => props.inputColor || 'palevioletred'}; */
+    color: ${props => props.inputColor || 'palevioletred'};
     background: papayawhip;
     border: none;
     border-radius: 3px;

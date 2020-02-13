@@ -1,7 +1,5 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-console */
+/* eslint-disable */
+
 import React from 'react';
 import Select from 'react-select';
 import moment from 'moment';
@@ -65,21 +63,6 @@ const TableTablet = ({
 
 export default TableTablet;
 
-// const optionsMonth = [
-//   { value: 'default', label: today.month },
-//   { value: 'январь', label: 'январь' },
-//   { value: 'февраль', label: 'февраль' },
-//   { value: 'март', label: 'март' },
-//   { value: 'апрель', label: 'апрель' },
-//   { value: 'май', label: 'май' },
-//   { value: 'июнь', label: 'июнь' },
-//   { value: 'июль', label: 'июль' },
-//   { value: 'август', label: 'август' },
-//   { value: 'сентябрь', label: 'сентябрь' },
-//   { value: 'октябрь', label: 'октябрь' },
-//   { value: 'ноябрь', label: 'ноябрь' },
-//   { value: 'декабрь', label: 'декабрь' },
-// ];
 // const optionsYear = [{ value: 'year', label: today.year }];
 // moment.locale('ru');
 
