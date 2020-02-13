@@ -12,7 +12,7 @@ const Preloader = () => {
   return (
     <Loader
       type="ThreeDots"
-      color="#ff6c00"
+      color="#3a5374"
       style={loaderStyles}
       height={100}
       width={100}

@@ -1,64 +1,53 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import shortid from 'shortid';
 import css from './HomeTab.module.css';
 
-const MobileHomeTab = () => {
+const MobileHomeTab = ({ modalAddTransactionOpen, data }) => {
   return (
     <section className={css.homeTabContainer}>
       <table className={css.homeTabTable}>
-        <tbody>
-          <tr>
-            <td>Дата</td>
-            <td>03.02.2020</td>
-          </tr>
-          <tr>
-            <td>Тип</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>Категория</td>
-            <td>Регулярный доход</td>
-          </tr>
-          <tr>
-            <td>Коментарий</td>
-            <td>Бонус за январь</td>
-          </tr>
-          <tr>
-            <td>Сумма</td>
-            <td>1100</td>
-          </tr>
-          <tr>
-            <td>Баланс</td>
-            <td>1100</td>
-          </tr>
-        </tbody>
-
-        <tbody>
-          <tr>
-            <td>Дата</td>
-            <td>03.02.2020</td>
-          </tr>
-          <tr>
-            <td>Тип</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>Категория</td>
-            <td>Регулярный доход</td>
-          </tr>
-          <tr>
-            <td>Коментарий</td>
-            <td>Бонус за январь</td>
-          </tr>
-          <tr>
-            <td>Сумма</td>
-            <td>1100</td>
-          </tr>
-          <tr>
-            <td>Баланс</td>
-            <td>1100</td>
-          </tr>
-        </tbody>
+        {data.length === 0 && <h2>Привет))) Введи данные транзакций</h2>}
+        {data.length > 0 &&
+          data.map(elem => (
+            <tbody
+              className={css.homeTabTable_tbodyMobile}
+              key={shortid.generate()}
+            >
+              <tr>
+                <td>Дата</td>
+                <td>{elem.date}</td>
+              </tr>
+              <tr>
+                <td>Тип</td>
+                <td>{elem.type}</td>
+              </tr>
+              <tr>
+                <td>Категория</td>
+                <td>{elem.category}</td>
+              </tr>
+              <tr>
+                <td>Коментарий</td>
+                <td>{elem.comments}</td>
+              </tr>
+              <tr>
+                <td>Сумма</td>
+                <td className={css.homeTabTable_amount}>{elem.amount}</td>
+              </tr>
+              <tr>
+                <td>Баланс</td>
+                <td>{elem.balanceAfter}</td>
+              </tr>
+            </tbody>
+          ))}
       </table>
+      <button
+        type="button"
+        className={css.homeTabButton}
+        onClick={modalAddTransactionOpen}
+      >
+        +
+      </button>
     </section>
   );
 };

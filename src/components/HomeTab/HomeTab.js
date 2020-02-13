@@ -11,10 +11,15 @@ class HomeTab extends Component {
   state = {};
 
   render() {
-    const { data } = this.props;
+    const { data, modalAddTransactionOpen } = this.props;
     return (
       <>
-        {widthDevice < 768 && <MobileHomeTab />}
+        {widthDevice < 768 && (
+          <MobileHomeTab
+            modalAddTransactionOpen={modalAddTransactionOpen}
+            data={data}
+          />
+        )}
         {widthDevice >= 768 && data.length === 0 && (
           <h2>Привет))) Введи данные транзакций</h2>
         )}
@@ -33,17 +38,24 @@ class HomeTab extends Component {
               </thead>
               <tbody>
                 {data.map(elem => (
-                  <tr key={shortid.generate()}>
+                  <tr key={shortid.generate()} className={css.homeTabTable_tr}>
                     <td>{elem.date}</td>
                     <td>{elem.type}</td>
                     <td>{elem.category}</td>
                     <td>{elem.comments}</td>
-                    <td>{elem.amount}</td>
+                    <td className={css.homeTabTable_amount}>{elem.amount}</td>
                     <td>{elem.balanceAfter}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            <button
+              type="button"
+              className={css.homeTabButton}
+              onClick={modalAddTransactionOpen}
+            >
+              +
+            </button>
           </section>
         )}
         <ModalAdd />
