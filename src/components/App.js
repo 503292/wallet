@@ -15,6 +15,10 @@ class App extends Component {
   state = {};
 
   static propTypes = {
+    refreshCurrentUser: PropTypes.func.isRequired,
+  };
+
+  static propTypes = {
     isLoading: PropTypes.bool.isRequired,
   };
 
@@ -55,10 +59,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  refreshCurrentUser: PropTypes.func.isRequired,
-};
 
 const mapStateToProps = state => ({
   isLoading: globalSelectors.getIsLoading(state),
