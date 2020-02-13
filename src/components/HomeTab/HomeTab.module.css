@@ -1,6 +1,23 @@
 .homeTabContainer {
   width: 320px;
+  overflow: auto;
+  height: 500px;
   margin: 0 auto;
+}
+
+.homeTabContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.homeTabContainer::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.homeTabContainer::-webkit-scrollbar-thumb {
+  background-color: #284060;
 }
 
 .spanHello {
@@ -75,6 +92,8 @@
   .homeTabContainer {
     width: 710px;
     padding-bottom: 100px;
+    overflow: auto;
+    height: 500px;
   }
 
   .titleHello {
@@ -133,6 +152,8 @@
 @media (min-width: 1280px) {
   .homeTabContainer {
     width: 860px;
+    overflow: auto;
+    height: 100%;
   }
 
   .homeTabTable th {
