@@ -96,12 +96,11 @@ class DiagramTab extends Component {
       selectedMonth: { value: currentMonth, label: currentMonth },
       selectedYear: { value: currentYear, label: currentYear },
     });
-    this.setState({ availableMonths: optionsMonth });
-    // this.setState({availableYears : optionsMonth});
 
     this.filterTransactionData(allTransactions, currentMonth, currentYear);
 
-    this.filterAllAvailbleYears(allTransactions);
+    this.setAvailbleYears();
+    this.setState({ availableMonths: optionsMonth });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -141,7 +140,7 @@ class DiagramTab extends Component {
     this.setState({ selectedYear: selectedOption });
   };
 
-  filterAllAvailbleYears = allTransactions => {
+  setAvailbleYears = () => {
     let tmp = moment().format('YYYY') - 1;
     let arrYear = [];
     for (let i = tmp; i < tmp + 10; i++) {
@@ -201,20 +200,53 @@ class DiagramTab extends Component {
     );
     // console.log(arrDataForTable, 'arrDataForTable');
 
-    const chartData = arrDataForTable.reduce((acc, el) => {
-      const newAcc = {
-        ...acc,
-        labels: [...acc.labels, el.category],
+    const chartData = () => {
+      let leblesIn = arrDataForTable.map(({ category }) => category);
+      let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
+      let colorIn = arrDataForTable.map(({ color }) => color);
+
+      console.log(leblesIn, 'leblesIn');
+      console.log(totalAmountIn, 'totalAmountIn');
+      console.log(colorIn, 'colorIn');
+      let tmp = {
+        labels: leblesIn, // заполнять отфильтрованными значениями
         datasets: [
           {
             label: 'wallet',
-            data: [...acc.datasets[0].data, el.totalAmount], // заполнять отфильтрованными значениями
-            backgroundColor: [...acc.datasets[0].backgroundColor, el.color], // заполнять отфильтрованными значениями
+            fill: false,
+            lineTension: 0.1,
+            data: totalAmountIn, // заполнять отфильтрованными значениями
+            backgroundColor: colorIn, // заполнять отфильтрованными значениями
           },
         ],
       };
-      return newAcc;
-    }, initialChartData);
+      return tmp;
+    };
+
+    ////////////////////////
+
+    // const chartData = arrDataForTable.reduce((acc, el) => {
+    //   let leblesIn = arrDataForTable.map(({ category }) => category);
+    //   let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
+    //   let colorIn = arrDataForTable.map(({ color }) => color);
+
+    //   console.log(leblesIn, 'leblesIn');
+    //   console.log(totalAmountIn, 'totalAmountIn');
+    //   console.log(colorIn, 'colorIn');
+
+    //   const newAcc = {
+    //     ...acc,
+    //     labels: [...acc.labels, el.category],
+    //     datasets: [
+    //       {
+    //         label: 'wallet',
+    //         data: [...acc.datasets[0].data, el.totalAmount], // заполнять отфильтрованными значениями
+    //         backgroundColor: [...acc.datasets[0].backgroundColor, el.color], // заполнять отфильтрованными значениями
+    //       },
+    //     ],
+    //   };
+    //   return newAcc;
+    // }, initialChartData);
     // console.log(chartData);
 
     return (
