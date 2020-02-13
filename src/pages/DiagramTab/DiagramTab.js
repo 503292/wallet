@@ -96,12 +96,11 @@ class DiagramTab extends Component {
       selectedMonth: { value: currentMonth, label: currentMonth },
       selectedYear: { value: currentYear, label: currentYear },
     });
-    this.setState({ availableMonths: optionsMonth });
-    // this.setState({availableYears : optionsMonth});
 
     this.filterTransactionData(allTransactions, currentMonth, currentYear);
 
-    this.filterAllAvailbleYears(allTransactions);
+    this.setAvailbleYears();
+    this.setState({ availableMonths: optionsMonth });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -141,7 +140,7 @@ class DiagramTab extends Component {
     this.setState({ selectedYear: selectedOption });
   };
 
-  filterAllAvailbleYears = allTransactions => {
+  setAvailbleYears = () => {
     let tmp = moment().format('YYYY') - 1;
     let arrYear = [];
     for (let i = tmp; i < tmp + 10; i++) {
@@ -215,7 +214,7 @@ class DiagramTab extends Component {
       };
       return newAcc;
     }, initialChartData);
-    // console.log(chartData);
+    console.log(chartData);
 
     return (
       <div>
