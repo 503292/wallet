@@ -37,24 +37,12 @@
 
 .table_tr {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   font-weight: 400;
-  position: relative;
-  /* padding-left: 20px; */
-  padding: 5px 10px 5px 25px;
+  padding: 5px 10px 5px 5px;
   line-height: 29px;
   border-bottom: 1px solid #e5e9e9;
 }
-
-/* .dataCell_category::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 5px;
-  width: 12px;
-  height: 12px;
-  background-color: pink;
-} */
 
 .table_tr_bottom {
   display: flex;
@@ -84,9 +72,16 @@
   padding-right: 5px;
 }
 
+.table_inner_txt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .color {
   width: 15px;
   height: 15px;
+  margin-right: 10px;
 }
 
 @media (min-width: 768px) {
@@ -152,14 +147,15 @@
 
   .bottom_div {
     display: flex;
-    width: 320px;
+    width: 360px;
+    max-height: 595px;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: center;
     border-top: 1px solid black;
   }
 
   .table_tr_bottom {
-    width: 320px;
+    width: 360px;
   }
 
   .select_options {
