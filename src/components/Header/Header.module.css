@@ -33,6 +33,10 @@
   display: flex;
   margin: auto 0;
 }
+.btnOut {
+  background-color: transparent;
+  border: none;
+}
 .logoOut {
   margin: 0 10px 0;
   width: 20px;
