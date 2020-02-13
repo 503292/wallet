@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker, { registerLocale } from 'react-datepicker';
 import Select from 'react-select';
+import moment from 'moment';
 import { validateAll } from 'indicative/validator';
 import ru from 'date-fns/locale/ru';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -83,7 +84,7 @@ class AddTransaction extends Component {
         }
 
         const data = {
-          date: Date.parse(response.date),
+          date: Number(moment(response.date).format('x')),
           type: response.type,
           category: response.category,
           amount: +response.amount,
