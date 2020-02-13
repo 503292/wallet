@@ -8,11 +8,12 @@ import PropTypes from 'prop-types';
 import s from './Table.module.css';
 import 'moment/locale/ru';
 
-const TableTablet = ({ today }) => {
+const TableTablet = ({ today, expenses, income }) => {
   // for (i = 2000; i <= 2050; i++) {
   //   const selectYear = { value: 'year', label: i };
   //   console.log('i :', i);
   // }
+
   const optionsMonth = [
     { value: 'default', label: today.month },
     { value: 'январь', label: 'январь' },
@@ -80,11 +81,11 @@ const TableTablet = ({ today }) => {
       <div className={s.bottom_div}>
         <div className={s.table_tr_bottom}>
           <p className={s.dataCell_expenses}>Расходы:</p>
-          <p className={s.dataCell_expenses_amount}>745</p>
+          <p className={s.dataCell_expenses_amount}>{expenses}</p>
         </div>
         <div className={s.table_tr_bottom}>
           <p className={s.dataCell_income}>Доходы:</p>
-          <p className={s.dataCell_income_amount}>745</p>
+          <p className={s.dataCell_income_amount}>{income}</p>
         </div>
       </div>
     </div>
