@@ -18,17 +18,11 @@ class DashboardPage extends Component {
   state = {};
 
   static propTypes = {
-    // isLoading: PropTypes.bool.isRequired,
     getFinanceOperation: PropTypes.func.isRequired,
-    // token: PropTypes.string.isRequired,
   };
 
   componentDidMount() {
-    // const { token, getFinanceOperation } = this.props;
     const { getFinanceOperation } = this.props;
-    // if (!token) {
-    //   return;
-    // }
     getFinanceOperation();
   }
 
@@ -60,11 +54,6 @@ class DashboardPage extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   // isLoading: globalSelectors.getIsLoading(state),
-//   // token: sessionSelectors.getToken(state),
-// });
 
 const mapDispatchToProps = dispatch => ({
   getFinanceOperation: () => dispatch(financeOperations.getFinanceAxios()),

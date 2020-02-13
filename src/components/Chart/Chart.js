@@ -1,4 +1,3 @@
-/* eslint-disable  */
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
@@ -33,8 +32,16 @@ const ChartItem = ({ chartData }) => {
   );
 };
 
+ChartItem.defaultProps = {
+  chartData: '',
+};
+
 ChartItem.propTypes = {
-  chartData: PropTypes.shape({}).isRequired,
+  chartData: PropTypes.oneOfType([
+    PropTypes.shape({}).isRequired,
+    PropTypes.string.isRequired,
+    PropTypes.func.isRequired,
+  ]),
 };
 
 export default ChartItem;
