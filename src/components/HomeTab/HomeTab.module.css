@@ -3,6 +3,12 @@
   margin: 0 auto;
 }
 
+.spanHello {
+  display: block;
+  color: #ff6c00;
+  padding: 50px 50px;
+}
+
 .homeTabTable {
   border-collapse: collapse;
   margin-top: 20px;
@@ -23,14 +29,6 @@
 
 .homeTabTable_tbodyMobile:nth-child(even) {
   border-left: 7px solid #ff6c00;
-}
-
-.homeTabTable_tbodyMobile:nth-child(odd) .homeTabTable_amount {
-  color: #3a5374;
-}
-
-.homeTabTable_tbodyMobile:nth-child(even) .homeTabTable_amount {
-  color: #ff6c00;
 }
 
 .homeTabTable_tbodyMobile td {
@@ -79,6 +77,12 @@
     padding-bottom: 100px;
   }
 
+  .titleHello {
+    padding-bottom: 100px;
+    text-align: center;
+    color: #ff6c00;
+  }
+
   .homeTabTable {
     width: 100%;
     border-collapse: collapse;
@@ -112,14 +116,6 @@
 
   .homeTabTable tr:nth-child(odd) {
     background-color: #f9fafc;
-  }
-
-  .homeTabTable_tr:nth-child(odd) .homeTabTable_amount {
-    color: #3a5374;
-  }
-
-  .homeTabTable_tr:nth-child(even) .homeTabTable_amount {
-    color: #ff6c00;
   }
 
   .homeTabButton {
