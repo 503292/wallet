@@ -12,6 +12,7 @@
   margin: auto 0;
   text-decoration: none;
   color: var(--color-icon-wallet);
+  align-items: center;
 }
 
 .logo {
@@ -32,10 +33,13 @@
 .logOutWrap {
   display: flex;
   margin: auto 0;
+  align-items: center;
 }
 .btnOut {
   background-color: transparent;
   border: none;
+  display: flex;
+  align-items: center;
 }
 .logoOut {
   margin: 0 10px 0;

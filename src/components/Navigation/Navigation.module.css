@@ -90,7 +90,7 @@
     flex-direction: column;
     align-items: flex-start;
     border-radius: 5px;
-    /* padding: 0; */
+    margin: 0 0 20px;
   }
   .wrapIcon {
     padding: 20px;
@@ -105,6 +105,7 @@
   .iconDiagram,
   .iconCurrency {
     fill: inherit;
+    margin-right: 30px;
   }
   .selected {
     fill: white;
