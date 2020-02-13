@@ -21,7 +21,16 @@ class HomeTab extends Component {
           />
         )}
         {widthDevice >= 768 && data.length === 0 && (
-          <h2>Привет))) Введи данные транзакций</h2>
+          <>
+            <h2>Привет))) Введи данные транзакций</h2>
+            <button
+              type="button"
+              className={css.homeTabButton}
+              onClick={modalAddTransactionOpen}
+            >
+              +
+            </button>
+          </>
         )}
         {widthDevice >= 768 && data.length > 0 && (
           <section className={css.homeTabContainer}>
