@@ -7,38 +7,21 @@ import ProtectedRoute from './ProtectedRoute/ProtectedRoute';
 import Loader from './Loader/Loader';
 import * as globalSelectors from '../redux/global/globalSelectors';
 import * as sessionSelectors from '../redux/session/sessionSelectors';
-// import * as sessionOperations from '../redux/session/sessionOperations';
 
 import routes from '../routes/routes';
-// import css from './App.module.css';
 import 'moment/locale/ru';
 
 class App extends Component {
   state = {};
 
-  static defaultProps = {
-    // token: '',
-  };
-
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
-    // getUserOperation: PropTypes.func.isRequired,
-    // token: PropTypes.string,
   };
 
   componentDidMount() {
     const { refreshCurrentUser } = this.props;
     refreshCurrentUser();
   }
-
-  // eslint-disable-next-line no-unused-vars
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { token, getUserOperation } = this.props;
-  //   if (!token) {
-  //     return;
-  //   }
-  //   getUserOperation();
-  // }
 
   render() {
     const { isLoading } = this.props;
