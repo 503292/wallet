@@ -56,6 +56,11 @@ const DiagramTab = () => {
     0,
   );
 
+  const res = resultFilterMinus => {
+    console.log(resultFilterMinus, 'resultFilterMinusresultFilterMinus');
+  };
+  res(resultFilterMinus);
+
   //-----------------------------------------
   // УВАГА УВАГА УВАГА тут зара буде КОСТИЛЬ).
   const getСategory = list => {
