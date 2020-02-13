@@ -1,4 +1,4 @@
-/* eslint-disable  */
+/* eslint-disable */
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -80,10 +80,12 @@ class DiagramTab extends Component {
   state = {
     currentMonth: moment().format('MMMM'),
     currentYear: moment().format('YYYY'),
+
     selectedMonth: null,
     selectedYear: null,
     availableMonths: [], // for select
     availableYears: [], // for select
+
     filteredDataForCurrentMonthAndYear: [],
   };
 
@@ -96,6 +98,7 @@ class DiagramTab extends Component {
     });
 
     this.filterTransactionData(allTransactions, currentMonth, currentYear);
+
     this.setAvailbleYears();
     this.setState({ availableMonths: optionsMonth });
   }
@@ -140,7 +143,7 @@ class DiagramTab extends Component {
   setAvailbleYears = () => {
     let tmp = moment().format('YYYY') - 1;
     let arrYear = [];
-    for (let i = tmp; i < tmp + 10; i++) {
+    for (let i = tmp; i <= tmp + 1; i++) {
       arrYear.push({ value: String(i), label: i });
     }
     this.setState({ availableYears: arrYear });
@@ -215,32 +218,6 @@ class DiagramTab extends Component {
       };
       return tmp;
     };
-
-    ////////////////////////
-
-    // const chartData = arrDataForTable.reduce((acc, el) => {
-    //   let leblesIn = arrDataForTable.map(({ category }) => category);
-    //   let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
-    //   let colorIn = arrDataForTable.map(({ color }) => color);
-
-    //   console.log(leblesIn, 'leblesIn');
-    //   console.log(totalAmountIn, 'totalAmountIn');
-    //   console.log(colorIn, 'colorIn');
-
-    //   const newAcc = {
-    //     ...acc,
-    //     labels: [...acc.labels, el.category],
-    //     datasets: [
-    //       {
-    //         label: 'wallet',
-    //         data: [...acc.datasets[0].data, el.totalAmount], // заполнять отфильтрованными значениями
-    //         backgroundColor: [...acc.datasets[0].backgroundColor, el.color], // заполнять отфильтрованными значениями
-    //       },
-    //     ],
-    //   };
-    //   return newAcc;
-    // }, initialChartData);
-    // console.log(chartData);
 
     return (
       <div>
