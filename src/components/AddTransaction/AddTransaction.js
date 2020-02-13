@@ -81,6 +81,7 @@ class AddTransaction extends Component {
           balanceAfter = -balance;
           typeBalanceAfter = '-';
         }
+
         const data = {
           date: Date.parse(response.date),
           type: response.type,
