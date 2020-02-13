@@ -80,10 +80,12 @@ class DiagramTab extends Component {
   state = {
     currentMonth: moment().format('MMMM'),
     currentYear: moment().format('YYYY'),
+
     selectedMonth: null,
     selectedYear: null,
     availableMonths: [], // for select
     availableYears: [], // for select
+
     filteredDataForCurrentMonthAndYear: [],
   };
 
@@ -96,6 +98,7 @@ class DiagramTab extends Component {
     });
 
     this.filterTransactionData(allTransactions, currentMonth, currentYear);
+
     this.setAvailbleYears();
     this.setState({ availableMonths: optionsMonth });
   }
@@ -202,9 +205,9 @@ class DiagramTab extends Component {
       let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
       let colorIn = arrDataForTable.map(({ color }) => color);
 
-      // console.log(leblesIn, 'leblesIn');
-      // console.log(totalAmountIn, 'totalAmountIn');
-      // console.log(colorIn, 'colorIn');
+      console.log(leblesIn, 'leblesIn');
+      console.log(totalAmountIn, 'totalAmountIn');
+      console.log(colorIn, 'colorIn');
       let tmp = {
         labels: leblesIn, // заполнять отфильтрованными значениями
         datasets: [
