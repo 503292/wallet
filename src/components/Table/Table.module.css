@@ -69,10 +69,12 @@
   justify-content: space-between;
   border-top: 1px solid black;
 }
+
 .dataCell_expenses_amount {
   color: #f7a469;
   padding-right: 5px;
 }
+
 .dataCell_income_amount {
   color: #575c63;
   padding-right: 5px;
@@ -80,6 +82,11 @@
 
 .dataCell_amount {
   padding-right: 5px;
+}
+
+.color {
+  width: 15px;
+  height: 15px;
 }
 
 @media (min-width: 768px) {
@@ -98,12 +105,15 @@
   .table_thead {
     display: none;
   }
+
   .select_table {
     justify-content: center;
   }
+
   .select_options {
     width: 170px;
   }
+
   .select_options:first-child {
     padding-right: 10px;
   }
@@ -126,6 +136,7 @@
     justify-content: center;
     background-color: #fff;
   }
+
   .table_main {
     display: flex;
     flex-flow: column;
@@ -134,9 +145,11 @@
     width: 360px;
     height: fit-content;
   }
+
   .table_thead {
     display: flex;
   }
+
   .bottom_div {
     display: flex;
     width: 320px;
@@ -144,12 +157,15 @@
     justify-content: space-between;
     border-top: 1px solid black;
   }
+
   .table_tr_bottom {
     width: 320px;
   }
+
   .select_options {
     width: 175px;
   }
+
   .select_table {
     justify-content: space-between;
     padding: 10px 0;
