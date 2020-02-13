@@ -195,16 +195,12 @@ class DiagramTab extends Component {
     const arrDataForTable = addColorToArr(
       this.filterDataFromTable(filteredDataForCurrentMonthAndYear),
     );
-    // console.log(arrDataForTable, 'arrDataForTable');
 
     const chartData = () => {
       let leblesIn = arrDataForTable.map(({ category }) => category);
       let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
       let colorIn = arrDataForTable.map(({ color }) => color);
 
-      // console.log(leblesIn, 'leblesIn');
-      // console.log(totalAmountIn, 'totalAmountIn');
-      // console.log(colorIn, 'colorIn');
       let tmp = {
         labels: leblesIn, // заполнять отфильтрованными значениями
         datasets: [

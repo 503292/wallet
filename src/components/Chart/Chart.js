@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import PropTypes from 'prop-types';
@@ -21,14 +20,26 @@ const ChartItem = ({ chartData }) => {
     },
   };
 
+  const widthDevice = window.screen.width;
+
   return (
     <div className={s.chart_main_div}>
-      <Pie
-        data={chartData}
-        width={300}
-        height={350}
-        options={chartOptions.options}
-      />
+      {widthDevice <= 767 && (
+        <Pie
+          data={chartData}
+          width={300}
+          height={350}
+          options={chartOptions.options}
+        />
+      )}
+      {widthDevice >= 768 && (
+        <Pie
+          data={chartData}
+          width={400}
+          height={450}
+          options={chartOptions.options}
+        />
+      )}
     </div>
   );
 };
