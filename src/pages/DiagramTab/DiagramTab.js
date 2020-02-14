@@ -1,6 +1,7 @@
-/* eslint-disable  */
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+/* eslint-disable */
+
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import 'moment/locale/ru';
 import s from './DiagramTab.module.css';
@@ -9,170 +10,239 @@ import * as financeSelectors from '../../redux/finance/financeSelectors';
 import TableTablet from '../../components/Table/TableTablet';
 import 'chartjs-plugin-labels';
 
-const DiagramTab = () => {
-  const financeData = useSelector(store =>
-    financeSelectors.getFinanceData(store),
-  );
+const colors = [
+  '#ecb22a',
+  '#e28b20',
+  '#d25925',
+  '#67b7d0',
+  '#5593d7',
+  '#3e6ba8',
+  '#9cc254',
+  '#73ad57',
+  '#507c3a',
+];
 
-  console.log(financeData, 'financeData');
+const labels = [
+  'Основные расходы',
+  'Продукты',
+  'Машина',
+  'Забота о себе',
+  'Забота о детях',
+  'Товары для дома',
+  'Образование',
+  'Досуг',
+  'Другие расходы',
+];
 
-  const typePlus = financeData.filter(el => el.type === '+');
-  console.log(typePlus, 'typePlus');
+const optionsMonth = [
+  { value: 'январь', label: 'январь' },
+  { value: 'февраль', label: 'февраль' },
+  { value: 'март', label: 'март' },
+  { value: 'апрель', label: 'апрель' },
+  { value: 'май', label: 'май' },
+  { value: 'июнь', label: 'июнь' },
+  { value: 'июль', label: 'июль' },
+  { value: 'август', label: 'август' },
+  { value: 'сентябрь', label: 'сентябрь' },
+  { value: 'октябрь', label: 'октябрь' },
+  { value: 'ноябрь', label: 'ноябрь' },
+  { value: 'декабрь', label: 'декабрь' },
+];
 
-  const typeMinus = financeData.filter(el => el.type === '-');
-
-  // функція вертає всі МІНУСОВІ транзакції (фільтрація по Year & Month)
-  const filterYearMonth = (month, year, mark) => {
-    const tmpYear = [];
-    const result = [];
-    const markArr = mark === '-' ? typeMinus : typePlus;
-    markArr
-      .filter(el => {
-        const getYear = moment(el.date).format('YYYY');
-        if (+getYear === year) {
-          tmpYear.push(el);
-        }
-        return tmpYear;
-      })
-      .filter(el => {
-        const getMonth = moment(el.date).format('MMMM');
-        if (getMonth === month) {
-          result.push(el);
-        }
-      });
-    console.log(tmpYear, 'tmpYear');
-    console.log(result, 'result');
-    return result;
-  };
-
-  // всі транзакції розходив
-  const resultFilterMinus = filterYearMonth('март', 2020, '-');
-  console.log(resultFilterMinus, 'resultFilter');
-  // всі транзакції доходов
-  const resultFilterPlus = filterYearMonth('февраль', 2020, '+');
-  console.log(resultFilterPlus, 'resultFilter');
-
-  // Додає всі мінусові витрати за вибраний рік і місяць
-  const plusAllMinusTransactions = resultFilterMinus.reduce(
-    (acc, { amount }) => acc + amount,
-    0,
-  );
-  console.log(plusAllMinusTransactions, 'plusAllMinusTransactions');
-
-  // Додає всі доходи  вибраний рік і місяць
-  const plusAllPositiveTransactions = resultFilterPlus.reduce(
-    (acc, { amount }) => acc + amount,
-    0,
-  );
-  console.log(plusAllPositiveTransactions, 'plusAllPositiveTransactions');
-
-  //-----------------------------------------
-  // УВАГА УВАГА УВАГА тут зара буде КОСТИЛЬ).
-  const getСategory = list => {
-    const arr = [];
-
-    list.forEach(element => {
-      arr.push(element.category);
-    });
-
-    const allCategory = [];
-    arr.forEach(elem => {
-      if (!allCategory.includes(elem)) {
-        allCategory.push(elem);
-      }
-    });
-    return allCategory;
-  };
-
-  const total = (list, category) => {
-    let total = 0;
-    for (const item of list) {
-      if (item.category === category) {
-        total += item.amount;
-      }
-    }
-    return total;
-  };
-
-  const allCategory = getСategory(resultFilterMinus);
-
-  const totalAmount = [];
-
-  allCategory.forEach(element => {
-    totalAmount.push({
-      category: element,
-      amount: total(resultFilterMinus, element),
-    });
-  });
-
-  console.log(totalAmount, 'totalAmount');
-  //-----------------------------------------
-
-  const todayYear = moment().format('YYYY');
-  const todayMonth = moment().format('MMMM');
-
-  const [today] = useState({ month: todayMonth, year: todayYear });
-  //   console.log('today :', today);
-
-  const [chartData] = useState({
-    labels: [
-      'Основные расходы',
-      'Продукты',
-      'Машина',
-      'Забота о себе',
-      'Забота о детях',
-      'Товары для дома',
-      'Образование',
-      'Досуг',
-      'Другие расходы',
-    ],
-
-    options: {
-      plugins: {
-        labels: {
-          render: 'label',
-          fontSize: 12,
-          fontColor: '#fff',
-          textShadow: true,
-        },
-      },
-      legend: {
-        display: false,
+const initialChartData = {
+  options: {
+    plugins: {
+      labels: {
+        render: 'label',
+        fontSize: 12,
+        fontColor: '#fff',
+        textShadow: true,
       },
     },
-    datasets: [
-      {
-        label: 'wallet',
-        data: [1235, 5687, 4788, 3200, 2500, 4587, 6587, 1561, 5618],
-        backgroundColor: [
-          '#ecb22a',
-          '#e28b20',
-          '#d25925',
-          '#67b7d0',
-          '#5593d7',
-          '#3e6ba8',
-          '#9cc254',
-          '#73ad57',
-          '#507c3a',
-        ],
-      },
-    ],
-  });
-
-  return (
-    <div>
-      <p className={s.statistic_p}>статистика</p>
-      <div className={s.diagramTab_main_div}>
-        <Chart chartData={chartData} />
-        <TableTablet
-          today={today}
-          labels={chartData.labels}
-          value={chartData.datasets.map(el => el.data)}
-          color={chartData.datasets.map(el => el.backgroundColor)}
-        />
-      </div>
-    </div>
-  );
+    legend: {
+      display: false,
+    },
+  },
+  labels: [], // заполнять отфильтрованными значениями
+  datasets: [
+    {
+      label: 'wallet',
+      data: [], // заполнять отфильтрованными значениями
+      backgroundColor: [], // заполнять отфильтрованными значениями
+    },
+  ],
 };
 
-export default DiagramTab;
+const addColorToArr = arr =>
+  arr.map((el, indx) => ({ ...el, color: colors[indx] }));
+
+class DiagramTab extends Component {
+  state = {
+    currentMonth: moment().format('MMMM'),
+    currentYear: moment().format('YYYY'),
+
+    selectedMonth: null,
+    selectedYear: null,
+    availableMonths: [], // for select
+    availableYears: [], // for select
+
+    filteredDataForCurrentMonthAndYear: [],
+  };
+
+  componentDidMount() {
+    const { currentMonth, currentYear } = this.state;
+    const { allTransactions } = this.props;
+    this.setState({
+      selectedMonth: { value: currentMonth, label: currentMonth },
+      selectedYear: { value: currentYear, label: currentYear },
+    });
+
+    this.filterTransactionData(allTransactions, currentMonth, currentYear);
+
+    this.setAvailbleYears();
+    this.setState({ availableMonths: optionsMonth });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const {
+      currentMonth,
+      currentYear,
+      selectedMonth,
+      selectedYear,
+    } = this.state;
+    const { allTransactions } = this.props;
+    if (
+      prevProps.allTransactions !== allTransactions ||
+      prevState.currentMonth !== currentMonth ||
+      prevState.currentYear !== currentYear
+    ) {
+      this.filterTransactionData(allTransactions, currentMonth, currentYear);
+    }
+    if (
+      prevState.selectedMonth !== selectedMonth ||
+      prevState.selectedYear !== selectedYear
+    ) {
+      this.changeCurrentMonthOrYear(selectedMonth.value, selectedYear.value);
+    }
+  }
+
+  changeCurrentMonthOrYear = (newCurrentMonth, newCurrentYear) =>
+    this.setState({
+      currentMonth: newCurrentMonth,
+      currentYear: newCurrentYear,
+    });
+
+  handleChangeMonth = selectedOption => {
+    this.setState({ selectedMonth: selectedOption });
+  };
+
+  handleChangeYear = selectedOption => {
+    this.setState({ selectedYear: selectedOption });
+  };
+
+  setAvailbleYears = () => {
+    let tmp = moment().format('YYYY') - 1;
+    let arrYear = [];
+    for (let i = tmp; i <= tmp + 1; i++) {
+      arrYear.push({ value: String(i), label: i });
+    }
+    this.setState({ availableYears: arrYear });
+  };
+
+  filterTransactionData = (allTransactions, currentMonth, currentYear) => {
+    this.setState({
+      filteredDataForCurrentMonthAndYear: allTransactions
+        .filter(el => moment(el.date).format('YYYY') === currentYear)
+        .filter(el => moment(el.date).format('MMMM') === currentMonth),
+    });
+  };
+
+  filterDataFromTable = filteredDataForCurrentMonthAndYear =>
+    filteredDataForCurrentMonthAndYear
+      .filter(el => el.type === '-')
+      .map(el => ({ category: el.category, amount: el.amount }))
+      .reduce((acc, el) => {
+        // если есть такой элемент в acc, то к его amount добавить amount текущего элемента
+        // если в acc нету элемента с такой категорией то добавить такой элемент
+        if (acc.length > 0) {
+          if (acc.find(item => item.category === el.category)) {
+            return acc.map(mapItem =>
+              mapItem.category === el.category
+                ? { ...mapItem, amount: mapItem.amount + el.amount }
+                : mapItem,
+            );
+          }
+          return [...acc, el];
+        }
+        return [...acc, el];
+      }, [])
+      .map(el => ({ category: el.category, totalAmount: el.amount }));
+
+  render() {
+    const {
+      availableMonths,
+      availableYears,
+      selectedMonth,
+      selectedYear,
+      filteredDataForCurrentMonthAndYear,
+    } = this.state;
+
+    const totalMonthIncome = filteredDataForCurrentMonthAndYear.reduce(
+      (acc, el) => (el.type === '+' ? acc + el.amount : acc),
+      0,
+    );
+    const totalMonthExpense = filteredDataForCurrentMonthAndYear.reduce(
+      (acc, el) => (el.type === '-' ? acc + el.amount : acc),
+      0,
+    );
+    const arrDataForTable = addColorToArr(
+      this.filterDataFromTable(filteredDataForCurrentMonthAndYear),
+    );
+
+    const chartData = () => {
+      let leblesIn = arrDataForTable.map(({ category }) => category);
+      let totalAmountIn = arrDataForTable.map(({ totalAmount }) => totalAmount);
+      let colorIn = arrDataForTable.map(({ color }) => color);
+
+      let tmp = {
+        labels: leblesIn, // заполнять отфильтрованными значениями
+        datasets: [
+          {
+            label: 'wallet',
+            fill: false,
+            lineTension: 0.1,
+            data: totalAmountIn, // заполнять отфильтрованными значениями
+            backgroundColor: colorIn, // заполнять отфильтрованными значениями
+          },
+        ],
+      };
+      return tmp;
+    };
+
+    return (
+      <div>
+        <p className={s.statistic_p}>статистика</p>
+        <div className={s.diagramTab_main_div}>
+          <Chart chartData={chartData} />
+          <TableTablet
+            totalMonthIncome={totalMonthIncome}
+            totalMonthExpense={totalMonthExpense}
+            availableMonths={availableMonths}
+            availableYears={availableYears}
+            selectedMonth={selectedMonth}
+            selectedYear={selectedYear}
+            handleChangeMonth={this.handleChangeMonth}
+            handleChangeYear={this.handleChangeYear}
+            arrDataForTable={arrDataForTable}
+          />
+        </div>
+      </div>
+    );
+  }
+}
+
+const mSTP = state => ({
+  allTransactions: financeSelectors.getFinanceData(state),
+});
+
+export default connect(mSTP)(DiagramTab);

@@ -6,7 +6,6 @@ import * as financeSelectors from '../../redux/finance/financeSelectors';
 import css from './Balance.module.css';
 
 const Balance = ({ balance }) => {
-  // console.log(balance, 'balance');
   return (
     <div className={css.wrapBalance}>
       <p className={css.balance}>Баланс</p>

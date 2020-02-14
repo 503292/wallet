@@ -14,7 +14,6 @@ import {
 import * as API from '../../services/api';
 import { getToken } from './sessionSelectors';
 
-// axios.defaults.baseURL = 'https://mywallet.goit.co.ua/api';
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Berear ${token}`;
 };
@@ -61,12 +60,6 @@ export const refreshToken = () => (dispatch, getState) => {
   }
   setToken(token);
   dispatch(persistRequest());
-
-  // const options = {
-  //   headers: {
-  //     Authorization: `Berear ${getToken}`,
-  //   },
-  // };
 
   API.getFinances(token)
     .then(response => {

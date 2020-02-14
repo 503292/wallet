@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-console */
+/* eslint-disable */
 import React from 'react';
 import Select from 'react-select';
 import styled from 'styled-components';
@@ -33,14 +32,11 @@ const Table = () => {
     display: block;
     width: 12px;
     height: 12px;
-    /* color: ${props => props.inputColor || 'palevioletred'}; */
+    color: ${props => props.inputColor || 'palevioletred'};
     background: papayawhip;
     border: none;
     border-radius: 3px;
   `;
-
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
 
   return (
     <div className={s.table_main_div}>
@@ -101,9 +97,5 @@ const Table = () => {
     </div>
   );
 };
-
-// Table.propTypes = {
-//   chartData: PropTypes.shape({}).isRequired,
-// };
 
 export default Table;
