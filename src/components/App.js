@@ -8,6 +8,7 @@ import Loader from './Loader/Loader';
 import * as globalSelectors from '../redux/global/globalSelectors';
 import * as sessionSelectors from '../redux/session/sessionSelectors';
 
+import css from './App.module.css';
 import routes from '../routes/routes';
 import 'moment/locale/ru';
 
@@ -31,7 +32,7 @@ class App extends Component {
     const { isLoading } = this.props;
 
     return (
-      <>
+      <div className={css.wrapApp}>
         {isLoading && <Loader isLoading={isLoading} />}
         {!isLoading && (
           <BrowserRouter>
@@ -55,7 +56,7 @@ class App extends Component {
             </Switch>
           </BrowserRouter>
         )}
-      </>
+      </div>
     );
   }
 }
