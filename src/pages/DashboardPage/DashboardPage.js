@@ -10,7 +10,6 @@ import Currency from '../../components/Currency/Currency';
 import HomeTabPage from '../HomeTabPage/HomeTabPage';
 import DiagramTab from '../DiagramTab/DiagramTab';
 import * as financeOperations from '../../redux/finance/financeOperations';
-// import * as sessionSelectors from '../../redux/session/sessionSelectors';
 
 import css from './DashboardPage.module.css';
 
