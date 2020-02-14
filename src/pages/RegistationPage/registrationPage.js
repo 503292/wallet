@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import LockPng from '../../assets/icons/account/lock.png';
 import EmailPng from '../../assets/icons/account/email.png';
 import UserPng from '../../assets/icons/account/account.png';
-
+//
 class registrationPage extends Component {
   state = {};
 
