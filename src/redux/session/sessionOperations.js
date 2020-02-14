@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import {
   loginRequest,
   loginError,
@@ -13,6 +14,11 @@ import {
 } from './sessionActions';
 import * as API from '../../services/api';
 import { getToken } from './sessionSelectors';
+
+toast.configure({
+  autoClose: 5000,
+  draggable: false,
+});
 
 const setToken = token => {
   axios.defaults.headers.common.Authorization = `Berear ${token}`;
@@ -32,8 +38,11 @@ export const login = values => dispatch => {
       dispatch(loginSuccess(response.data));
     })
     .catch(error => {
-      alert('Invalid E-Mail or password');
-      dispatch(loginError(error));
+      toast.error('Invalid E-Mail or password', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'foo-bar',
+      });
+      return dispatch(loginError(error));
     });
 };
 
@@ -47,9 +56,11 @@ export const registration = values => dispatch => {
       dispatch(registrationSuccess(response.data));
     })
     .catch(error => {
-      alert('Or user with this E-Meil is already exist');
-      dispatch(registrationError(error.response));
-      return error;
+      toast.error('User with this E-Meil is already exist', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'foo-bar',
+      });
+      return dispatch(registrationError(error));
     });
 };
 

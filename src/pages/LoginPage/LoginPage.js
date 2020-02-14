@@ -4,14 +4,24 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import shortid from 'shortid';
+import { ToastContainer } from 'react-toastify';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+import 'react-toastify/dist/ReactToastify.css';
+import LockPng from '../../assets/icons/account/lock.png';
+import EmailPng from '../../assets/icons/account/email.png';
 
 class loginPage extends Component {
   state = {};
+
+  inputIds = {
+    email: shortid.generate(),
+    password: shortid.generate(),
+  };
 
   addUser = e => {
     e.preventDefault();
@@ -25,6 +35,7 @@ class loginPage extends Component {
 
     return (
       <main className={styles.LoginPage}>
+        <ToastContainer />
         <section className={styles.desktopEl}>
           {devicewidth > tablewidth && (
             <div className={styles.desktopElements}>
@@ -42,8 +53,6 @@ class loginPage extends Component {
           <div className={styles.divForLogo}>
             <Logo className={styles.logo} />
             <h1 className={styles.head}> Wallet</h1>
-            {/* <MailIcon className={styles.MailIcon} />
-            <PasswordIcon className={styles.PasswordIcon} /> */}
           </div>
           <Formik
             initialValues={{ email: '', password: '' }}
@@ -73,45 +82,45 @@ class loginPage extends Component {
               } = props;
               return (
                 <form className={styles.loginForm} onSubmit={handleSubmit}>
-                  <input
-                    style={{
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: '17px',
-                      paddingLeft: '54px',
-                    }}
-                    type="email"
-                    name="email"
-                    value={values.email}
-                    placeholder="E-mail"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    // className={
-                    //   errors.email && touched.email
-                    //     ? 'text-input' && styles.error
-                    //     : 'text-input'
-                    // }
-                  />
+                  <label htmlFor={this.inputIds.email} className={styles.label}>
+                    <img className={styles.ImgStyles} alt="" src={EmailPng} />
+                    <input
+                      id={this.inputIds.email}
+                      type="email"
+                      name="email"
+                      value={values.email}
+                      placeholder="E-mail"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.email && touched.email
+                          ? 'text-input' && styles.error
+                          : 'text-input'
+                      }
+                    />
+                  </label>
                   {errors.email && touched.email && (
                     <div className={styles.inputFeedback1}>{errors.email}</div>
                   )}
-                  <input
-                    style={{
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: '17px',
-                      paddingLeft: '54px',
-                    }}
-                    type="password"
-                    name="password"
-                    value={values.password}
-                    placeholder="Пароль"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    // className={
-                    //   errors.password && touched.password
-                    //     ? `text-input ${styles.error}`
-                    //     : 'text-input'
-                    // }
-                  />
+                  <label
+                    htmlFor={this.inputIds.password}
+                    className={styles.label}
+                  >
+                    <img className={styles.ImgStyles} alt="" src={LockPng} />
+                    <input
+                      type="password"
+                      name="password"
+                      value={values.password}
+                      placeholder="Пароль"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.password && touched.password
+                          ? `text-input ${styles.error}`
+                          : 'text-input'
+                      }
+                    />
+                  </label>
                   {errors.password && touched.password && (
                     <div className={styles.inputFeedback2}>
                       {errors.password}

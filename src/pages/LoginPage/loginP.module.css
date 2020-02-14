@@ -9,6 +9,15 @@
   margin: 0;
 }
 
+.label {
+  margin-bottom: 36px;
+}
+
+.ImgStyles {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
 .divForLogo {
   text-align: center;
   position: relative;

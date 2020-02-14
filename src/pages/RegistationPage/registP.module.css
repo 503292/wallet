@@ -13,6 +13,11 @@
   text-align: center;
 }
 
+.ImgStyles {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
 .RegisterDiv {
   display: flex;
   flex-direction: column;
@@ -34,6 +39,11 @@
   border: none;
   line-height: 55px;
   width: 280px;
+  padding-left: 10px;
+}
+
+.label {
+  margin-bottom: 30px;
 }
 
 .RegisterForm input::-moz-placeholder {
@@ -59,24 +69,20 @@
 }
 
 .RegisterForm input:first-child {
-  /* background-image: url('../../assets/icons/account/email.png'); */
   background-repeat: no-repeat;
   background-position: 15px;
 }
 
 .RegisterForm input:nth-child(2) {
-  /* background-image: url('../../assets/icons/account/lock.png'); */
   background-repeat: no-repeat;
   background-position: 17px;
 }
 
 .RegisterForm input:nth-child(3) {
-  /* background-image: url('../../assets/icons/account/lock.png'); */
   background-repeat: no-repeat;
   background-position: 17px;
 }
 .RegisterForm input:nth-child(4) {
-  /* background-image: url('../../assets/icons/account/account.png'); */
   background-repeat: no-repeat;
   background-position: 17px;
 }
