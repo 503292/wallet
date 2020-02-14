@@ -6,8 +6,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
-// import { ReactComponent as MailIcon } from '../../assets/icons/e-mail/baseline-email-24px.svg';
-// import { ReactComponent as PasswordIcon } from '../../assets/icons/lock/baseline-lock-24px.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
