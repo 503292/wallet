@@ -1,15 +1,2 @@
-/* .container {
-  max-width: 300px;
+.wrapApp {
 }
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 718px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1200px;
-  }
-} */
