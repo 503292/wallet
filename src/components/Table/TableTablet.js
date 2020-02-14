@@ -1,47 +1,34 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-console */
+/* eslint-disable */
 import React from 'react';
 import Select from 'react-select';
+// import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
-const TableTablet = () => {
-  const optionsMonth = [{ value: 'month', label: 'месяц' }];
-  const optionsYear = [{ value: 'year', label: 'год' }];
-  const data = [
-    {
-      value: 1235,
-      backgroundColor: '#ecb22a',
-      labels: 'Основные расходы',
-    },
-    { value: 5687, backgroundColor: '#e28b20', labels: 'Продукты' },
-    { value: 4788, backgroundColor: '#d25925', labels: 'Машина' },
-    { value: 3200, backgroundColor: '#67b7d0', labels: 'Забота о себе' },
-    { value: 2500, backgroundColor: '#5593d7', labels: 'Забота о детях' },
-    {
-      value: 4587,
-      backgroundColor: '#3e6ba8',
-      labels: 'Товары для дома',
-    },
-    { value: 6587, backgroundColor: '#9cc254', labels: 'Образование' },
-    { value: 1561, backgroundColor: '#73ad57', labels: 'Досуг' },
-    { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
-  ];
-
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
-
+const TableTablet = ({
+  totalMonthExpense,
+  totalMonthIncome,
+  availableMonths,
+  availableYears,
+  selectedMonth,
+  selectedYear,
+  handleChangeMonth,
+  handleChangeYear,
+  arrDataForTable,
+}) => {
   return (
     <div className={s.table_main_div}>
       <div className={s.select_table}>
         <Select
-          options={optionsMonth}
+          options={availableMonths}
           className={s.select_options}
-          defaultValue={optionsMonth[0]}
+          value={selectedMonth}
+          onChange={handleChangeMonth}
         />
         <Select
-          options={optionsYear}
+          options={availableYears}
           className={s.select_options}
-          defaultValue={optionsYear[0]}
+          value={selectedYear}
+          onChange={handleChangeYear}
         />
       </div>
       <ul className={s.table_main}>
@@ -49,21 +36,24 @@ const TableTablet = () => {
           <p className={s.headerCell_category}>Категория</p>
           <p className={s.headerCell_amount}>Сумма</p>
         </li>
-        {data.map(el => (
-          <li className={s.table_tr}>
-            <p className={s.dataCell_category}>{el.labels}</p>
-            <p className={s.dataCell_amount}>{el.value}</p>
+        {arrDataForTable.map(el => (
+          <li key={el.category} className={s.table_tr}>
+            <span className={s.color} style={{ backgroundColor: el.color }} />
+            <div className={s.table_inner_txt}>
+              <p className={s.dataCell_category}>{el.category}</p>
+              <p className={s.dataCell_amount}>{el.totalAmount}</p>
+            </div>
           </li>
         ))}
       </ul>
       <div className={s.bottom_div}>
         <div className={s.table_tr_bottom}>
           <p className={s.dataCell_expenses}>Расходы:</p>
-          <p className={s.dataCell_expenses_amount}>745</p>
+          <p className={s.dataCell_expenses_amount}>{totalMonthExpense}</p>
         </div>
         <div className={s.table_tr_bottom}>
           <p className={s.dataCell_income}>Доходы:</p>
-          <p className={s.dataCell_income_amount}>745</p>
+          <p className={s.dataCell_income_amount}>{totalMonthIncome}</p>
         </div>
       </div>
     </div>

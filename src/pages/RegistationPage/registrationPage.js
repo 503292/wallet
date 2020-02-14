@@ -1,12 +1,17 @@
 import React from 'react';
 // import * as yup from 'yup';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styles from './registP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import registerPhoto from '../../assets/photos/registerPhoto.png';
 import ValidationForm from './validationForm';
 import AuthorizationChecker from './authorizationChecker';
-// import { register } from '../../services/api';
+import * as sessionOperations from '../../redux/session/sessionOperations';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+
+// import * as sessionOperations from '../../redux/session/sessionOperations';
 
 const INITIAL_STATE = {
   email: '',
@@ -15,9 +20,8 @@ const INITIAL_STATE = {
   name: '',
 };
 
-function registrationPage() {
+function registrationPage({ onRegister }) {
   const {
-    addUser,
     values,
     handleChange,
     onBlur,
@@ -27,23 +31,11 @@ function registrationPage() {
   } = ValidationForm(INITIAL_STATE, AuthorizationChecker);
   const devicewidth = document.documentElement.clientWidth;
   const tablewidth = 1023;
-  // const [firebaseError, setFirebaseError] = useState(false);
+  const addUser = e => {
+    e.preventDefault();
+    onRegister(values);
+  };
 
-  // async function authenticateUser() {
-  // const { name, email, pass } = values;
-  // const credenials = {
-  //   name,
-  //   email,
-  //   password,
-  // };
-  // try {
-  //   await register(values);
-  //   console.log();
-  // } catch (error) {
-  //   console.error('Auth error', error);
-  // setFirebaseError(err);
-  // }
-  // }
   return (
     <main className={styles.RegisterPage}>
       <section className={styles.desktopEl}>
@@ -70,41 +62,45 @@ function registrationPage() {
             onChange={handleChange}
             onBlur={onBlur}
             value={values.email}
-            // className={errors.email && styles.errorInput}
             placeholder="E-mail"
             name="email"
           />
-          {errors.email && <p>{errors.email}</p>}
+          {errors.email && (
+            <p className={styles.inputFeedback1}>{errors.email}</p>
+          )}
           <input
             type="password"
             onChange={handleChange}
             onBlur={onBlur}
             value={values.password}
-            // className={errors.pass && styles.errorInput}
             placeholder="Пароль"
             name="password"
           />
-          {errors.password && <p>{errors.password}</p>}
+          {errors.password && (
+            <p className={styles.inputFeedback2}>{errors.password}</p>
+          )}
           <input
             type="password"
             onChange={handleChange}
             onBlur={onBlur}
-            // className={errors.passConfirm && styles.errorInput}
             value={values.passConfirm}
             placeholder="Подтвердите пароль"
             name="passConfirm"
           />
-          {errors.passConfirm && <p>{errors.passConfirm}</p>}
+          {errors.passConfirm && (
+            <p className={styles.inputFeedback3}>{errors.passConfirm}</p>
+          )}
           <input
             onChange={handleChange}
             onBlur={onBlur}
             name="name"
             value={values.name}
             type="text"
-            // className={errors.name && styles.errorInput}
             placeholder="Ваше имя"
           />
-          {errors.name && <p>{errors.name}</p>}
+          {errors.name && (
+            <p className={styles.inputFeedback4}>{errors.name}</p>
+          )}
           {firebaseError && <p>User with this E-mail is already exist</p>}
 
           <button
@@ -123,23 +119,14 @@ function registrationPage() {
   );
 }
 
-export default registrationPage;
+registrationPage.propTypes = {
+  onRegister: PropTypes.func.isRequired,
+};
 
-// const user = yup.object().shape({
-//   email: yup
-//     .string()
-//     .email('Invalid email address')
-//     .required(),
-//   pass: yup
-//     .string()
-//     .email('Invalid pass')
-//     .required(),
-//   passConfirm: yup
-//     .string()
-//     .email('Passwords do not match')
-//     .required(),
-//   name: yup
-//     .string()
-//     .email('Please enter your name')
-//     .required(),
-// });
+const mapDispatchToProps = {
+  onRegister: sessionOperations.registration,
+};
+
+export default withAuthRedirect(
+  connect(null, mapDispatchToProps)(registrationPage),
+);

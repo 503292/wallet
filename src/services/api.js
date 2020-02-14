@@ -1,5 +1,13 @@
 import axios from 'axios';
 
+export const getCurrencyPrivatBank = () => {
+  return fetch(
+    'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
+  )
+    .then(response => response.json())
+    .catch(error => console.log(error));
+};
+
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.get['Content-Type'] = 'application/json';
 axios.defaults.headers.put['Content-Type'] = 'application/json';
@@ -15,6 +23,14 @@ export const setToken = token => ({
 
 export const register = credentials => axios.post('/register', credentials);
 
+export const loginRequest = values => axios.post('/login', values);
+
+export const getUserByToken = token => axios.get('/login', setToken(token));
+export const sendTransactionOnServer = (data, token) =>
+  axios.post('/finance', data, setToken(token));
+
 // export const getUserByToken = token => axios.get('/login', setToken(token));
 
 export const getFinances = token => axios.get('/finance', setToken(token));
+
+// export const

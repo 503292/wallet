@@ -15,12 +15,13 @@
 
 @media (min-width: 768px) {
   .dashboardWrap {
-    /* height: 100vh; */
+    height: 100vh;
     width: 100vw;
     background-color: #f0f0f0;
   }
   .tabsWrap {
-    background-color: #fff;
+    background-color: #fafcf8;
+    border-radius: 5px;
   }
   .header {
     background-color: #fff;
@@ -42,7 +43,7 @@
   .main {
     display: flex;
     justify-content: center;
-    padding: 40px;
+    padding: 40px 0 0 0;
     width: 1200px;
   }
   .wrapLeftBar {
@@ -51,7 +52,8 @@
   }
   .tabsWrap {
     width: 860px;
-    background-color: #eff2ef;
+    height: 634px;
+    background-color: #fff;
     box-shadow: 10px 17.321px 40px 0px rgba(1, 1, 0, 0.15);
   }
 }

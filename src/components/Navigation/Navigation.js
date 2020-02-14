@@ -1,16 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { ReactComponent as Home } from '../../assets/icons/home/baseline-home-24px.svg';
 import { ReactComponent as Diagram } from '../../assets/icons/diagrams/baseline-timeline-24px.svg';
 import { ReactComponent as Currency } from '../../assets/icons/currency exchange/baseline-attach_money-24px.svg';
 
+import * as financeSelectors from '../../redux/finance/financeSelectors';
 import css from './Navigation.module.css';
 
-// const activeStyle = {
-//   backgroundColor: '#415b7d',
-// };
-
-const Navigation = () => {
+const Navigation = ({ balance }) => {
   const widthDevice = window.screen.width;
   return (
     <div className={css.wrapNav}>
@@ -45,12 +44,12 @@ const Navigation = () => {
           <Currency className={`${css.iconCurrency} ${css.icons}`} />
         )}
 
-        {widthDevice >= 768 && widthDevice <= 1023 && (
+        {widthDevice >= 768 && widthDevice <= 1279 && (
           <div className={css.wrapIcon}>
             <Currency
               className={`${css.iconCurrency} ${css.icons} ${css.notActive}`}
             />
-            <div className={css.descr}>Баланс: 24 000.00грн</div>
+            <div className={css.descr}>{balance}.00 грн</div>
           </div>
         )}
       </NavLink>
@@ -58,4 +57,16 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+const mapStateToProps = state => ({
+  balance: financeSelectors.getFinanceTotalBalance(state),
+});
+
+Navigation.defaultProps = {
+  balance: 0,
+};
+
+Navigation.propTypes = {
+  balance: PropTypes.number,
+};
+
+export default connect(mapStateToProps)(Navigation);

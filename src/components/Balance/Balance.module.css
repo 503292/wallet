@@ -5,9 +5,10 @@
   display: flex;
   flex-wrap: wrap;
   color: #fff;
-  margin: 0 10px 20px;
+  margin: 0 auto 20px;
   padding: 30px 0;
   font-family: var(--regular-fonts);
+  width: 300px;
 }
 .wrapBalance p {
   width: 100%;

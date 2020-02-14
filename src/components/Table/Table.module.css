@@ -37,23 +37,11 @@
 
 .table_tr {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   font-weight: 400;
-  position: relative;
-  /* padding-left: 20px; */
-  padding: 5px 10px 5px 25px;
+  padding: 5px 10px 5px 5px;
   line-height: 29px;
   border-bottom: 1px solid #e5e9e9;
-}
-
-.dataCell_category::before {
-  content: '';
-  position: absolute;
-  top: 14px;
-  left: 5px;
-  width: 12px;
-  height: 12px;
-  background-color: aqua;
 }
 
 .table_tr_bottom {
@@ -69,10 +57,12 @@
   justify-content: space-between;
   border-top: 1px solid black;
 }
+
 .dataCell_expenses_amount {
   color: #f7a469;
   padding-right: 5px;
 }
+
 .dataCell_income_amount {
   color: #575c63;
   padding-right: 5px;
@@ -80,6 +70,18 @@
 
 .dataCell_amount {
   padding-right: 5px;
+}
+
+.table_inner_txt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.color {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
 }
 
 @media (min-width: 768px) {
@@ -98,12 +100,15 @@
   .table_thead {
     display: none;
   }
+
   .select_table {
     justify-content: center;
   }
+
   .select_options {
     width: 170px;
   }
+
   .select_options:first-child {
     padding-right: 10px;
   }
@@ -126,6 +131,7 @@
     justify-content: center;
     background-color: #fff;
   }
+
   .table_main {
     display: flex;
     flex-flow: column;
@@ -134,22 +140,28 @@
     width: 360px;
     height: fit-content;
   }
+
   .table_thead {
     display: flex;
   }
+
   .bottom_div {
     display: flex;
-    width: 320px;
+    width: 360px;
+    max-height: 595px;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: center;
     border-top: 1px solid black;
   }
+
   .table_tr_bottom {
-    width: 320px;
+    width: 360px;
   }
+
   .select_options {
     width: 175px;
   }
+
   .select_table {
     justify-content: space-between;
     padding: 10px 0;

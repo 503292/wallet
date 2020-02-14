@@ -1,7 +1,8 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-console */
+/* eslint-disable */
 import React from 'react';
 import Select from 'react-select';
+import styled from 'styled-components';
+// import PropTypes from 'prop-types';
 import s from './Table.module.css';
 
 const Table = () => {
@@ -27,8 +28,15 @@ const Table = () => {
     { value: 5618, backgroundColor: '#507c3a', labels: 'Другие расходы' },
   ];
 
-  // console.log(data.map(el => el.value));
-  // console.log(data.map(el => el.labels));
+  const ColoredBox = styled.div`
+    display: block;
+    width: 12px;
+    height: 12px;
+    color: ${props => props.inputColor || 'palevioletred'};
+    background: papayawhip;
+    border: none;
+    border-radius: 3px;
+  `;
 
   return (
     <div className={s.table_main_div}>
@@ -60,6 +68,7 @@ const Table = () => {
             <tr className={s.table_tr} key={el.backgroundColor}>
               <td className={s.dataCell_category} width="75%">
                 {/* <div className={s.color_block} /> */}
+                <ColoredBox />
                 {el.labels}
               </td>
               <td className={s.dataCell_amount} width="25%">
