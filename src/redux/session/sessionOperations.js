@@ -33,7 +33,7 @@ export const login = values => dispatch => {
       dispatch(loginSuccess(response.data));
     })
     .catch(error => {
-      alert('Such user doesnt exist');
+      alert('Invalid E-Mail or password');
       dispatch(loginError(error));
     });
 };
@@ -48,8 +48,9 @@ export const registration = values => dispatch => {
       dispatch(registrationSuccess(response.data));
     })
     .catch(error => {
-      alert('User with this E-Meil is already exist');
-      dispatch(registrationError(error));
+      alert('Or user with this E-Meil is already exist');
+      dispatch(registrationError(error.response));
+      return error;
     });
 };
 

@@ -6,64 +6,25 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
+// import { ReactComponent as MailIcon } from '../../assets/icons/e-mail/baseline-email-24px.svg';
+// import { ReactComponent as PasswordIcon } from '../../assets/icons/lock/baseline-lock-24px.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-// import loginChecker from './LoginChecker';
 
-// const user = yup.object().shape({
-//   email: yup.string().required(),
-//   password: yup.string().required(),
-// });
 class loginPage extends Component {
-  state = {
-    // email: '',
-    // password: '',
-    // disabled: true,
-    // errors: {},
-  };
+  state = {};
 
   addUser = e => {
     e.preventDefault();
-    // console.log(user);
     this.props.onLogin({ ...this.state });
     this.setState({ email: '', password: '' });
   };
 
-  // handleChange = e => {
-  //   const { errors } = this.state;
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-
-  // if (!email) {
-  //   this.setState({
-  //      errors.email = 'Required',
-  //   })
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-  //   this.setState({
-  //     errors.email = 'Invalid email address'
-  //   })
-
-  // }
-
-  // if (!password) {
-  //   this.setState({
-  //   errors.password = 'Required'
-  //   })
-  // } else if (password.length < 7) {
-  //   this.setState({
-  //   errors.password = 'Password should be at least 7 characters long'
-  //     })
-  // }
-  //   return errors;
-  // };
-
   render() {
     const devicewidth = document.documentElement.clientWidth;
     const tablewidth = 1023;
-    // const { email, password } = this.state;
-    // console.log(email, password);
+
     return (
       <main className={styles.LoginPage}>
         <section className={styles.desktopEl}>
@@ -83,6 +44,8 @@ class loginPage extends Component {
           <div className={styles.divForLogo}>
             <Logo className={styles.logo} />
             <h1 className={styles.head}> Wallet</h1>
+            {/* <MailIcon className={styles.MailIcon} />
+            <PasswordIcon className={styles.PasswordIcon} /> */}
           </div>
           <Formik
             initialValues={{ email: '', password: '' }}
@@ -113,33 +76,43 @@ class loginPage extends Component {
               return (
                 <form className={styles.loginForm} onSubmit={handleSubmit}>
                   <input
+                    style={{
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: '17px',
+                      paddingLeft: '54px',
+                    }}
                     type="email"
                     name="email"
                     value={values.email}
                     placeholder="E-mail"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={
-                      errors.email && touched.email
-                        ? `text-input ${styles.error}`
-                        : 'text-input'
-                    }
+                    // className={
+                    //   errors.email && touched.email
+                    //     ? 'text-input' && styles.error
+                    //     : 'text-input'
+                    // }
                   />
                   {errors.email && touched.email && (
                     <div className={styles.inputFeedback1}>{errors.email}</div>
                   )}
                   <input
+                    style={{
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: '17px',
+                      paddingLeft: '54px',
+                    }}
                     type="password"
                     name="password"
                     value={values.password}
                     placeholder="Пароль"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={
-                      errors.password && touched.password
-                        ? `text-input ${styles.error}`
-                        : 'text-input'
-                    }
+                    // className={
+                    //   errors.password && touched.password
+                    //     ? `text-input ${styles.error}`
+                    //     : 'text-input'
+                    // }
                   />
                   {errors.password && touched.password && (
                     <div className={styles.inputFeedback2}>
