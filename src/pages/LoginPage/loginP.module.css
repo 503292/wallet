@@ -9,8 +9,18 @@
   margin: 0;
 }
 
+.label {
+  margin-bottom: 36px;
+}
+
+.ImgStyles {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
 .divForLogo {
   text-align: center;
+  position: relative;
 }
 
 .loginDiv {
@@ -33,33 +43,27 @@
   border-radius: 4px;
   border: none;
   line-height: 55px;
-}
-
-.loginForm input:first-child {
-  margin-bottom: 10px;
+  width: 276px;
 }
 
 .loginForm input:hover {
   box-shadow: 0px 0px 0px 2px #e27a2b;
 }
-
 .loginForm input:focus {
   box-shadow: 0px 0px 4px 4px #e27a2b;
 }
 
 .loginForm input:first-child {
-  background-image: url('../../assets/icons/account/email.png');
   background-repeat: no-repeat;
   background-position: 15px;
-  padding-left: 54px;
+  padding-left: 10px;
   margin-bottom: 40px;
 }
 
 .loginForm input:nth-child(2) {
-  background-image: url('../../assets/icons/account/lock.png');
   background-repeat: no-repeat;
   background-position: 17px;
-  padding-left: 56px;
+  padding-left: 10px;
 }
 
 .loginForm input::-moz-placeholder {
@@ -73,7 +77,7 @@
   color: #b9c9d4;
 }
 
-.loginForm error {
+.loginForm input .error {
   border-color: red;
   box-shadow: 0px 0px 4px 4px red;
 }
@@ -92,7 +96,7 @@
 
 .formButton {
   display: block;
-  width: 200px;
+  width: 276px;
   margin: 0 auto;
   background-color: #f5f7fa;
   font-family: Montserrat;
@@ -136,6 +140,26 @@
   margin-top: 100px;
 }
 
+.MailIcon {
+  width: 20px;
+  height: 20px;
+  fill: #3a5374;
+  position: absolute;
+  top: 222px;
+  z-index: 1;
+  left: 20px;
+}
+
+.PasswordIcon {
+  width: 20px;
+  height: 20px;
+  fill: #3a5374;
+  position: absolute;
+  top: 318px;
+  z-index: 1;
+  left: 20px;
+}
+
 @media (min-width: 768px) {
   .LoginPage {
     background-image: url(../../assets/photos/loginBackground.png);
@@ -166,12 +190,14 @@
 
   .head {
     padding-top: 0px;
+    position: relative;
   }
   .loginForm input {
     width: 432px;
   }
   .formButton {
-    width: 246px;
+    width: 300px;
+    line-height: 20px;
   }
   .registraationLink {
     padding-bottom: 40px;

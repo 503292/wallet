@@ -4,68 +4,38 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import shortid from 'shortid';
+import { ToastContainer } from 'react-toastify';
 import styles from './loginP.module.css';
 import { ReactComponent as Logo } from '../../assets/icons/logo.svg';
 import photoTel from '../../assets/photos/loginPhoto.png';
 import * as sessionOperations from '../../redux/session/sessionOperations';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
-// import loginChecker from './LoginChecker';
+import 'react-toastify/dist/ReactToastify.css';
+import LockPng from '../../assets/icons/account/lock.png';
+import EmailPng from '../../assets/icons/account/email.png';
 
-// const user = yup.object().shape({
-//   email: yup.string().required(),
-//   password: yup.string().required(),
-// });
 class loginPage extends Component {
-  state = {
-    // email: '',
-    // password: '',
-    // disabled: true,
-    // errors: {},
+  state = {};
+
+  inputIds = {
+    email: shortid.generate(),
+    password: shortid.generate(),
   };
 
   addUser = e => {
     e.preventDefault();
-    // console.log(user);
     this.props.onLogin({ ...this.state });
     this.setState({ email: '', password: '' });
   };
 
-  // handleChange = e => {
-  //   const { errors } = this.state;
-  //   this.setState({
-  //     [e.target.name]: e.target.value,
-  //   });
-
-  // if (!email) {
-  //   this.setState({
-  //      errors.email = 'Required',
-  //   })
-  // } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-  //   this.setState({
-  //     errors.email = 'Invalid email address'
-  //   })
-
-  // }
-
-  // if (!password) {
-  //   this.setState({
-  //   errors.password = 'Required'
-  //   })
-  // } else if (password.length < 7) {
-  //   this.setState({
-  //   errors.password = 'Password should be at least 7 characters long'
-  //     })
-  // }
-  //   return errors;
-  // };
-
   render() {
     const devicewidth = document.documentElement.clientWidth;
     const tablewidth = 1023;
-    // const { email, password } = this.state;
-    // console.log(email, password);
+
     return (
       <main className={styles.LoginPage}>
+        <ToastContainer />
         <section className={styles.desktopEl}>
           {devicewidth > tablewidth && (
             <div className={styles.desktopElements}>
@@ -112,35 +82,45 @@ class loginPage extends Component {
               } = props;
               return (
                 <form className={styles.loginForm} onSubmit={handleSubmit}>
-                  <input
-                    type="email"
-                    name="email"
-                    value={values.email}
-                    placeholder="E-mail"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={
-                      errors.email && touched.email
-                        ? `text-input ${styles.error}`
-                        : 'text-input'
-                    }
-                  />
+                  <label htmlFor={this.inputIds.email} className={styles.label}>
+                    <img className={styles.ImgStyles} alt="" src={EmailPng} />
+                    <input
+                      id={this.inputIds.email}
+                      type="email"
+                      name="email"
+                      value={values.email}
+                      placeholder="E-mail"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.email && touched.email
+                          ? 'text-input' && styles.error
+                          : 'text-input'
+                      }
+                    />
+                  </label>
                   {errors.email && touched.email && (
                     <div className={styles.inputFeedback1}>{errors.email}</div>
                   )}
-                  <input
-                    type="password"
-                    name="password"
-                    value={values.password}
-                    placeholder="Пароль"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    className={
-                      errors.password && touched.password
-                        ? `text-input ${styles.error}`
-                        : 'text-input'
-                    }
-                  />
+                  <label
+                    htmlFor={this.inputIds.password}
+                    className={styles.label}
+                  >
+                    <img className={styles.ImgStyles} alt="" src={LockPng} />
+                    <input
+                      type="password"
+                      name="password"
+                      value={values.password}
+                      placeholder="Пароль"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      className={
+                        errors.password && touched.password
+                          ? `text-input ${styles.error}`
+                          : 'text-input'
+                      }
+                    />
+                  </label>
                   {errors.password && touched.password && (
                     <div className={styles.inputFeedback2}>
                       {errors.password}
