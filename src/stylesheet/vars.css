@@ -1,11 +1,30 @@
-/* :root {
-  --color-white: #ffffff;
-  --color-yellow: #f5d53b;
-  --color-dark-yellow: #edb446;
-  --color-green: #9ecb45;
-  --color-pale-gray: #e0e0e0;
-  --color-gray: #858598;
-  --color-dark-blue: #42414b;
+:root {
   --bg-color-white: #ffffff;
-  --text-color-black: #212121;
-} */
+  --bg-color-grey: #f3f6f6;
+  --bg-colot-darkgrey: #f2ecf4;
+  --bg-color-blue: #284060;
+
+  --text-color-white: #ffffff;
+  --text-color-grey: #7f8e94;
+  --text-colot-darkgrey: #39424a;
+  --text-color-black: #282828;
+  --text-color-blue: #415b7d;
+  --text-color-orange: #ff6c00;
+
+  --bg-color-icon: #2e4665;
+  --bg-color-icon-active: #708096;
+  --color-icon-wallet: #758397;
+  --color-text-tablet: #778388;
+  --ligth-grey-fonts: #6b7d83;
+  --bg-active-link: #415b7d;
+
+  --bg-color-button: #284060;
+  --bg-color-button-active: #ff6c00;
+  --scroll-thumb: #657890;
+
+  --logo-fonts: 'Bauhaus Bold', Tahoma, Geneva, Verdana, sans-serif;
+  /* --finance-fonts: "BauhausCMediumRegular",Tahoma,Geneva,Verdana,sans-serif; */
+  --bold-fonts: 'Helvetica Bold', Tahoma, Geneva, Verdana, sans-serif;
+  --regular-fonts: 'Helvetica Roman', Tahoma, Geneva, Verdana, sans-serif;
+  /* --light-fonts: "HelveticaNeueCyrLight",Tahoma,Geneva,Verdana,sans-serif; */
+}

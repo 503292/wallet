@@ -1,0 +1,91 @@
+.wrapHeader {
+  color: var(--color-icon-wallet);
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  width: 320px;
+  margin: 0 auto;
+  font-family: var(--regular-fonts);
+}
+.logoWrap {
+  display: flex;
+  margin: auto 0;
+  text-decoration: none;
+  color: var(--color-icon-wallet);
+  align-items: center;
+}
+
+.logo {
+  margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+  fill: #758397;
+}
+.logoText {
+  font-family: var(--logo-fonts);
+}
+.logo:hover,
+.logo:focus {
+  fill: #fff;
+  transition: all 200ms;
+}
+
+.logOutWrap {
+  display: flex;
+  margin: auto 0;
+  align-items: center;
+}
+.btnOut {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+.logoOut {
+  margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+}
+.logoOut:hover,
+.logoOut:focus {
+  fill: #fff;
+  transition: all 200ms;
+}
+.name {
+  margin: 0 10px 0;
+}
+
+@media (min-width: 768px) {
+  .wrapHeader {
+    padding: 25px 30px;
+    height: 80px;
+    width: 768px;
+  }
+  .logoWrap {
+    color: #758397;
+  }
+
+  .logo {
+    fill: #3a5374;
+  }
+  .logo:hover,
+  .logo:focus {
+    fill: #758397;
+    transition: all 200ms;
+  }
+  .logoText {
+    color: #000;
+  }
+  .logoOut:hover,
+  .logoOut:focus {
+    fill: #3a5374;
+    transition: all 200ms;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapHeader {
+    /* margin-bottom: 25px; */
+    width: 1200px;
+  }
+}

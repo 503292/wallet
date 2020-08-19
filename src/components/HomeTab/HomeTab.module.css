@@ -1,0 +1,175 @@
+.homeTabContainer {
+  width: 310px;
+  overflow: auto;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.homeTabContainer::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.homeTabContainer::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+.homeTabContainer::-webkit-scrollbar-thumb {
+  background-color: #284060;
+}
+
+.spanHello {
+  display: block;
+  color: #ff6c00;
+  padding: 50px 50px;
+}
+
+.homeTabTable {
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: 0 auto;
+}
+
+.homeTabTable_tbodyMobile {
+  display: block;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 10px 2px #9e9e9e;
+  padding: 10px;
+}
+
+.homeTabTable_tbodyMobile:nth-child(odd) {
+  border-left: 7px solid #284060;
+}
+
+.homeTabTable_tbodyMobile:nth-child(even) {
+  border-left: 7px solid #ff6c00;
+}
+
+.homeTabTable_tbodyMobile td {
+  padding: 16px;
+  font-family: 'Helvetica Roman';
+  font-size: 13px;
+  color: #282828;
+  font-weight: 400;
+}
+
+.homeTabTable_tbodyMobile tr {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.homeTabTable_tbodyMobile tr:nth-child(odd) {
+  background-color: #f3f6f6;
+}
+
+.homeTabButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #284060;
+  border: none;
+  color: #ffffff;
+  font-size: 30px;
+  position: fixed;
+  bottom: 10px;
+  right: 42%;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2.5px;
+}
+
+.homeTabButton:hover {
+  background-color: #ff6c00;
+}
+
+@media (min-width: 768px) {
+  .homeTabContainer {
+    width: 710px;
+    padding-bottom: 100px;
+    overflow: auto;
+    height: 500px;
+  }
+
+  .titleHello {
+    padding-bottom: 100px;
+    text-align: center;
+    color: #ff6c00;
+  }
+
+  .homeTabTable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .homeTabTable th {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Helvetica Bold';
+    color: #282828;
+    background-color: #ffffff;
+  }
+
+  .homeTabTable td {
+    padding: 16px;
+    font-family: 'Helvetica Roman';
+    font-size: 13px;
+    color: #2c353e;
+    font-weight: 400;
+  }
+
+  .homeTabTable tr:nth-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .homeTabTable tbody {
+    border-bottom: none;
+  }
+
+  .homeTabTable tr:nth-child(odd) {
+    background-color: #f9fafc;
+  }
+
+  .homeTabButton {
+    bottom: 30px;
+    right: 50px;
+    z-index: 10;
+  }
+
+  .homeTabButton:hover {
+    background-color: #ff6c00;
+    z-index: 10;
+  }
+}
+
+@media (min-width: 1280px) {
+  .homeTabContainer {
+    width: 860px;
+    overflow: auto;
+    height: 100%;
+  }
+
+  .homeTabTable th {
+    padding: 30px;
+  }
+
+  .homeTabTable td {
+    padding: 20px;
+  }
+
+  .homeTabTable tr:nth-child(even) {
+    background-color: #f3f6f6;
+  }
+
+  .homeTabButton {
+    bottom: 46px;
+    right: 46px;
+  }
+}

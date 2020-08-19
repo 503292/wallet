@@ -1,0 +1,169 @@
+.table_main_div {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  padding: 15px 0;
+  font-family: 'Helvetica Roman';
+}
+
+.select_table {
+  display: flex;
+  width: 100%;
+  padding: 5px;
+  justify-content: space-between;
+}
+
+.select_options {
+  width: 127px;
+}
+
+.table_main {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  list-style: none;
+  width: 320px;
+}
+
+.table_thead {
+  display: flex;
+  justify-content: space-between;
+  background-color: #e5e9e9;
+  padding: 5px 10px;
+  line-height: 40px;
+}
+
+.table_tr {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  padding: 5px 10px 5px 5px;
+  line-height: 29px;
+  border-bottom: 1px solid #e5e9e9;
+}
+
+.table_tr_bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 10px;
+}
+
+.bottom_div {
+  display: flex;
+  width: 320px;
+  flex-flow: column;
+  justify-content: space-between;
+  border-top: 1px solid black;
+}
+
+.dataCell_expenses_amount {
+  color: #f7a469;
+  padding-right: 5px;
+}
+
+.dataCell_income_amount {
+  color: #575c63;
+  padding-right: 5px;
+}
+
+.dataCell_amount {
+  padding-right: 5px;
+}
+
+.table_inner_txt {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.color {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .table_main_div {
+    width: 768px;
+    background-color: #f0f0f0;
+    margin-top: 50px;
+  }
+
+  .table_main {
+    width: 710px;
+    height: 210px;
+    flex-flow: column wrap;
+  }
+
+  .table_thead {
+    display: none;
+  }
+
+  .select_table {
+    justify-content: center;
+  }
+
+  .select_options {
+    width: 170px;
+  }
+
+  .select_options:first-child {
+    padding-right: 10px;
+  }
+
+  .bottom_div {
+    width: 710px;
+    align-items: flex-end;
+  }
+
+  .table_tr_bottom {
+    width: 215px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .table_main_div {
+    display: flex;
+    width: 360px;
+    flex-flow: column;
+    justify-content: center;
+    background-color: #fff;
+  }
+
+  .table_main {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    list-style: none;
+    width: 360px;
+    height: fit-content;
+  }
+
+  .table_thead {
+    display: flex;
+  }
+
+  .bottom_div {
+    display: flex;
+    width: 360px;
+    max-height: 595px;
+    flex-flow: column;
+    justify-content: center;
+    border-top: 1px solid black;
+  }
+
+  .table_tr_bottom {
+    width: 360px;
+  }
+
+  .select_options {
+    width: 175px;
+  }
+
+  .select_table {
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+}

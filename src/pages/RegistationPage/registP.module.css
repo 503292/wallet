@@ -1,0 +1,253 @@
+.head {
+  color: #282828;
+  line-height: 30px;
+  font-weight: bold;
+  font-family: 'Bauchaus';
+  font-size: 24px;
+  padding-top: 21px;
+  padding-bottom: 30px;
+  margin: 0;
+}
+
+.divForLogo {
+  text-align: center;
+}
+
+.ImgStyles {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.RegisterDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.RegisterForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.RegisterForm input {
+  line-height: 30px;
+  outline: none;
+  background-color: #f9fbfb;
+  border-radius: 4px;
+  border: none;
+  line-height: 55px;
+  width: 280px;
+  padding-left: 10px;
+}
+
+.label {
+  margin-bottom: 30px;
+}
+
+.RegisterForm input::-moz-placeholder {
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #b9c9d4;
+}
+.RegisterForm input::-webkit-input-placeholder {
+  font-family: Helvetica;
+  font-size: 15px;
+  color: #b9c9d4;
+}
+
+.RegisterForm input:not(:last-child) {
+  margin-bottom: 30px;
+}
+.RegisterForm input:hover {
+  box-shadow: 0px 0px 0px 2px #e27a2b;
+}
+
+.RegisterForm input:focus {
+  box-shadow: 0px 0px 4px 4px #e27a2b;
+}
+
+.RegisterForm input:first-child {
+  background-repeat: no-repeat;
+  background-position: 15px;
+}
+
+.RegisterForm input:nth-child(2) {
+  background-repeat: no-repeat;
+  background-position: 17px;
+}
+
+.RegisterForm input:nth-child(3) {
+  background-repeat: no-repeat;
+  background-position: 17px;
+}
+.RegisterForm input:nth-child(4) {
+  background-repeat: no-repeat;
+  background-position: 17px;
+}
+
+.formButton {
+  display: block;
+  width: 280px;
+  margin: 0 auto;
+  background-color: #f5f7fa;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 13px;
+  border: 1px solid #00183e;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 30px;
+  border: none;
+  height: 40px;
+}
+
+.formButton:hover {
+  border-color: #ef6537;
+  background-color: #e27a2b;
+  color: #ffffff;
+  box-shadow: 8px 8px 10px 2px #fee0ca;
+}
+
+.formButton:active {
+  box-shadow: 0px 0px 10px 2px #ef6537;
+}
+
+.registrationLink {
+  border: none;
+  font-size: 12px;
+  background-color: none;
+  font-family: Helvetica;
+  background: none;
+  text-decoration: underline;
+  color: #6b7d83;
+  line-height: 30px;
+  margin-top: 20px;
+}
+
+.logo {
+  margin: 0 10px 0;
+  width: 20px;
+  height: 20px;
+  fill: #3a5374;
+  margin-top: 100px;
+}
+.errorInput {
+  border: 4px red;
+}
+
+.inputFeedback1 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 60px;
+}
+.inputFeedback2 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 144px;
+}
+.inputFeedback3 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 228px;
+}
+.inputFeedback4 {
+  color: red;
+  font-family: Helvetica;
+  position: absolute;
+  top: 310px;
+}
+
+@media (min-width: 768px) {
+  .RegisterPage {
+    background-image: url(../../assets/photos/registerBackground.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  .RegisterDiv {
+    width: 550px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px 2px rgba(133, 131, 131, 0.459);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .logo {
+    margin-top: 5px;
+  }
+
+  .divForLogo {
+    display: flex;
+    padding-top: 45px;
+    padding-right: 5px;
+  }
+
+  .head {
+    padding-top: 0px;
+  }
+  .RegisterForm input {
+    width: 432px;
+  }
+  .formButton {
+    width: 280px;
+  }
+  .registrationLink {
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktopElements {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .RegisterPage {
+    display: flex;
+    background-image: none;
+  }
+  .desktopEl {
+    width: 40%;
+    background-image: url(../../assets/photos/registerBackground.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .RegisterDiv {
+    width: 550px;
+    left: 70%;
+  }
+  .desktopEl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .financeHeadline {
+    display: block;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 40px;
+    font-family: Bauhaus;
+    padding-top: 34px;
+  }
+}
+
+/* .Прямоугольник_1 {
+    background-color: rgb(43, 84, 119);
+    position: absolute;
+    left: 0px;
+    top: -1px;
+    width: 769px;
+    height: 1028px;
+    z-index: 3;
+  }
+   */

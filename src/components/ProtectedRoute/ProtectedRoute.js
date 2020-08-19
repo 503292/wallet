@@ -1,11 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
-import * as authSelectors from "../../redux/auth/authSelectors";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import * as sessionSelectors from '../../redux/session/sessionSelectors';
 
 const ProtectedRoute = ({ component: Component, ...restProps }) => {
-  const isAuthenticated = useSelector(store => authSelectors.getIsAuth(store));
+  const isAuthenticated = useSelector(store =>
+    sessionSelectors.getIsAuth(store),
+  );
   return (
     <Route {...restProps}>
       {isAuthenticated ? (
@@ -13,8 +15,8 @@ const ProtectedRoute = ({ component: Component, ...restProps }) => {
       ) : (
         <Redirect
           to={{
-            pathname: "/auth",
-            state: { from: restProps.location }
+            pathname: '/login',
+            state: { from: restProps.location },
           }}
         />
       )}
@@ -23,7 +25,11 @@ const ProtectedRoute = ({ component: Component, ...restProps }) => {
 };
 
 ProtectedRoute.propTypes = {
-  component: PropTypes.oneOfType([PropTypes.node, PropTypes.func]).isRequired
+  component: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.func,
+    PropTypes.shape({}),
+  ]).isRequired,
 };
 
 export default ProtectedRoute;
